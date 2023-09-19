@@ -12,7 +12,7 @@ const HomeScreen = () => {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const {data} = await axios.get('http://localhost:8000/api/products')
+      const {data} = await axios.get('/api/products')
 
       .catch(error => {
         if (error.response) {
