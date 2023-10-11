@@ -6,6 +6,7 @@ import {Form, Row, Col, Image, ListGroup, Card, Button} from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Rating from '../components/Rating'
 import { useGetProductDetailsQuery, useCreateReviewMutation } from '../slices/productsApiSlice'
+import Meta from '../components/Meta';
 import Loader from '../components/Loader'
 import Message from '../components/Message'
 import { addToCart } from '../slices/cartSlice' 
@@ -66,6 +67,7 @@ const ProductScreen = () => {
         ) : 
         (
             <>
+            <Meta title={product.name}/>
             <Row>
             <Col md={5}>
                 <Image src={product.image} alt={product.name} fluid></Image>
