@@ -12,14 +12,13 @@ const App = () => {
   return (
     <>
       <Header/>
-      <main className='py-3'>
-        <Container>
+      <main className='py-3' style={{display: 'flex'}}>
+        <Container style={{marginLeft: '15vw'}}>
           <Outlet/>
         </Container>
       </main>
       <Footer/>
       <ToastContainer/>
-
     </>
   )
 }

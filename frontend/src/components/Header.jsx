@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
+import '../assets/styles/header.css'
 import {useNavigate} from 'react-router-dom'
 import {Badge, Navbar, Nav, Container, NavDropdown} from 'react-bootstrap'
 import {FaShoppingCart, FaUser} from 'react-icons/fa'
@@ -8,6 +9,7 @@ import logo from "../assets/logo.png"
 import {LinkContainer} from 'react-router-bootstrap'
 import SearchBox from './SearchBox'
 import {useSelector, useDispatch} from 'react-redux'
+
 
 const Header = () => {
 
@@ -29,23 +31,51 @@ const Header = () => {
             console.log(error);
         }
     }
+    const showNav = {
+        transform: 'translateX(50%)', 
+        transition: 'transform 1s',  
+    }
+
+    const hideNav = {
+        transform: 'translateX(0%)', 
+        transition: 'transform 1s', 
+    }
+
+    const rotateLogo = {
+        transform: 'rotate(0deg)',
+        transition: 'transform 1s',
+    }
+
+    const rotateBack = {
+        transform: 'rotate(-90deg)',
+        transition: 'transform 1s',
+    }
 
 
     console.log(cartItems);
+
+    const [visible, setVisible] = useState(false);
+
   return (
     <header>
-        <Navbar bg='dark' variant='dark' expand='lg' collapseOnSelect> 
-            <Container>
+        <Navbar  className='navbar-main'bg='dark' variant='dark' expand='lg' collapseOnSelect style={visible ? {...showNav}
+        : {...hideNav}}> 
+            {/* <Container> */}
+                <div className='logo-container'>
+                    <LinkContainer to="/" className='logo'>
+                        <Navbar.Brand>
+                            <img src={logo} alt="framecoffee" />
+                        </Navbar.Brand>
+                    </LinkContainer>
 
-                <LinkContainer to="/">
-                <Navbar.Brand>
-                    <img src={logo} alt="framecoffee" />
-                    Frame</Navbar.Brand>
-                </LinkContainer>
-
+                    <button className='frame-button' type='button' onClick={() => {visible === false ? (
+                        setVisible(true)) : (setVisible(false))}} style={visible ? {...rotateLogo} :
+                        {...rotateBack}}>FRAME</button> 
+                </div>
+                
+                    
                 <Navbar.Toggle aria-controls='basic-navbar-nav'/>
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className='ms-auto'>
+                    <Nav className='ms-auto' style={{display:'flex', flexDirection:'column'}}>
                         <SearchBox/>
                         <LinkContainer to="/cart">
                             <Nav.Link><FaShoppingCart/>Cart
@@ -86,9 +116,9 @@ const Header = () => {
                             </NavDropdown>
                         )}
                         
-                    </Nav>  
-                </Navbar.Collapse>
-            </Container>
+                    </Nav>
+            {/* </Container> */}
+
         </Navbar>
     </header>
   )

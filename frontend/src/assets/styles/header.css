@@ -1,0 +1,47 @@
+header {
+    overflow: hidden;
+    position: absolute;
+}
+
+.navbar-main {
+    height: 100vh;
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+    z-index: 9;
+    position: fixed;
+    border-right: solid #303030;
+}
+
+#basic-navbar-nav {
+    height: 10px;
+}
+
+.frame-button {
+    background-color: transparent;
+    border: none;
+    font-family: 'Arial', sans-serif;
+    font-size: 30px;
+    color: #303030;
+    font-weight: 700;
+    transform: rotate(-90deg);
+    transition: transform 1s;
+    margin-top: 50px;
+}
+
+.logo-container{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 5vh;
+}
+
+.logo {
+    margin-left: 20px;
+}
+
+.ms-auto {
+    margin-top: 35%;
+    margin-right: 50%;
+}
+
