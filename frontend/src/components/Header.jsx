@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../assets/styles/header.css'
 import {Row, Col, Stack, NavbarToggle, Button} from 'react-bootstrap'
 import {useNavigate} from 'react-router-dom'
@@ -10,6 +10,7 @@ import logo from "../assets/logo.png"
 import {LinkContainer} from 'react-router-bootstrap'
 import SearchBox from './SearchBox'
 import {useSelector, useDispatch} from 'react-redux'
+import { current } from '@reduxjs/toolkit'
 
 
 const Header = () => {
@@ -53,12 +54,17 @@ const Header = () => {
     }
 
     const reverseLogo = {
-        transform: 'translateX(-120%)',
+        transform: 'translateX(-75%)',
         transition: 'transform 1s',
     }
 
     const showPage = {
-        transform: 'translateX(35%)',
+        transform: 'translateX(150%)',
+        transition: 'transform 1s',
+    }
+
+    const hidePage = {
+        transform: 'translateX(0)',
         transition: 'transform 1s',
     }
 
@@ -67,45 +73,59 @@ const Header = () => {
 
     const [visible, setVisible] = useState(false);
 
+    const buttonHandler = () => {
+        setVisible(current => !current);
+    }
+
   return (
     <header>
-        <Navbar bg='dark' variant='dark' expand='lg' className='navbar-main' collapseOnSelect>
+        <Navbar bg='dark' variant='dark' expand='lg' className='navbar-main' collapseOnSelect
+        style={visible ? {...showNav} : {...hideNav}}>
             <Container className='nav-container'>
 
-                <LinkContainer to="/" className='logo'>
-                    <Navbar.Brand>
-                        <img src={logo} alt="framecoffee" />
-                    </Navbar.Brand>
-                </LinkContainer>
+                <div className='logo-container' style={visible ? {...reverseLogo} : {}}>
+                    <LinkContainer to="/" className='logo'>
+                        <Navbar.Brand onClick={buttonHandler}>
+                            <img src={logo} alt="framecoffee" />
+                        </Navbar.Brand>
+                    </LinkContainer>
 
-                <Button className='frame-button'>FRAME</Button>
+                    <button className='frame-button' 
+                    onClick={buttonHandler} 
+                    style={visible ? {...rotateLogo}:{...rotateBack}}>
+                        FRAME
+                    </button>
+
+                </div>
 
                 <Navbar.Toggle aria-controls='navbar-collapse'/>
                 <Navbar.Collapse id='navbar-collapse' style={{flexDirection: 'column'}}>
 
-                    <Nav className='navbar-pages'>
+                    <Nav className='navbar-pages'
+                    style={visible ? {...showPage} : {...hidePage}}
+                    >
                         <LinkContainer to='/about'>
-                            <Nav.Link>
+                            <Nav.Link onClick={buttonHandler}>
                                 ABOUT
                             </Nav.Link>
                         </LinkContainer>
 
                         <LinkContainer to='/shop'>
-                            <Nav.Link>
+                            <Nav.Link onClick={buttonHandler}>
                                 SHOP
                             </Nav.Link>
                         </LinkContainer>
 
                         <LinkContainer to='/cafe'>
-                            <Nav.Link>
+                            <Nav.Link onClick={buttonHandler}>
                                 CAFE
                             </Nav.Link>
                         </LinkContainer>
                     </Nav>
 
-                    <div className='nav-cart-login'>
+                    <div className='nav-cart-login' >
                             <LinkContainer to="/cart">
-                                <Nav.Link><FaShoppingCart/>Cart
+                                <Nav.Link onClick={buttonHandler}><FaShoppingCart/>Cart
                                 {
                                     cartItems.length > 0 && (
                                         <Badge pill bg='success' style={{marginleft: '5px'}}>
@@ -120,13 +140,13 @@ const Header = () => {
                                     <LinkContainer to='/profile'>
                                         <NavDropdown.Item>Profile</NavDropdown.Item>
                                     </LinkContainer>
-                                    <NavDropdown.Item onClick={logoutHandler}>
+                                    <NavDropdown.Item onClick={logoutHandler && buttonHandler}>
                                         Logout
                                     </NavDropdown.Item>
                                 </NavDropdown>
 
                             ) : (<LinkContainer to="/login">
-                                <Nav.Link href='/login'><FaUser/>Login</Nav.Link>
+                                <Nav.Link href='/login' onClick={buttonHandler}><FaUser/>Login</Nav.Link>
                             </LinkContainer>)}
 
                             {userInfo && userInfo.isAdmin && (
