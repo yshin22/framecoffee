@@ -20,6 +20,10 @@ import PrivateRoute from './components/PrivateRoute';
 import AdminRoute from './components/AdminRoute';
 
 import HomeScreen from './screens/HomeScreen';
+import AboutScreen from './screens/AboutScreen';
+import ShopScreen from './screens/ShopScreen';
+import CafeScreen from './screens/CafeScreen';
+
 import ProductScreen from './screens/ProductScreen';
 import CartScreen from './screens/CartScreen';
 import LoginScreen from './screens/LoginScreen';
@@ -39,6 +43,10 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<App/>}>
       <Route index={true} path='/' element={<HomeScreen/>}/>
+      <Route path='/about' element={<AboutScreen/>}/>
+      <Route path='/shop' element={<ShopScreen/>}/>
+      <Route path='/cafe' element={<CafeScreen/>}/>
+
       <Route path='/search/:keyword' element={<HomeScreen/>}/>
       <Route path='/page/:pageNumber' element={<HomeScreen/>}/>
       <Route path='/search/:keyword/page/:pageNumber' element={<HomeScreen/>}/>

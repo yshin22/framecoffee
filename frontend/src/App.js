@@ -13,7 +13,7 @@ const App = () => {
     <>
       <Header/>
       <main className='py-3' style={{display: 'flex'}}>
-        <Container style={{marginLeft: '15vw'}}>
+        <Container style={{marginLeft: '20vw'}}>
           <Outlet/>
         </Container>
       </main>
