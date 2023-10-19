@@ -3,6 +3,16 @@ header {
     position: absolute;
 }
 
+.bg-dark {
+    background-color: #e6e2de !important;
+}
+.navbar-toggler {
+    color: #303030 !important;
+}
+.navbar-toggler-icon {
+    color: #303030 !important;
+}
+
 .navbar-main {
     height: 100vh;
     min-width: 400px;
@@ -22,11 +32,35 @@ header {
     margin-right: 200px;
 }
 
+.navbar-pages .nav-link {
+    color: #303030;
+    margin-top: 10px;
+    font-weight: 500;
+    font-size: 24px;
+}
+
 .nav-cart-login {
-    display: flex;
-    flex-direction: column;
     position: absolute;
-    bottom: 50px;
+    bottom: 5vh;
+}
+
+.nav-cart-login .nav-link {
+    margin: 10px;
+    width: fit-content;
+    color: #303030;
+    font-weight: 500;
+
+}
+.nav-cart-login .nav-item {
+    width: fit-content;
+}
+
+.ncl-1 {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5vh;
+    justify-content: space-between;
+    margin-right: 25px;
 }
 
 .nav-container {
@@ -54,6 +88,27 @@ header {
     
 }
 
+.logo {
+    margin-left: 20px;
+}
+
+.pages {
+    /* margin-left: 200px; */
+    font-size: 35px;
+    color: #303030;
+    font-weight: 600;
+    margin-left: -5%;
+    margin-top: 10vh;
+    transform: translateX(0);
+    transition: transform 1s;
+    
+}
+
+
+@media screen and (max-width: 768px) {
+
+}
+
 @media screen and (max-width: 992px) {
     .navbar-main {
         height: auto;
@@ -72,13 +127,20 @@ header {
     .navbar-pages {
         margin-top: auto;
         transform: initial !important;
-        transition: initial;
+        transition: transform !important;
         margin-right: initial;
     }
     .nav-cart-login {
         flex-direction: row;
         position: initial;
         bottom: initial;
+        margin-top: 15px;
+        justify-content: space-between;
+        transform: initial !important;
+        transition: transform !important;
+    }
+    .ncl-1 {
+        margin-bottom: auto;
     }
     .frame-button {
         transform: rotate(0deg) !important;
@@ -93,21 +155,9 @@ header {
         transition: initial !important;
         transform: initial !important;
     }
-}
-
-.logo {
-    margin-left: 20px;
-}
-
-.pages {
-    /* margin-left: 200px; */
-    font-size: 35px;
-    color: #303030;
-    font-weight: 600;
-    margin-left: -5%;
-    margin-top: 10vh;
-    transform: translateX(0);
-    transition: transform 1s;
-    
+    .collapsed-content {
+        margin-top: 2vh;
+        margin-left: 5%;
+    }
 }
 

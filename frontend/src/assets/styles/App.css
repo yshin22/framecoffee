@@ -1,0 +1,8 @@
+
+
+@media screen and (max-width: 992px) {
+   .app-container {
+    margin-left: auto !important;
+    margin-top: 15vh !important;
+   }
+}
