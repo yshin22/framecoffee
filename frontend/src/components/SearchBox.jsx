@@ -3,7 +3,7 @@ import {Form, Button} from 'react-bootstrap';
 import { useParams, useNavigate } from 'react-router-dom';
 import { FaChevronLeft } from 'react-icons/fa';
 
-const SearchBox = (isVisible, onVisible) => {
+const SearchBox = ({isVisible, onVisible}) => {
 
     const navigate = useNavigate();
     const { keyword: urlKeyword } = useParams();
@@ -19,12 +19,6 @@ const SearchBox = (isVisible, onVisible) => {
         }
     }
 
-    const handleVisible = useCallback((e) => {
-        onVisible(e.target.value)
-        console.log(e.target.value)
-    }, [onVisible])
-
-
   return (
     <Form onSubmit={submitHandler} className='d-flex mb-4'>
         <Form.Control
@@ -38,7 +32,7 @@ const SearchBox = (isVisible, onVisible) => {
          border: 'none', borderBottom: 'solid #303030', borderRadius: '0', width: '300px'}}
         >
         </Form.Control>
-        <Button type='submit' variant='dark' style={{border: 'none', borderRadius: '0',
+        <Button type='submit' variant='dark' onClick={() => onVisible()} style={{border: 'none', borderRadius: '0',
     backgroundColor: 'transparent'}}>
             <FaChevronLeft/>
         </Button>

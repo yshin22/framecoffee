@@ -81,7 +81,7 @@ const Header = () => {
 
     const [visible, setVisible] = useState(false);
 
-    const buttonHandler = () => {
+    function buttonHandler() {
         setVisible(current => !current);
     }
 
@@ -135,7 +135,9 @@ const Header = () => {
                         
 
                         <div className='nav-cart-login' style={visible ? {...showSearch} : {...hideSearch}}>
+                            
                             <SearchBox isVisible={visible} onVisible={buttonHandler} className='search-box'/>
+
                             <div className='ncl-1'>
                                 <LinkContainer to="/cart">
                                     <Nav.Link onClick={buttonHandler}><FaShoppingCart/>Cart
