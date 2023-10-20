@@ -58,7 +58,7 @@ header {
 .ncl-1 {
     display: flex;
     flex-direction: row;
-    margin-bottom: 5vh;
+    margin-bottom: 1vh;
     justify-content: space-between;
     margin-right: 25px;
 }
@@ -104,6 +104,10 @@ header {
     
 }
 
+.dropdown-item {
+    color: #303030 !important;
+    font-weight: 400;
+}
 
 @media screen and (max-width: 768px) {
 

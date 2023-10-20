@@ -3,7 +3,7 @@ import {Form, Button} from 'react-bootstrap';
 import { useParams, useNavigate } from 'react-router-dom';
 import { FaChevronLeft } from 'react-icons/fa';
 
-const SearchBox = ({isVisible, onVisible}) => {
+const SearchBox = ({onVisible}) => {
 
     const navigate = useNavigate();
     const { keyword: urlKeyword } = useParams();
@@ -29,7 +29,7 @@ const SearchBox = ({isVisible, onVisible}) => {
         placeholder='Search Products...'
         className='mr-sm-2 ml-sm-5'
         style={{backgroundColor: 'transparent',
-         border: 'none', borderBottom: 'solid #303030', borderRadius: '0', width: '300px'}}
+         border: 'none', borderBottom: 'solid #303030', borderRadius: '0', width: '300px', color: '#303030', fontWeight: '500'}}
         >
         </Form.Control>
         <Button type='submit' variant='dark' onClick={() => onVisible()} style={{border: 'none', borderRadius: '0',

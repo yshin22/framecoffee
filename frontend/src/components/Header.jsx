@@ -132,8 +132,6 @@ const Header = () => {
                             </LinkContainer>
                         </Nav>
 
-                        
-
                         <div className='nav-cart-login' style={visible ? {...showSearch} : {...hideSearch}}>
                             
                             <SearchBox isVisible={visible} onVisible={buttonHandler} className='search-box'/>
@@ -151,7 +149,7 @@ const Header = () => {
                                 </LinkContainer>
 
                                 {userInfo ? (
-                                    <NavDropdown title={userInfo.name} id='username' drop='end'>
+                                    <NavDropdown title={userInfo.name} id='username' drop='up'>
                                         <LinkContainer to='/profile'>
                                             <NavDropdown.Item>Profile</NavDropdown.Item>
                                         </LinkContainer>
@@ -165,7 +163,7 @@ const Header = () => {
                                 </LinkContainer>)}
 
                                 {userInfo && userInfo.isAdmin && (
-                                    <NavDropdown title='Admin' id='adminmenu' drop='end'>
+                                    <NavDropdown title='Admin' id='adminmenu' drop='up'>
                                         <LinkContainer to='/admin/productlist'>
                                             <NavDropdown.Item>Products</NavDropdown.Item>
                                         </LinkContainer>

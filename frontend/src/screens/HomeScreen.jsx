@@ -8,6 +8,7 @@ import ProductCarousel from '../components/ProductCarousel';
 import Loader from '../components/Loader';
 import Message from '../components/Message'
 import Paginate from '../components/Paginate';
+import TitleAnimation from '../components/TitleAnimation';
 
 
   
@@ -19,6 +20,8 @@ const HomeScreen = () => {
 
   return (
     <>
+
+      <TitleAnimation/>
       { !keyword ? <ProductCarousel/> : <Link to='/' className='btn btn-light mb-4'>Go Back</Link>}
       { isLoading ? (
         <Loader/>) 
