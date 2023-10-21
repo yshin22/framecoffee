@@ -93,9 +93,9 @@ const Header = () => {
 
                 <div className='logo-container' style={visible ? {...reverseLogo} : {}}>
                     <LinkContainer to="/" className='logo'>
-                        <Navbar.Brand onClick={buttonHandler}>
+                        <Nav.Link onClick={!visible ? {} : buttonHandler}>
                             <img src={logo} alt="framecoffee" />
-                        </Navbar.Brand>
+                        </Nav.Link>
                     </LinkContainer>
 
                     <button className='frame-button' 
@@ -151,9 +151,9 @@ const Header = () => {
                                 {userInfo ? (
                                     <NavDropdown title={userInfo.name} id='username' drop='up'>
                                         <LinkContainer to='/profile'>
-                                            <NavDropdown.Item>Profile</NavDropdown.Item>
+                                            <NavDropdown.Item onClick={buttonHandler}>Profile</NavDropdown.Item>
                                         </LinkContainer>
-                                        <NavDropdown.Item onClick={logoutHandler && buttonHandler}>
+                                        <NavDropdown.Item onClick={() => {logoutHandler(); buttonHandler()}}>
                                             Logout
                                         </NavDropdown.Item>
                                     </NavDropdown>
@@ -165,13 +165,13 @@ const Header = () => {
                                 {userInfo && userInfo.isAdmin && (
                                     <NavDropdown title='Admin' id='adminmenu' drop='up'>
                                         <LinkContainer to='/admin/productlist'>
-                                            <NavDropdown.Item>Products</NavDropdown.Item>
+                                            <NavDropdown.Item onClick={buttonHandler}>Products</NavDropdown.Item>
                                         </LinkContainer>
                                         <LinkContainer to='/admin/userlist'>
-                                            <NavDropdown.Item>Users</NavDropdown.Item>
+                                            <NavDropdown.Item onClick={buttonHandler}>Users</NavDropdown.Item>
                                         </LinkContainer>
                                         <LinkContainer to='/admin/orderlist'>
-                                            <NavDropdown.Item>Orders</NavDropdown.Item>
+                                            <NavDropdown.Item onClick={buttonHandler}>Orders</NavDropdown.Item>
                                         </LinkContainer>
                                     </NavDropdown>
                                 )}

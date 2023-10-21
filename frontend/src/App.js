@@ -14,8 +14,9 @@ const App = () => {
   return (
     <>
       <Header/>
-      <main className='py-3' style={{display: 'flex'}}>
-        <Container className='app-container' style={{marginLeft: '20vw'}}>
+      <main className='py-3' style={{display: 'flex', justifyContent: 'center'}}>
+        <div className='nav-blank'></div>
+        <Container className='app-container'>
           <Outlet/>
         </Container>
       </main>

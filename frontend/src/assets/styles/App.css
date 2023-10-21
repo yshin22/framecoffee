@@ -1,8 +1,28 @@
 
 
+.app-container {
+   margin: auto;
+   position: relative;
+   align-items: center;
+   display: flex;
+   flex-direction: column;
+}
+
+.nav-blank {
+   width: 235px;
+}
+
+
 @media screen and (max-width: 992px) {
    .app-container {
-    margin-left: auto !important;
+    /* margin-left: auto !important; */
     margin-top: 15vh !important;
+    position: initial;
+    left: initial;
+    margin-right: auto;
+   }
+
+   .nav-blank {
+      display: none;
    }
 }

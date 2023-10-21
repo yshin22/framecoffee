@@ -1,0 +1,23 @@
+.phrase {
+    font-size: 6.3vw;
+    font-weight: 800;
+    line-height: 0.9em;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.phrase-wrapper div {
+    background-color: #303030;
+}
+
+.phrase-wrapper {
+    padding-left: 7.1vw;
+}
+
+.phrase-wrapper-1 {
+    padding-left: 18.3vw;
+}
+
+.phrase-wrapper-2 {
+    padding-left: 32.6vw;
+}
