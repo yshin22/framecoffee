@@ -18,9 +18,9 @@ header {
     min-width: 400px;
     display: flex;
     flex-direction: column;
-    z-index: 9;
+    z-index: 8;
     position: fixed;
-    border-right: solid #303030;
+    border-right: solid  #303030;
     left: -210px;
 }
 

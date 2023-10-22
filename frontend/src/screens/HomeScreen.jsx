@@ -23,7 +23,8 @@ const HomeScreen = () => {
 
       <TitleAnimation/>
       
-      { !keyword ? <ProductCarousel/> : <Link to='/' className='btn btn-light mb-4'>Go Back</Link>}
+      
+      {/* { !keyword ? <ProductCarousel/> : <Link to='/' className='btn btn-light mb-4'>Go Back</Link>}
       { isLoading ? (
         <Loader/>) 
         : error ? (
@@ -44,7 +45,7 @@ const HomeScreen = () => {
           pages={data.pages}
           page={data.page}
           keyword = {keyword ? keyword : ''}/>
-        </>) }   
+        </>) }    */}
     </>
    
   )

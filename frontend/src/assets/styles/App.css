@@ -6,11 +6,16 @@
    /* align-items: center; */
    display: flex;
    flex-direction: column;
-   max-width: none;
 }
 
 .nav-blank {
    width: 235px;
+}
+
+@media (min-width: 1400px) {
+   .app-container {
+      max-width: none;
+   }
 }
 
 

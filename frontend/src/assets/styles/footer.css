@@ -1,0 +1,32 @@
+
+
+footer {
+    background-color: white;
+    z-index: 20;
+    height: 40vh;
+    /* border-top: solid #303030; */
+    margin-left: 190px;
+}
+
+footer .container {
+    max-width: none;
+}
+
+.contact-us {
+}
+
+h1 {
+    font-size: 4vw;
+    font-weight: 800;
+}
+
+@media screen and (max-width: 992px) {
+    footer {
+        margin-left: initial;
+    }
+    
+    footer .container {
+        max-width: initial;
+    }
+}
+
