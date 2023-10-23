@@ -33,6 +33,8 @@ const Header = () => {
             console.log(error);
         }
     }
+
+    
     const showNav = {
         transform: 'translateX(50%)', 
         transition: 'transform 1s',  
@@ -77,13 +79,20 @@ const Header = () => {
     }
 
 
-    console.log(cartItems);
-
     const [visible, setVisible] = useState(false);
 
     function buttonHandler() {
         setVisible(current => !current);
     }
+    function topFunction() {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+      }
+
+      function callFunctions() {
+        buttonHandler();
+        topFunction();
+      }
 
   return (
     <header>
@@ -93,7 +102,7 @@ const Header = () => {
 
                 <div className='logo-container' style={visible ? {...reverseLogo} : {}}>
                     <LinkContainer to="/" className='logo'>
-                        <Nav.Link onClick={!visible ? {} : buttonHandler}>
+                        <Nav.Link onClick={!visible ? {} : callFunctions}>
                             <img src={logo} alt="framecoffee" />
                         </Nav.Link>
                     </LinkContainer>
@@ -114,19 +123,19 @@ const Header = () => {
                         style={visible ? {...showPage} : {...hidePage}}
                         >
                             <LinkContainer to='/about'>
-                                <Nav.Link onClick={buttonHandler}>
+                                <Nav.Link onClick={callFunctions}>
                                     ABOUT
                                 </Nav.Link>
                             </LinkContainer>
 
                             <LinkContainer to='/shop'>
-                                <Nav.Link onClick={buttonHandler}>
+                                <Nav.Link onClick={callFunctions}>
                                     SHOP
                                 </Nav.Link>
                             </LinkContainer>
 
                             <LinkContainer to='/cafe'>
-                                <Nav.Link onClick={buttonHandler}>
+                                <Nav.Link onClick={callFunctions}>
                                     CAFE
                                 </Nav.Link>
                             </LinkContainer>
@@ -134,11 +143,11 @@ const Header = () => {
 
                         <div className='nav-cart-login' style={visible ? {...showSearch} : {...hideSearch}}>
                             
-                            <SearchBox isVisible={visible} onVisible={buttonHandler} className='search-box'/>
+                            <SearchBox isVisible={visible} onVisible={callFunctions} className='search-box'/>
 
                             <div className='ncl-1'>
                                 <LinkContainer to="/cart">
-                                    <Nav.Link onClick={buttonHandler}><FaShoppingCart/>Cart
+                                    <Nav.Link onClick={callFunctions}><FaShoppingCart/>Cart
                                     {
                                         cartItems.length > 0 && (
                                             <Badge pill bg='success' style={{marginleft: '5px'}}>
@@ -151,27 +160,27 @@ const Header = () => {
                                 {userInfo ? (
                                     <NavDropdown title={userInfo.name} id='username' drop='up'>
                                         <LinkContainer to='/profile'>
-                                            <NavDropdown.Item onClick={buttonHandler}>Profile</NavDropdown.Item>
+                                            <NavDropdown.Item onClick={callFunctions}>Profile</NavDropdown.Item>
                                         </LinkContainer>
-                                        <NavDropdown.Item onClick={() => {logoutHandler(); buttonHandler()}}>
+                                        <NavDropdown.Item onClick={() => {logoutHandler(); callFunctions()}}>
                                             Logout
                                         </NavDropdown.Item>
                                     </NavDropdown>
 
                                 ) : (<LinkContainer to="/login">
-                                    <Nav.Link href='/login' onClick={buttonHandler}><FaUser/>Login</Nav.Link>
+                                    <Nav.Link href='/login' onClick={callFunctions}><FaUser/>Login</Nav.Link>
                                 </LinkContainer>)}
 
                                 {userInfo && userInfo.isAdmin && (
                                     <NavDropdown title='Admin' id='adminmenu' drop='up'>
                                         <LinkContainer to='/admin/productlist'>
-                                            <NavDropdown.Item onClick={buttonHandler}>Products</NavDropdown.Item>
+                                            <NavDropdown.Item onClick={callFunctions}>Products</NavDropdown.Item>
                                         </LinkContainer>
                                         <LinkContainer to='/admin/userlist'>
-                                            <NavDropdown.Item onClick={buttonHandler}>Users</NavDropdown.Item>
+                                            <NavDropdown.Item onClick={callFunctions}>Users</NavDropdown.Item>
                                         </LinkContainer>
                                         <LinkContainer to='/admin/orderlist'>
-                                            <NavDropdown.Item onClick={buttonHandler}>Orders</NavDropdown.Item>
+                                            <NavDropdown.Item onClick={callFunctions}>Orders</NavDropdown.Item>
                                         </LinkContainer>
                                     </NavDropdown>
                                 )}

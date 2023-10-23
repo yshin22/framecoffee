@@ -3,21 +3,40 @@
 footer {
     background-color: white;
     z-index: 20;
-    height: 40vh;
+    height: auto;
     /* border-top: solid #303030; */
     margin-left: 190px;
 }
 
 footer .container {
-    max-width: none;
+    max-width: 100%;
+}
+
+.locations h2 {
+    font-size: 3vw;
+    font-weight: 700;
+}
+
+.hours h2 {
+    font-size: 3vw;
+    font-weight: 700;
 }
 
 .contact-us {
 }
 
-h1 {
+.contact-us h1 {
     font-size: 4vw;
     font-weight: 800;
+}
+
+.frame-logo {
+    width: 300px;
+}
+
+.frame-logo img {
+    margin-left: 10px;
+
 }
 
 @media screen and (max-width: 992px) {
