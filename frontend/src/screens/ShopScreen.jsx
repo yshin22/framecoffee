@@ -23,7 +23,12 @@ const ShopScreen = () => {
           </Message>
           ) 
         : (<>
-          <h1>Beans</h1>
+          <Row className='page-title'>
+            <h1>BEANS</h1>
+          </Row>
+          <Row className='sub-title py-2'>
+            <h2>Life happens, <span className='selectWord'>coffee</span> helps.</h2>
+          </Row>
           <Row>
             {data.products.map((product) => (
               <Col key={product._id} sm={12} md={6} lg={4} xl={3}>

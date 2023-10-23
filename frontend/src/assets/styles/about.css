@@ -39,3 +39,9 @@
 .selectWord {
     color: #ED7D31;
 }
+
+@media screen and (max-width: 992px) {
+    .page-title h1{
+        font-size: 4rem;
+    }
+}

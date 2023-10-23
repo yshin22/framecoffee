@@ -2,7 +2,6 @@
 
 footer {
     background-color: white;
-    z-index: 20;
     height: auto;
     /* border-top: solid #303030; */
     margin-left: 190px;
@@ -12,22 +11,19 @@ footer .container {
     max-width: 100%;
 }
 
+.contact-us h1 {
+    font-size: 3rem;
+    font-weight: 800;
+}
+
 .locations h2 {
-    font-size: 3vw;
+    font-size: 3rem;
     font-weight: 700;
 }
 
 .hours h2 {
-    font-size: 3vw;
+    font-size: 3rem;
     font-weight: 700;
-}
-
-.contact-us {
-}
-
-.contact-us h1 {
-    font-size: 4vw;
-    font-weight: 800;
 }
 
 .frame-logo {

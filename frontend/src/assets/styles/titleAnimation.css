@@ -15,12 +15,8 @@
 .bean-container img {
     width: 30%;
     height: auto;
-}
-
-@media screen and (max-width: 992px) {
-    .title-animation {
-        height: 90vh;
-    }
+    margin-top: 20%;
+    position: fixed;
 }
 
 .first-half {
@@ -48,24 +44,16 @@
     background-color: #303030;
 }
 
-.phrase-wrapper-1 {
-
-}
-.phrase-wrapper-2 {
-    
-}
-.phrase-wrapper-3{
-    
-}
-.phrase-wrapper-4 {
-    
-}
-.phrase-wrapper-5 {
-    
-}
-
 .phrase a {
     color: #ED7D31;
     text-decoration: none;
-    
+}
+
+@media screen and (max-width: 992px) {
+    .title-animation {
+        height: 90vh;
+    }
+    .phrase {
+        font-size: 4rem;
+    }
 }
