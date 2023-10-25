@@ -3,15 +3,23 @@ import '../assets/styles/header.css'
 import {Row, Col, Stack, NavbarToggle, Button} from 'react-bootstrap'
 import {useNavigate} from 'react-router-dom'
 import {Badge, Navbar, Nav, Container, NavDropdown} from 'react-bootstrap'
-import {FaShoppingCart, FaUser} from 'react-icons/fa'
+import {FaLaptopHouse, FaShoppingCart, FaUser} from 'react-icons/fa'
 import { useLogoutMutation } from '../slices/usersApiSlice'
 import { logout } from '../slices/authSlice'
 import logo from "../assets/logo.png"
 import {LinkContainer} from 'react-router-bootstrap'
 import SearchBox from './SearchBox'
 import {useSelector, useDispatch} from 'react-redux'
-import { current } from '@reduxjs/toolkit'
-
+import { showNav, 
+    hideNav, 
+    rotateLogo, 
+    rotateBack, 
+    reverseLogo,
+    showPage,
+    hidePage,
+    showSearch,
+    hideSearch,
+ } from '../utils/headerUtils'
 
 const Header = () => {
 
@@ -22,6 +30,8 @@ const Header = () => {
     const navigate = useNavigate();
 
     const [logoutApiCall] = useLogoutMutation();
+
+    const [visible, setVisible] = useState(false);
 
     const logoutHandler = async () => {
         try{
@@ -34,53 +44,6 @@ const Header = () => {
         }
     }
 
-    
-    const showNav = {
-        transform: 'translateX(50%)', 
-        transition: 'transform 1s',  
-    }
-
-    const hideNav = {
-        transform: 'translateX(0%)', 
-        transition: 'transform 1s', 
-    }
-
-    const rotateLogo = {
-        transform: 'rotate(0deg)',
-        transition: 'transform 1s',
-    }
-
-    const rotateBack = {
-        transform: 'rotate(-90deg)',
-        transition: 'transform 1s',
-    }
-
-    const reverseLogo = {
-        transform: 'translateX(-70%)',
-        transition: 'transform 1s',
-    }
-
-    const showPage = {
-        transform: 'translateX(80%)',
-        transition: 'transform 1s',
-    }
-
-    const hidePage = {
-        transform: 'translateX(0)',
-        transition: 'transform 1s',
-    }
-    const showSearch = {
-        transform: 'translateX(0)',
-        transition: 'transform 1s'
-    }
-    const hideSearch = {
-        transform: 'translateX(-180px)',
-        transition: 'transform 1s'
-    }
-
-
-    const [visible, setVisible] = useState(false);
-
     function buttonHandler() {
         setVisible(current => !current);
     }
@@ -89,14 +52,16 @@ const Header = () => {
         document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
       }
 
-      function callFunctions() {
+    function callFunctions() {
         buttonHandler();
         topFunction();
-      }
+    }
 
   return (
     <header>
         <Navbar bg='dark' variant='light' expand='lg' className='navbar-main' collapseOnSelect
+        onMouseEnter={() => setVisible(true)}
+        onMouseLeave={() => setVisible(false)}
         style={visible ? {...showNav} : {...hideNav}}>
             <Container className='nav-container'>
 
@@ -108,7 +73,7 @@ const Header = () => {
                     </LinkContainer>
 
                     <button className='frame-button' 
-                    onClick={buttonHandler} 
+                    /*onClick={buttonHandler}*/
                     style={visible ? {...rotateLogo}:{...rotateBack}}>
                         FRAME
                     </button>
