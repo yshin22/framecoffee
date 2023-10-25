@@ -1,6 +1,12 @@
 import { useEffect } from 'react';
 import '../assets/styles/titleAnimation.css';
 import beans from '../assets/coffee-bean.png';
+import ProductCarousel from '../components/ProductCarousel';
+import { Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+
+
+
 
 const TitleAnimation = () => {
 
@@ -70,21 +76,22 @@ const TitleAnimation = () => {
         var phrase3 = document.getElementById("phrase3");
         var phrase4 = document.getElementById("phrase4");
         var phrase5 = document.getElementById("phrase5");
-        var bean = document.getElementById("bean")
+        // var bean = document.getElementById("bean")
         // var phrase6 = document.getElementById("phrase6");
         // var phrase7 = document.getElementById("phrase7");
         // && phrase6 && phrase7
+        // && bean
 
-        if (phrase1 && phrase2 && phrase3 && phrase4 && phrase5&& bean) {
+        if (phrase1 && phrase2 && phrase3 && phrase4 && phrase5) {
             var scrollPhrase = document.documentElement.scrollTop * 1;
-            var value = window.scrollY * 0.25;
+            // var value = window.scrollY * 0.25;
     
             phrase1.style.transform = "translateX(" + scrollPhrase + "px)";
             phrase2.style.transform = "translateX(" + scrollPhrase + "px)";
             phrase3.style.transform = "translateX(-" + scrollPhrase + "px)";
             phrase4.style.transform = "translateX(-" + scrollPhrase + "px)";
             phrase5.style.transform = "translateX(-" + scrollPhrase + "px)";
-            bean.style.transform = `rotate(${value}deg)`;
+            // bean.style.transform = `rotate(${value}deg)`;
             // phrase6.style.transform = "translateX(-" + scrollPhrase + "px)";
             // phrase7.style.transform = "translateX(" + scrollPhrase + "px)";
         
@@ -93,12 +100,13 @@ const TitleAnimation = () => {
             phrase3.style.transition = "transform cubic-bezier( 0.07, 0.19, 0.05, 0.99 ) 0.8s";
             phrase4.style.transition = "transform cubic-bezier( 0.07, 0.19, 0.05, 0.99 ) 0.8s";
             phrase5.style.transition = "transform cubic-bezier( 0.07, 0.19, 0.05, 0.99 ) 0.8s";
-            bean.style.transition = "transform cubic-bezier( 0.07, 0.19, 0.05, 0.99 ) 0.4s";
+            // bean.style.transition = "transform cubic-bezier( 0.07, 0.19, 0.05, 0.99 ) 0.4s";
             // phrase6.style.transition = "transform cubic-bezier( 0.07, 0.19, 0.05, 0.99 ) 1s";
             // phrase7.style.transition = "transform cubic-bezier( 0.07, 0.19, 0.05, 0.99 ) 1s";
         };
 
     });
+    const {pageNumber, keyword} = useParams();
 
   return (
     <div className="title-animation">
@@ -111,8 +119,12 @@ const TitleAnimation = () => {
             </div>
         </div>
 
-        <div className='bean-container' id='bean'>
+        {/* <div className='bean-container' id='bean'>
             <img src={beans} alt='coffee beans'/>
+        </div> */}
+
+        <div className='middle-half'>
+            { !keyword ? <ProductCarousel/> : <Link to='/' className='btn btn-light mb-4'>Go Back</Link>}
         </div>
 
         <div className='second-half'>

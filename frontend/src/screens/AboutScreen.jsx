@@ -1,8 +1,8 @@
 import '../assets/styles/about.css';
 import {Container, Row, Col} from 'react-bootstrap';
-import coffee from '../assets/coffee-pour.jpeg';
-import latte from '../assets/latte-art.jpeg';
-import woven from '../assets/woven-bean.jpeg';
+import coffee from '../assets/gallery/coffee-pour.jpeg';
+import latte from '../assets/gallery/latte-art.jpeg';
+import woven from '../assets/gallery/woven-bean.jpeg';
 
 const AboutScreen = () => {
   return (

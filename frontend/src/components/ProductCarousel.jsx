@@ -3,6 +3,7 @@ import {Carousel, Image} from 'react-bootstrap';
 import Loader from './Loader';
 import Message from './Message';
 import { useGetTopProductsQuery } from '../slices/productsApiSlice';
+import '../assets/styles/carousel.css'
 
 const ProductCarousel = () => {
 
@@ -11,14 +12,14 @@ const ProductCarousel = () => {
   return (
     isLoading ? <Loader/> : error ? <Message variant='danger'>{error}</Message>
     : (
-        <Carousel pause='hover' className='bg-primary mb-4'>
+        <Carousel pause='hover' className='mb-4 carousel-container'>
             {products.map(product => (
                 <Carousel.Item key={product._id}>
                     <Link to={`/product/${product._id}`}>
                         <Image src={product.image} alt={product.name} fluid/>
-                        <Carousel.Caption className='carousel-caption'>
+                        {/* <Carousel.Caption className='carousel-caption'>
                             <h2>{product.name} (${product.price})</h2>
-                        </Carousel.Caption>
+                        </Carousel.Caption> */}
                     </Link>
                 </Carousel.Item>
             ))}

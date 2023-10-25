@@ -1,0 +1,36 @@
+
+.carousel-inner {
+    /* width: fit-content; */
+    /* margin-left: 50%; */
+    /* display: flex;
+    justify-content: center; */
+}
+
+.carousel-container {
+    /* display: flex;
+    justify-content: center; */
+    /* width: fit-content; */
+    /* margin-left: 30%; */
+    /* margin: auto; */
+    /* background-color: transparent; */
+}
+
+.carousel-item {
+    /* width: fit-content; */
+    /* background-color: transparent !important; */
+    
+}
+
+.carousel-item img {
+    /* background-color: transparent !important; */
+
+}
+
+.carousel-caption {
+    background-color: transparent;
+    color: #303030;
+}
+
+.carousel-indicators {
+    display: none;
+}

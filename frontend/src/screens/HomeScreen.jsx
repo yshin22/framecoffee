@@ -14,7 +14,7 @@ import TitleAnimation from '../components/TitleAnimation';
   
 const HomeScreen = () => {
 
-  // const {pageNumber, keyword} = useParams();
+  const {pageNumber, keyword} = useParams();
 
   // const { data, isLoading, error } = useGetProductsQuery({keyword, pageNumber}); 
 
