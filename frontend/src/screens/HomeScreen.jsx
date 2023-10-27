@@ -23,7 +23,9 @@ const HomeScreen = () => {
 
       <TitleAnimation/>
       
-      
+      <div style={{width: '100%', height: '100vh', border: 'solid #303030', zIndex: '10', backgroundColor: '#e6e2de'}}>
+
+      </div>
       
       {/* { !keyword ? <ProductCarousel/> : <Link to='/' className='btn btn-light mb-4'>Go Back</Link>} */}
          
