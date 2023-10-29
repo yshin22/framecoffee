@@ -6,6 +6,7 @@ import ProductCarousel from '../components/ProductCarousel';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import coffee from '../assets/productImages/oslo-coffee.webp';
+import {Tilt} from 'react-tilt';
 
 
 
@@ -88,10 +89,10 @@ const TitleAnimation = () => {
             // var value = window.scrollY * 0.25;
     
             phrase1.style.transform = "translateY(" + scrollPhrase + "px)";
-            phrase2.style.transform = "translateX(" + scrollPhrase + "px)";
+            phrase2.style.transform = "translateX(-" + scrollPhrase + "px)";
             phrase3.style.transform = "translateX(" + scrollPhrase + "px)";
-            phrase4.style.transform = "translateX(-" + scrollPhrase + "px)";
-            image1.style.transform = "translateY(-" + scrollPhrase + "px)";
+            phrase4.style.transform = "translateY(-" + scrollPhrase + "px)";
+            image1.style.transform = "translateY(" + scrollPhrase + "px)";
             // phrase5.style.transform = "translateX(-" + scrollPhrase + "px)";
             // bean.style.transform = `rotate(${value}deg)`;
             // phrase6.style.transform = "translateX(-" + scrollPhrase + "px)";
@@ -99,8 +100,10 @@ const TitleAnimation = () => {
         
             phrase1.style.transition = "transform cubic-bezier( 0.07, 0.19, 0.05, 0.99 ) 0.8s";
             phrase2.style.transition = "transform cubic-bezier( 0.07, 0.19, 0.05, 0.99 ) 0.8s";
-            phrase3.style.transition = "transform cubic-bezier( 0.07, 0.19, 0.05, 0.99 ) 0.9s";
+            phrase3.style.transition = "transform cubic-bezier( 0.07, 0.19, 0.05, 0.99 ) 0.8s";
             phrase4.style.transition = "transform cubic-bezier( 0.07, 0.19, 0.05, 0.99 ) 0.8s";
+            image1.style.transition = "transform cubic-bezier( 0.07, 0.19, 0.05, 0.99 ) 0.8s";
+
             // phrase5.style.transition = "transform cubic-bezier( 0.07, 0.19, 0.05, 0.99 ) 0.8s";
             // bean.style.transition = "transform cubic-bezier( 0.07, 0.19, 0.05, 0.99 ) 0.4s";
             // phrase6.style.transition = "transform cubic-bezier( 0.07, 0.19, 0.05, 0.99 ) 1s";
@@ -108,61 +111,175 @@ const TitleAnimation = () => {
         };
 
     });
+
     const {pageNumber, keyword} = useParams();
 
-  return (
-    <div className='title-animation'>
-        <Row >
-            <Col className='phrase-wrapper-1' id='phrase1'>
-                <Row className='wrap-container1'>
-                    <Col className='phrase'>
-                        <h1>F</h1>
-                    </Col>
-                </Row>
-                <Row className='wrap-container2'>
-                    <Col className='phrase'>
-                        <h1>R</h1>
-                    </Col>
-                </Row>
-                <Row className='wrap-container3'>
-                    <Col className='phrase'>
-                        <h1>A</h1>
-                    </Col>
-                </Row>
-                <Row className='wrap-container4'>
-                    <Col className='phrase'>
-                        <h1>M</h1>
-                    </Col>
-                </Row>
-            </Col>
+    var textPath = document.querySelector('#text-path');
 
-            <Col className='img-wrapper' id='image1'>
-                <img src={coffee} alt="oslo coffee" />
-            </Col>
-
-            <Col className='phrase-23-container'>
-                <Row>
-                    <Col className='phrase-wrapper-2' id='phrase2' >
-                        <h1>WE</h1>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col className='phrase-wrapper-3' id='phrase3'>
-                        <a href="" className="typewrite" data-period="2000" data-type='[ "\"CREATE\"", "\"ROAST\"", "\"BREW\"", "\"DRINK\""]'>
-                           <span className="wrap"></span>
-                       </a>
-                    </Col>
-                </Row>
-            </Col>
-        </Row>
+    // function updateTextPathOffset(offset) {
+    //     if (textPath) {
+    //         textPath.setAttribute('startOffset', offset)
+    //     }
+    // }
     
-        <Row>
-            <Col className='phrase-wrapper-4' id='phrase4'>
-                <h1>EVERYTHING</h1>
-            </Col>
-        </Row>
+    // function onScroll() {
+    //     requestAnimationFrame(function() {
+    //         updateTextPathOffset(window.scrollY * 0.8)
+    //     })
+    // }
+
+    // window.addEventListener('scroll', onScroll);
+
+
+
+    // function findLength() {
+    //     if (textPath) {
+    //         textPath.style.setProperty('--total-length', document.querySelector("#our-text").getTotalLength());
+    //     }
+    // };
+
+    // findLength();
+
+    const defaultOptions = {
+        reverse:        true,  // reverse the tilt direction
+        max:            35,     // max tilt rotation (degrees)
+        perspective:    1100,   // Transform perspective, the lower the more extreme the tilt gets.
+        scale:          1.1,    // 2 = 200%, 1.5 = 150%, etc..
+        speed:          800,   // Speed of the enter/exit transition
+        transition:     true,   // Set a transition on enter/exit.
+        axis:           null,   // What axis should be disabled. Can be X or Y.
+        reset:          true,    // If the tilt effect has to be reset on exit.
+        easing:         "cubic-bezier(.03,.98,.52,.99)",    // Easing on enter/exit.
+    }
+    
+
+  return (
+    <div className='text-animation-wrapper'>
+        <div className='text-animation-container'>
+            <div className='firstHalf' id='phrase1'>
+                <div className='phrase'>
+                    F
+                </div>
+                <div className='phrase'>
+                    R
+                </div>
+                <div className='phrase'>
+                    A
+                </div>
+                <div className='phrase'>
+                    M
+                </div>
+                <div className='phrase'>
+                    E
+                </div>
+            </div>
+
+            <div className='secondHalf'>
+                <div className='between-phrase1' id='phrase2'>
+                    <div className='phrase'>
+                        R
+                    </div>
+                    <div className='phrase'>
+                        A
+                    </div>
+                    <div className='phrase'>
+                        M
+                    </div>
+                </div>
+
+                <div className='image-container' id='image1'>
+                    <img src={coffee} alt="coffee beans" />
+                </div>
+
+                <div className='between-phrase2' id='phrase3'>
+                    <div className='phrase'>
+                        M
+                    </div>
+                    <div className='phrase'>
+                        A
+                    </div>
+                    <div className='phrase'>
+                        R
+                    </div>
+                </div>
+            </div>
+
+            <div className='thirdHalf' id='phrase4'>
+                <div className='phrase'>
+                    E
+                </div>
+                <div className='phrase'>
+                    M
+                </div>
+                <div className='phrase'>
+                    A
+                </div>
+                <div className='phrase'>
+                    R
+                </div>
+                <div className='phrase'>
+                    F
+                </div>
+
+            </div>
+        </div>
 
     </div>
+    
+    
+    // <div className='text-animation'>
+
+    //     <Tilt options={defaultOptions} className='coffee-image'>
+    //         <img src={coffee} alt="oslo coffee" />
+    //     </Tilt>
+
+    //      <svg className="svgwave" width='500' height='500' viewBox="0 0 500 500">
+    //             <path id="wavepath" d="M62.5,94.39v311.23c0,12.97,10.51,23.48,23.48,23.48h332.39c12.97,0,23.48-10.51,23.48-23.48V94.39 c0-12.97-10.51-23.48-23.48-23.48H85.98C73.01,70.9,62.5,81.42,62.5,94.39z" style={{fill: "transparent", stroke: "transparent", strokeWidth: "1px"}}></path>
+
+    //             <foreignObject x='85' y='90' width='450px' height='450px'>
+    //                 <div
+    //                         className='text-perimeter'
+    //                         style={{width: "335px", height: "320px",
+    //                         borderRadius: "8px",
+    //                         backgroundSize: "contain",
+    //                         border: "4px solid #303030",
+    //                         display:"inline-block"}}
+    //                 ></div>
+    //             </foreignObject>
+
+    //             <foreignObject x='50' y='58' width='450px' height='450px'>
+    //                 <div
+    //                         className='text-perimeter'
+    //                         style={{width: "405px", height: "385px",
+    //                         borderRadius: "30px",
+    //                         backgroundSize: "contain",
+    //                         border: "4px solid #303030",
+    //                         display:"inline-block"}}
+    //                 ></div>
+    //             </foreignObject>
+
+    //         <text className='svg-text' text-anchor="middle">
+    //             <textPath className='text' href='#wavepath' startOffset='0%' textLength="2550">
+    //                 <animate attributeName="startOffset" from="12.1%" to="42%" begin="0s" dur="7s" repeatCount="indefinite"></animate>
+    //                 FRAME <tspan>COFFEE </tspan> 
+    //                 FRAME <tspan>COFFEE </tspan> 
+    //                 FRAME <tspan>COFFEE </tspan> 
+    //                 FRAME <tspan>COFFEE </tspan> 
+    //                 FRAME <tspan>COFFEE </tspan> 
+    //                 FRAME <tspan>COFFEE </tspan> 
+    //                 FRAME <tspan>COFFEE </tspan> 
+    //                 FRAME <tspan>COFFEE </tspan> 
+    //                 FRAME <tspan>COFFEE </tspan> 
+    //                 FRAME <tspan>COFFEE </tspan> 
+    //                 FRAME <tspan>COFFEE </tspan> 
+    //                 FRAME <tspan>COFFEE </tspan> 
+    //             </textPath>
+    //         </text>
+    //     </svg>
+
+    
+    
+    // </div>
 
 
 

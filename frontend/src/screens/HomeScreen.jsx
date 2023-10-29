@@ -9,6 +9,8 @@ import Loader from '../components/Loader';
 import Message from '../components/Message'
 import Paginate from '../components/Paginate';
 import TitleAnimation from '../components/TitleAnimation';
+import {Parallax, ParallaxLayer} from '@react-spring/parallax'
+import Footer from '../components/Footer';
 
 
   
@@ -21,11 +23,27 @@ const HomeScreen = () => {
   return (
     <>
 
-      <TitleAnimation/>
-      
-      <div style={{width: '100%', height: '100vh', border: 'solid #303030', zIndex: '10', backgroundColor: '#e6e2de'}}>
+      <Parallax pages={3}>
 
-      </div>
+        <ParallaxLayer speed={1}>
+          <TitleAnimation/>
+        </ParallaxLayer>
+
+        <ParallaxLayer offset={1} speed={0.5}>
+          <h1>Doing well, you?</h1>
+        </ParallaxLayer>
+
+        <ParallaxLayer offset={2}>
+          <Footer/>
+        </ParallaxLayer>
+      </Parallax>
+
+
+      {/* <TitleAnimation/>
+      
+      <div style={{width: '100%', height: '100vh', border: 'solid #303030',backgroundColor: '#e6e2de'}}>
+
+      </div> */}
       
       {/* { !keyword ? <ProductCarousel/> : <Link to='/' className='btn btn-light mb-4'>Go Back</Link>} */}
          

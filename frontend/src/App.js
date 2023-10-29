@@ -10,18 +10,19 @@ import Footer from './components/Footer'
 
 
 
+
 const App = () => {
   return (
     <>
-      <Header/>
-      <main className='py-3' style={{display: 'flex', justifyContent: 'center'}}>
-        <div className='nav-blank'></div>
-        <Container className='app-container'>
-          <Outlet/>
-        </Container>
-      </main>
-      <Footer/>
-      <ToastContainer/>
+        <Header/>
+        <main className='py-3' style={{display: 'flex', justifyContent: 'center'}}>
+          <div className='nav-blank'></div>
+          <Container className='app-container'>
+            <Outlet/>
+          </Container>
+        </main>
+        <ToastContainer/>
+     
     </>
   )
 }

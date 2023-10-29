@@ -2,6 +2,10 @@
   --bs-body-bg: #e6e2de;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 main {
   min-height: 80vh;
 }
