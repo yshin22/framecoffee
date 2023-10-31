@@ -93,17 +93,54 @@ const Header = () => {
                                 </Nav.Link>
                             </LinkContainer>
 
-                            <LinkContainer to='/shop'>
-                                <Nav.Link onClick={callFunctions}>
-                                    SHOP
-                                </Nav.Link>
-                            </LinkContainer>
+                            <NavDropdown title='COFFEE'>
+                                <NavDropdown.Item>
+                                    <LinkContainer to='/shop'>
+                                        <Nav.Link onClick={callFunctions} className='dropdown-item-title'>
+                                            SHOP
+                                        </Nav.Link>
+                                    </LinkContainer>
+                                </NavDropdown.Item>
+                                <NavDropdown.Item>
+                                    <LinkContainer to='/menu'>
+                                        <Nav.Link onClick={callFunctions} className='dropdown-item-title'>
+                                            MENU    
+                                        </Nav.Link>
+                                    </LinkContainer>
+                                </NavDropdown.Item>
+                                <NavDropdown.Item>
+                                    <LinkContainer to='/cafe'>
+                                        <Nav.Link onClick={callFunctions} className='dropdown-item-title'>
+                                            WHOLESALE
+                                        </Nav.Link>
+                                    </LinkContainer>
+                                </NavDropdown.Item>
+                            </NavDropdown>
+
+                            <NavDropdown title='PHOTO'>
+                                <NavDropdown.Item>
+                                    <LinkContainer to='/shop'>
+                                        <Nav.Link onClick={callFunctions} className='dropdown-item-title'>
+                                            GALLERY
+                                        </Nav.Link>
+                                    </LinkContainer>
+                                </NavDropdown.Item>
+                                <NavDropdown.Item >
+                                    <LinkContainer to='/shop'>
+                                        <Nav.Link onClick={callFunctions} className='dropdown-item-title'>
+                                            ARTSHOW    
+                                        </Nav.Link>
+                                    </LinkContainer>
+                                </NavDropdown.Item>
+
+                            </NavDropdown>
 
                             <LinkContainer to='/cafe'>
                                 <Nav.Link onClick={callFunctions}>
-                                    CAFE
+                                     MUSIC
                                 </Nav.Link>
                             </LinkContainer>
+
                         </Nav>
 
                         <div className='nav-cart-login' style={visible ? {...showSearch} : {...hideSearch}}>

@@ -11,6 +11,7 @@ import Paginate from '../components/Paginate';
 import TitleAnimation from '../components/TitleAnimation';
 import {Parallax, ParallaxLayer} from '@react-spring/parallax'
 import Footer from '../components/Footer';
+import { useScroll } from '@react-spring/web';
 
 
   
@@ -20,13 +21,19 @@ const HomeScreen = () => {
 
   // const { data, isLoading, error } = useGetProductsQuery({keyword, pageNumber}); 
 
+
+
+  const {scrollYProgress} = useScroll();
+
+
   return (
     <>
 
-      <Parallax pages={3}>
+      <TitleAnimation/>
+      <Parallax pages={3} >
 
-        <ParallaxLayer speed={1}>
-          <TitleAnimation/>
+        <ParallaxLayer speed={1} style={{}}>
+          <h1>How are you doing?</h1>
         </ParallaxLayer>
 
         <ParallaxLayer offset={1} speed={0.5}>
