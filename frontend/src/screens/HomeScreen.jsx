@@ -30,7 +30,7 @@ const HomeScreen = () => {
         </ParallaxLayer>
 
         <ParallaxLayer offset={1} speed={0.5}>
-          <h1>Doing well, you?</h1>
+          <h1>Doing well, too?</h1>
         </ParallaxLayer>
 
         <ParallaxLayer offset={2}>
