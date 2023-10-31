@@ -24,16 +24,14 @@ const HomeScreen = () => {
 
 
   const {scrollYProgress} = useScroll();
-
+  
 
   return (
     <>
 
-      <TitleAnimation/>
       <Parallax pages={3} >
-
         <ParallaxLayer speed={1} style={{}}>
-          <h1>How are you doing?</h1>
+          <TitleAnimation/>
         </ParallaxLayer>
 
         <ParallaxLayer offset={1} speed={0.5}>
