@@ -1,5 +1,7 @@
 import React from 'react';
+import '../assets/styles/home.css'
 import { useParams } from 'react-router-dom';
+import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import {Row, Col} from 'react-bootstrap';
 import Product from '../components/Product';
@@ -21,40 +23,23 @@ const HomeScreen = () => {
 
   // const { data, isLoading, error } = useGetProductsQuery({keyword, pageNumber}); 
 
-
-
-  const {scrollYProgress} = useScroll();
-  
-
   return (
-    <>
+    <div className='home-wrapper'>
+      <section className='sec1'>
+        <TitleAnimation/>
+      </section>
+      <section className='sec2'>
+        <div>
+          <h1>Hey how are you</h1>
+        </div> 
+      </section>
+      <Footer/>
 
-      <Parallax pages={3} >
-        <ParallaxLayer speed={1} style={{}}>
-          <TitleAnimation/>
-        </ParallaxLayer>
-
-        <ParallaxLayer offset={1} speed={0.5}>
-          <h1>Doing well, too?</h1>
-        </ParallaxLayer>
-
-        <ParallaxLayer offset={2}>
-          <Footer/>
-        </ParallaxLayer>
-      </Parallax>
-
-
-      {/* <TitleAnimation/>
-      
-      <div style={{width: '100%', height: '100vh', border: 'solid #303030',backgroundColor: '#e6e2de'}}>
-
-      </div> */}
-      
-      {/* { !keyword ? <ProductCarousel/> : <Link to='/' className='btn btn-light mb-4'>Go Back</Link>} */}
-         
-    </>
-   
+ 
+           {/* { !keyword ? <ProductCarousel/> : <Link to='/' className='btn btn-light mb-4'>Go Back</Link>} */}
+    </div>
   )
+  
 }
 
 export default HomeScreen

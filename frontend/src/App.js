@@ -5,6 +5,7 @@ import { Container  } from 'react-bootstrap'
 import {ToastContainer} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import Header from './components/Header'
+import InstaFeeds from './components/InstaFeeds'
 import Footer from './components/Footer'
 
 
@@ -21,6 +22,10 @@ const App = () => {
             <Outlet/>
           </Container>
         </main>
+        <InstaFeeds token={process.env.REACT_APP_INS_TOKEN} limit={12}/>
+
+      
+
         <ToastContainer/>
      
     </>
