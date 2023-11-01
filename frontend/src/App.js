@@ -22,10 +22,6 @@ const App = () => {
             <Outlet/>
           </Container>
         </main>
-        <InstaFeeds token={process.env.REACT_APP_INS_TOKEN} limit={12}/>
-
-      
-
         <ToastContainer/>
      
     </>
