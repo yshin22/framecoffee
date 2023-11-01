@@ -157,7 +157,7 @@ const TitleAnimation = () => {
     <div className='text-animation-wrapper'>
         <div className='text-animation-container'>
             <div className='firstHalf' id='phrase1'>
-                <div className='phrase'>
+                <div className='phrase' style={{color: '#F2500'}}>
                     F
                 </div>
                 <div className='phrase'>

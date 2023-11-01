@@ -11,9 +11,8 @@ import Loader from '../components/Loader';
 import Message from '../components/Message'
 import Paginate from '../components/Paginate';
 import TitleAnimation from '../components/TitleAnimation';
-import {Parallax, ParallaxLayer} from '@react-spring/parallax'
 import Footer from '../components/Footer';
-import { useScroll } from '@react-spring/web';
+import InstaFeeds from '../components/InstaFeeds';
 
 
   
@@ -30,7 +29,7 @@ const HomeScreen = () => {
       </section>
       <section className='sec2'>
         <div>
-          <h1>Hey how are you</h1>
+          <InstaFeeds/>
         </div> 
       </section>
       <Footer/>
