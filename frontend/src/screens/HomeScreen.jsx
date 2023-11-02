@@ -24,17 +24,13 @@ const HomeScreen = () => {
 
   return (
     <div className='home-wrapper'>
-      <section className='sec1'>
+      <div className='sec1'>
         <TitleAnimation/>
-      </section>
-      <section className='sec2'>
-        <div>
-          <InstaFeeds/>
-        </div> 
-      </section>
+      </div>
+      <div className='sec2'>
+        <InstaFeeds/>
+      </div>
       <Footer/>
-
- 
            {/* { !keyword ? <ProductCarousel/> : <Link to='/' className='btn btn-light mb-4'>Go Back</Link>} */}
     </div>
   )

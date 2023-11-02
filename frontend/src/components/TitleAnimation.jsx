@@ -70,47 +70,36 @@ const TitleAnimation = () => {
         document.body.appendChild(css);
     };
 
+    useEffect(() => {
+        const handleScroll = () => {
+            var phrase1 = document.getElementById("phrase1");
+            var phrase2 = document.getElementById("phrase2");
+            var phrase3 = document.getElementById("phrase3");
+            var phrase4 = document.getElementById("phrase4");
+            var image1 = document.getElementById("image1");
 
-    window.addEventListener('scroll', () => {
-        var phrase1 = document.getElementById("phrase1");
-        var phrase2 = document.getElementById("phrase2");
-        var phrase3 = document.getElementById("phrase3");
-        var phrase4 = document.getElementById("phrase4");
-        var image1 = document.getElementById("image1");
-        // var phrase5 = document.getElementById("phrase5");
-        // var bean = document.getElementById("bean")
-        // var phrase6 = document.getElementById("phrase6");
-        // var phrase7 = document.getElementById("phrase7");
-        // && phrase6 && phrase7
-        // && bean
-
-        if (phrase1 && phrase2 && phrase3 && phrase4) {
             var scrollPhrase = document.documentElement.scrollTop * 1;
-            // var value = window.scrollY * 0.25;
-    
-            phrase1.style.transform = "translateY(" + scrollPhrase + "px)";
-            phrase2.style.transform = "translateX(-" + scrollPhrase + "px)";
-            phrase3.style.transform = "translateX(" + scrollPhrase + "px)";
-            phrase4.style.transform = "translateY(-" + scrollPhrase + "px)";
-            image1.style.transform = "translateY(" + scrollPhrase + "px)";
-            // phrase5.style.transform = "translateX(-" + scrollPhrase + "px)";
-            // bean.style.transform = `rotate(${value}deg)`;
-            // phrase6.style.transform = "translateX(-" + scrollPhrase + "px)";
-            // phrase7.style.transform = "translateX(" + scrollPhrase + "px)";
-        
-            phrase1.style.transition = "transform cubic-bezier( 0.07, 0.19, 0.05, 0.99 ) 0.8s";
-            phrase2.style.transition = "transform cubic-bezier( 0.07, 0.19, 0.05, 0.99 ) 0.8s";
-            phrase3.style.transition = "transform cubic-bezier( 0.07, 0.19, 0.05, 0.99 ) 0.8s";
-            phrase4.style.transition = "transform cubic-bezier( 0.07, 0.19, 0.05, 0.99 ) 0.8s";
-            image1.style.transition = "transform cubic-bezier( 0.07, 0.19, 0.05, 0.99 ) 0.8s";
 
-            // phrase5.style.transition = "transform cubic-bezier( 0.07, 0.19, 0.05, 0.99 ) 0.8s";
-            // bean.style.transition = "transform cubic-bezier( 0.07, 0.19, 0.05, 0.99 ) 0.4s";
-            // phrase6.style.transition = "transform cubic-bezier( 0.07, 0.19, 0.05, 0.99 ) 1s";
-            // phrase7.style.transition = "transform cubic-bezier( 0.07, 0.19, 0.05, 0.99 ) 1s";
-        };
+            if (phrase1 && phrase2 && phrase3 && phrase4) {
 
-    });
+                phrase1.style.transform = "translateY(" + scrollPhrase + "px)";
+                phrase2.style.transform = "translateX(-" + scrollPhrase + "px)";
+                phrase3.style.transform = "translateX(" + scrollPhrase + "px)";
+                phrase4.style.transform = "translateY(-" + scrollPhrase + "px)";
+                image1.style.transform = "translateY(" + scrollPhrase + "px)";
+            
+                phrase1.style.transition = "transform cubic-bezier( 0.07, 0.19, 0.05, 0.99 ) 0.8s";
+                phrase2.style.transition = "transform cubic-bezier( 0.07, 0.19, 0.05, 0.99 ) 0.8s";
+                phrase3.style.transition = "transform cubic-bezier( 0.07, 0.19, 0.05, 0.99 ) 0.8s";
+                phrase4.style.transition = "transform cubic-bezier( 0.07, 0.19, 0.05, 0.99 ) 0.8s";
+                image1.style.transition = "transform cubic-bezier( 0.07, 0.19, 0.05, 0.99 ) 0.8s";
+            };
+        }
+        window.addEventListener('scroll', handleScroll);
+        return() => {
+            window.removeEventListener('scroll', handleScroll);
+        }
+    }, );
 
     const {pageNumber, keyword} = useParams();
 
@@ -157,7 +146,7 @@ const TitleAnimation = () => {
     <div className='text-animation-wrapper'>
         <div className='text-animation-container'>
             <div className='firstHalf' id='phrase1'>
-                <div className='phrase' style={{color: '#F2500'}}>
+                <div className='phrase' style={{color: '#F25000'}}>
                     F
                 </div>
                 <div className='phrase'>
@@ -169,7 +158,7 @@ const TitleAnimation = () => {
                 <div className='phrase'>
                     M
                 </div>
-                <div className='phrase'>
+                <div className='phrase' style={{color: '#F25000'}}>
                     E
                 </div>
             </div>
@@ -205,7 +194,7 @@ const TitleAnimation = () => {
             </div>
 
             <div className='thirdHalf' id='phrase4'>
-                <div className='phrase'>
+                <div className='phrase' style={{color: '#F25000'}}>
                     E
                 </div>
                 <div className='phrase'>
@@ -217,7 +206,7 @@ const TitleAnimation = () => {
                 <div className='phrase'>
                     R
                 </div>
-                <div className='phrase'>
+                <div className='phrase' style={{color: '#F25000'}}>
                     F
                 </div>
 

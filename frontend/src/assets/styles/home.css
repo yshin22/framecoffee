@@ -1,9 +1,18 @@
 
+/* .home-wrapper {
+    display: flex;
+    flex-direction: column;
+} */
 
-section {
+
+
+.sec1 {
     height: 100vh ;
 }
 
 .sec2 {
+    height: 100vh;
     border: solid #303030;
+    background-color: #e6e2de;
+
 }
