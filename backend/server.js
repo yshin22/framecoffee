@@ -3,6 +3,10 @@
 import path from 'path';
 import express from 'express';
 import dotenv from 'dotenv';
+
+import fs from 'fs';
+import https from 'https';
+
 import cookieParser from 'cookie-parser';
 dotenv.config();
 import connectDB from './config/db.js'
@@ -12,9 +16,13 @@ import userRoutes from './routes/userRoutes.js'
 import orderRoutes from './routes/orderRoutes.js';
 import uploadRoutes from './routes/uploadRoutes.js';
 
+
 const port = process.env.PORT;
 
 connectDB(); // Connect to MongoDB
+
+// const key = fs.readFileSync("/Users/yeoungminshin/Documents/frame_coffee/backend/localhost-key.pem", "utf-8");
+// const cert = fs.readFileSync("/Users/yeoungminshin/Documents/frame_coffee/backend/localhost.pem", "utf-8");
 
 const app = express();
 
@@ -55,4 +63,6 @@ if (process.env.NODE_ENV === 'production') {
 app.use(notFound);
 app.use(errorHandler);
 
-app.listen(port, () => console.log(`Server running on port ${port}`))
+app.listen(port, () => console.log(`Server running on port ${port}`));
+
+// https.createServer({ key, cert }, app).listen(port);
