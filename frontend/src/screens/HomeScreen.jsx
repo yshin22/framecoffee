@@ -28,7 +28,7 @@ const HomeScreen = () => {
         <TitleAnimation/>
       </div>
       <div className='sec2'>
-        <InstaFeeds token={process.env.REACT_APP_INS_TOKEN} limit={12}/>
+        <InstaFeeds token={process.env.REACT_APP_INS_TOKEN} limit={9}/>
       </div>
       <Footer/>
            {/* { !keyword ? <ProductCarousel/> : <Link to='/' className='btn btn-light mb-4'>Go Back</Link>} */}

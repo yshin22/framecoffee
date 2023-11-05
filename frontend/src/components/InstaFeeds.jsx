@@ -15,7 +15,7 @@ const InstaFeeds = ({token, ...props}) => {
         // this is to avoid memory leaks
         const abortController = new AbortController();
 
-        async function fetchInstagramPost () {
+        async function fetchInstagramPost () {  
           try{
             axios
                 .get(`https://graph.instagram.com/me/media?fields=id,media_type,media_url,caption&limit=${props.limit}&access_token=${tokenProp.current}`)
