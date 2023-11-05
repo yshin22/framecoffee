@@ -37,11 +37,13 @@ const InstaFeeds = ({token, ...props}) => {
     }, [props.limit])
 
     return (
-        <div className="insta-container">
-            {feeds.map((feed) => (
-                <Feed key={feed.id} feed={feed} />
-            ))}
-        </div>
+        <ul className="insta-container">
+            <li>
+                {feeds.map((feed) => (
+                    <Feed key={feed.id} feed={feed} />
+                ))}
+            </li>
+        </ul>
     );
 }
 
