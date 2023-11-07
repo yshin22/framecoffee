@@ -3,8 +3,9 @@
 footer {
     background-color: #e6e2de;
     height: auto;
-    /* border-top: solid #303030; */
-    /* margin-left: 190px; */
+    border-top: solid #303030;
+    /* width: 100vw;
+    margin-left: 180px; */
 }
 
 footer .container {
