@@ -184,11 +184,14 @@ color: #303030;
     display: flex;
     margin: auto;
     z-index: 1;
+    margin: 100px 25vh 100px 25vh;
+
 }
 .image-container img {
     max-width: 100%;
     width: auto;
     height: auto;
+    /* margin: 100px 150px 100px 150px; */
 }
 
 .between-phrase2 {
@@ -205,3 +208,20 @@ color: #303030;
 
 }
 
+@media screen and (max-width: 992px) {
+
+    .text-animation-wrapper {
+        height: fit-content;
+    }
+
+    .image-container {
+        margin: 80px 150px 80px 150px;
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+    .image-container {
+        margin: 70px 80px 70px 80px;
+    }
+}

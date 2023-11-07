@@ -5,7 +5,7 @@ import beans from '../assets/coffee-bean.png';
 import ProductCarousel from '../components/ProductCarousel';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-import coffee from '../assets/productImages/oslo-coffee.webp';
+import coffee from '../assets/productImages/cropped-coffee.webp';
 import {Tilt} from 'react-tilt';
 
 
@@ -177,6 +177,8 @@ const TitleAnimation = () => {
                 </div>
 
                 <div className='image-container' id='image1'>
+
+                    
                     <img src={coffee} alt="coffee beans" />
                 </div>
 
