@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, require } from 'react'
 import axios from 'axios'
 
 import Feed from './Feed'
@@ -36,13 +36,23 @@ const InstaFeeds = ({token, ...props}) => {
         };
     }, [props.limit])
 
+    const images = require.context('../assets/testImages', true);
+    const imagesList = images.keys().map(image => images(image));
+
+
     return (
         <div className="insta-container">
-            {feeds.map((feed) => (
-                <Feed key={feed.id} feed={feed} />
+            
+            {imagesList.map((image, index) => (
+                <img key={index} src={image.default} alt={`image-${index}`}/>
             ))}
+
         </div>
+        // {feeds.map((feed, index) => (
+        //     <Feed key={feed.id} feed={feed} />
+        // ))}
     );
 }
+
 
 export default InstaFeeds;
