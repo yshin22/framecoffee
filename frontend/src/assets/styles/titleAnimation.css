@@ -222,6 +222,6 @@ color: #303030;
 
 @media screen and (max-width: 768px) {
     .image-container {
-        margin: 70px 80px 70px 80px;
+        margin: 70px 70px 70px 70px;
     }
 }
