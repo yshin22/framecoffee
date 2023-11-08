@@ -76,23 +76,29 @@ const TitleAnimation = () => {
             var phrase2 = document.getElementById("phrase2");
             var phrase3 = document.getElementById("phrase3");
             var phrase4 = document.getElementById("phrase4");
-            var image1 = document.getElementById("image1");
+            var phrase5 = document.getElementById("phrase5");
+
+            // var image1 = document.getElementById("image1");
 
             var scrollPhrase = document.documentElement.scrollTop * 1;
 
-            if (phrase1 && phrase2 && phrase3 && phrase4) {
+            if (phrase1 && phrase2 && phrase3 && phrase4 &&phrase5) {
 
-                phrase1.style.transform = "translateY(" + scrollPhrase + "px)";
+                phrase1.style.transform = "translateX(" + scrollPhrase + "px)";
                 phrase2.style.transform = "translateX(-" + scrollPhrase + "px)";
                 phrase3.style.transform = "translateX(" + scrollPhrase + "px)";
-                phrase4.style.transform = "translateY(-" + scrollPhrase + "px)";
-                image1.style.transform = "translateY(" + scrollPhrase + "px)";
+                phrase4.style.transform = "translateX(-" + scrollPhrase + "px)";
+                phrase5.style.transform = "translateX(" + scrollPhrase + "px)";
+
+                // image1.style.transform = "translateY(" + scrollPhrase + "px)";
             
-                phrase1.style.transition = "transform cubic-bezier( 0.07, 0.19, 0.05, 0.99 ) 0.8s";
-                phrase2.style.transition = "transform cubic-bezier( 0.07, 0.19, 0.05, 0.99 ) 0.8s";
-                phrase3.style.transition = "transform cubic-bezier( 0.07, 0.19, 0.05, 0.99 ) 0.8s";
-                phrase4.style.transition = "transform cubic-bezier( 0.07, 0.19, 0.05, 0.99 ) 0.8s";
-                image1.style.transition = "transform cubic-bezier( 0.07, 0.19, 0.05, 0.99 ) 0.8s";
+                phrase1.style.transition = "transform cubic-bezier( 0.07, 0.19, 0.05, 0.99 ) 1s";
+                phrase2.style.transition = "transform cubic-bezier( 0.07, 0.19, 0.05, 0.99 ) 1s";
+                phrase3.style.transition = "transform cubic-bezier( 0.07, 0.19, 0.05, 0.99 ) 1s";
+                phrase4.style.transition = "transform cubic-bezier( 0.07, 0.19, 0.05, 0.99 ) 1s";
+                phrase5.style.transition = "transform cubic-bezier( 0.07, 0.19, 0.05, 0.99 ) 1s";
+
+                // image1.style.transition = "transform cubic-bezier( 0.07, 0.19, 0.05, 0.99 ) 0.8s";
             };
         }
         window.addEventListener('scroll', handleScroll);
@@ -144,135 +150,97 @@ const TitleAnimation = () => {
 
   return (
     <div className='text-animation-wrapper'>
-        <div className='text-animation-container'>
-            <div className='firstHalf' id='phrase1'>
-                <div className='phrase' style={{color: '#F25000'}}>
-                    F
-                </div>
-                <div className='phrase'>
-                    R
-                </div>
-                <div className='phrase'>
-                    A
-                </div>
-                <div className='phrase'>
-                    M
-                </div>
-                <div className='phrase' style={{color: '#F25000'}}>
-                    E
-                </div>
+        <div className='phrase-container' id='phrase1'>
+            <div className='phrase highlight'>
+                F
             </div>
-
-            <div className='secondHalf'>
-                <div className='between-phrase1' id='phrase2'>
-                    <div className='phrase'>
-                        R
-                    </div>
-                    <div className='phrase'>
-                        A
-                    </div>
-                    <div className='phrase'>
-                        M
-                    </div>
-                </div>
-
-                <div className='image-container' id='image1'>
-
-                    
-                    <img src={coffee} alt="coffee beans" />
-                </div>
-
-                <div className='between-phrase2' id='phrase3'>
-                    <div className='phrase'>
-                        M
-                    </div>
-                    <div className='phrase'>
-                        A
-                    </div>
-                    <div className='phrase'>
-                        R
-                    </div>
-                </div>
+            <div className='phrase'>
+                R
             </div>
+            <div className='phrase'>
+                A
+            </div> 
+            <div className='phrase'>
+                M
+            </div>
+            <div className='phrase'>
+                E
+            </div>
+        </div>
 
-            <div className='thirdHalf' id='phrase4'>
-                <div className='phrase' style={{color: '#F25000'}}>
-                    E
-                </div>
-                <div className='phrase'>
-                    M
-                </div>
-                <div className='phrase'>
-                    A
-                </div>
-                <div className='phrase'>
-                    R
-                </div>
-                <div className='phrase' style={{color: '#F25000'}}>
-                    F
-                </div>
+        <div className='phrase-container' id='phrase2'>
+            <div className='phrase'>
+                F
+            </div>
+            <div className='phrase highlight'>
+                R
+            </div>
+            <div className='phrase'>
+                A
+            </div> 
+            <div className='phrase'>
+                M
+            </div>
+            <div className='phrase'>
+                E
+            </div>
+        </div>
 
+        <div className='phrase-container' id='phrase3'>
+            <div className='phrase'>
+                F
+            </div>
+            <div className='phrase'>
+                R
+            </div>
+            <div className='phrase highlight'>
+                A
+            </div> 
+            <div className='phrase'>
+                M
+            </div>
+            <div className='phrase'>
+                E
+            </div>
+        </div>
+
+        <div className='phrase-container' id='phrase4'>
+            <div className='phrase'>
+                F
+            </div>
+            <div className='phrase'>
+                R
+            </div>
+            <div className='phrase'>
+                A
+            </div> 
+            <div className='phrase highlight'>
+                M
+            </div>
+            <div className='phrase'>
+                E
+            </div>
+        </div>
+
+        <div className='phrase-container' id='phrase5'>
+            <div className='phrase'>
+                F
+            </div>
+            <div className='phrase'>
+                R
+            </div>
+            <div className='phrase'>
+                A
+            </div> 
+            <div className='phrase'>
+                M
+            </div>
+            <div className='phrase highlight'>
+                E
             </div>
         </div>
 
     </div>
-    
-    
-    // <div className='text-animation'>
-
-    //     <Tilt options={defaultOptions} className='coffee-image'>
-    //         <img src={coffee} alt="oslo coffee" />
-    //     </Tilt>
-
-    //      <svg className="svgwave" width='500' height='500' viewBox="0 0 500 500">
-    //             <path id="wavepath" d="M62.5,94.39v311.23c0,12.97,10.51,23.48,23.48,23.48h332.39c12.97,0,23.48-10.51,23.48-23.48V94.39 c0-12.97-10.51-23.48-23.48-23.48H85.98C73.01,70.9,62.5,81.42,62.5,94.39z" style={{fill: "transparent", stroke: "transparent", strokeWidth: "1px"}}></path>
-
-    //             <foreignObject x='85' y='90' width='450px' height='450px'>
-    //                 <div
-    //                         className='text-perimeter'
-    //                         style={{width: "335px", height: "320px",
-    //                         borderRadius: "8px",
-    //                         backgroundSize: "contain",
-    //                         border: "4px solid #303030",
-    //                         display:"inline-block"}}
-    //                 ></div>
-    //             </foreignObject>
-
-    //             <foreignObject x='50' y='58' width='450px' height='450px'>
-    //                 <div
-    //                         className='text-perimeter'
-    //                         style={{width: "405px", height: "385px",
-    //                         borderRadius: "30px",
-    //                         backgroundSize: "contain",
-    //                         border: "4px solid #303030",
-    //                         display:"inline-block"}}
-    //                 ></div>
-    //             </foreignObject>
-
-    //         <text className='svg-text' text-anchor="middle">
-    //             <textPath className='text' href='#wavepath' startOffset='0%' textLength="2550">
-    //                 <animate attributeName="startOffset" from="12.1%" to="42%" begin="0s" dur="7s" repeatCount="indefinite"></animate>
-    //                 FRAME <tspan>COFFEE </tspan> 
-    //                 FRAME <tspan>COFFEE </tspan> 
-    //                 FRAME <tspan>COFFEE </tspan> 
-    //                 FRAME <tspan>COFFEE </tspan> 
-    //                 FRAME <tspan>COFFEE </tspan> 
-    //                 FRAME <tspan>COFFEE </tspan> 
-    //                 FRAME <tspan>COFFEE </tspan> 
-    //                 FRAME <tspan>COFFEE </tspan> 
-    //                 FRAME <tspan>COFFEE </tspan> 
-    //                 FRAME <tspan>COFFEE </tspan> 
-    //                 FRAME <tspan>COFFEE </tspan> 
-    //                 FRAME <tspan>COFFEE </tspan> 
-    //             </textPath>
-    //         </text>
-    //     </svg>
-
-    
-    
-    // </div>
-
-
 
     // <div className="title-animation">
     //     <div className='first-half'>
@@ -314,6 +282,77 @@ const TitleAnimation = () => {
     //         <h1 className="phrase">HUMANS.</h1>
     //     </div> */}
     // </div>
+
+    // <div className='text-animation-container'>
+    //         <div className='firstHalf' id='phrase1'>
+    //             <div className='phrase' style={{color: '#F25000'}}>
+    //                 F
+    //             </div>
+    //             <div className='phrase'>
+    //                 R
+    //             </div>
+    //             <div className='phrase'>
+    //                 A
+    //             </div>
+    //             <div className='phrase'>
+    //                 M
+    //             </div>
+    //             <div className='phrase' style={{color: '#F25000'}}>
+    //                 E
+    //             </div>
+    //         </div>
+
+    //         <div className='secondHalf'>
+    //             <div className='between-phrase1' id='phrase2'>
+    //                 <div className='phrase'>
+    //                     R
+    //                 </div>
+    //                 <div className='phrase'>
+    //                     A
+    //                 </div>
+    //                 <div className='phrase'>
+    //                     M
+    //                 </div>
+    //             </div>
+
+    //             <div className='image-container' id='image1'>
+
+                    
+    //                 <img src={coffee} alt="coffee beans" />
+    //             </div>
+
+    //             <div className='between-phrase2' id='phrase3'>
+    //                 <div className='phrase'>
+    //                     M
+    //                 </div>
+    //                 <div className='phrase'>
+    //                     A
+    //                 </div>
+    //                 <div className='phrase'>
+    //                     R
+    //                 </div>
+    //             </div>
+    //         </div>
+
+    //         <div className='thirdHalf' id='phrase4'>
+    //             <div className='phrase' style={{color: '#F25000'}}>
+    //                 E
+    //             </div>
+    //             <div className='phrase'>
+    //                 M
+    //             </div>
+    //             <div className='phrase'>
+    //                 A
+    //             </div>
+    //             <div className='phrase'>
+    //                 R
+    //             </div>
+    //             <div className='phrase' style={{color: '#F25000'}}>
+    //                 F
+    //             </div>
+
+    //         </div>
+    //     </div>
   )
 }
 

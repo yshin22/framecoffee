@@ -11,8 +11,11 @@
 }
 
 .sec2 {
+    height: fit-content;
+}
+
+.sec3 {
     /* height: 100vh; */
-    margin-bottom: 20px;
     display: flex;
     justify-content: center;
     background-color: #e6e2de;

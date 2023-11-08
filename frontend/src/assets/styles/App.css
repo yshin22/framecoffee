@@ -23,7 +23,7 @@
 @media screen and (max-width: 992px) {
    .app-container {
     /* margin-left: auto !important; */
-    margin-top: 10vh !important;
+    margin-top: 2vh !important;
     position: initial;
     left: initial;
     /* margin-right: auto; */
@@ -36,6 +36,6 @@
 
 @media screen and (max-width: 768px) {
    .app-container {
-      margin-top: 15vh !important;
+      margin-top: 3vh !important;
    }
 }
