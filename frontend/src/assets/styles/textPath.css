@@ -1,0 +1,13 @@
+
+.svg-container {
+    margin-left: -50%;
+    margin-right: -50%;
+}
+
+
+@media screen and (max-width: 576px) {
+    .svg-container {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

@@ -1,10 +1,11 @@
-import React from 'react'
+import React from 'react';
+import '../assets/styles/textPath.css';
 
 const TextPath = () => {
 
     
   return (
-    <div className='svg-container' style={{borderBottom: "solid #303030", borderTop:'solid #303030', marginLeft:'-200px', marginRight: '-200px'}}>
+    <div className='svg-container' style={{borderBottom: "solid #303030", borderTop:'solid #303030'}}>
         <svg className="svgwave"  viewBox="0 0 1000 40">
             <path id="wavepath" d="M0 25h1000" style={{fill: "transparent", stroke: "transparent", strokeWidth: "1px"}}></path>
 {/* 
