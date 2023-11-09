@@ -32,19 +32,31 @@ const TextPath = () => {
             </foreignObject> */}
 
             <text className='svg-text' text-anchor="middle">
-                <textPath className='text' href='#wavepath' startOffset='0%' textLength="2500">
-                    <animate attributeName="startOffset" from="12.3%" to="42%" begin="0s" dur="7s" repeatCount="indefinite"></animate>
+                <textPath className='text' href='#wavepath' startOffset='0%' textLength="3500">
+                    <animate attributeName="startOffset" from="0%" to="100%" begin="0s" dur="25s" repeatCount="indefinite"></animate>
+                    <tspan><a href='https://apps.apple.com/us/app/frame-coffee-roasters/id6448272834' rel='noreferrer' target='_blank'>
+                        | DOWNLOAD OUR APP |</a>
+                    </tspan>  
+                    FRAME COFFEE 
+                    <tspan><a href='https://apps.apple.com/us/app/frame-coffee-roasters/id6448272834' rel='noreferrer' target='_blank'>
+                        | DOWNLOAD OUR APP |</a>
+                    </tspan>                     
+                    FRAME COFFEE  
+                    <tspan><a href='https://apps.apple.com/us/app/frame-coffee-roasters/id6448272834' rel='noreferrer' target='_blank'>
+                        | DOWNLOAD OUR APP |</a>
+                    </tspan>                     
                     FRAME <tspan>COFFEE </tspan> 
+                    <tspan><a href='https://apps.apple.com/us/app/frame-coffee-roasters/id6448272834' rel='noreferrer' target='_blank'>
+                        | DOWNLOAD OUR APP |</a>
+                    </tspan>                     
                     FRAME <tspan>COFFEE </tspan> 
+                    <tspan><a href='https://apps.apple.com/us/app/frame-coffee-roasters/id6448272834' rel='noreferrer' target='_blank'>
+                        | DOWNLOAD OUR APP |</a>
+                    </tspan>                     
                     FRAME <tspan>COFFEE </tspan> 
-                    FRAME <tspan>COFFEE </tspan> 
-                    FRAME <tspan>COFFEE </tspan> 
-                    FRAME <tspan>COFFEE </tspan> 
-                    FRAME <tspan>COFFEE </tspan> 
-                    FRAME <tspan>COFFEE </tspan> 
-                    FRAME <tspan>COFFEE </tspan> 
-                    FRAME <tspan>COFFEE </tspan> 
-                    FRAME <tspan>COFFEE </tspan> 
+                    <tspan><a href='https://apps.apple.com/us/app/frame-coffee-roasters/id6448272834' rel='noreferrer' target='_blank'>
+                        | DOWNLOAD OUR APP |</a>
+                    </tspan>                     
                     FRAME <tspan>COFFEE </tspan> 
                 </textPath>
             </text>

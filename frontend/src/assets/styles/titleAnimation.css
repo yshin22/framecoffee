@@ -1,12 +1,73 @@
-.text-animation {
+/*------------------5 Row Animation----------*/
 
+.text-animation-wrapper {
     height: 100vh;
     width: 100%;
-    /* margin: 0; */
-
-    /* display: flex;
-    flex-direction: column; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow-x: hidden;
 }
+
+.phrase-container {
+    display: flex;
+    justify-content: center;
+    justify-content: space-between;
+    z-index: -10;
+}
+
+.phrase {
+    font-family: Arimo;
+    color: #303030;
+    font-size: 6.4vw;
+    font-weight: 800;
+}
+
+.phrase.highlight {
+    color: #F25000 !important;
+    border-bottom: solid #303030;
+}
+
+
+@media screen and (max-width: 992px) {
+    
+}
+
+@media screen and (max-width: 768px) {
+    
+}
+
+@media screen and (max-width: 576px) {
+    .text-animation-wrapper {
+        margin-top: 2vh;
+    }
+    .phrase {
+        font-size: 25vw;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .text-animation {
+
+    height: 100vh;
+    width: 100%; 
+     margin: 0; 
+
+     display: flex;
+    flex-direction: column; 
+   }   */
+
 
 /* .title-animation svg {
     width: 100%;
@@ -63,15 +124,15 @@ color: #303030;
 } */
 
 
-
+/* 
 @media screen and (max-width: 992px) {
 
     .coffee-image {
-        /* top: 62vh; */
+        top: 62vh;
     }
 
     .coffee-image img {
-        /* top: 0; */
+        top: 0;
         top: 62vh;
         height: 400px;
         width: 375px;
@@ -92,7 +153,7 @@ color: #303030;
     .middle-half {
         width: 60%;
     }
-}
+} */
 
 
 
@@ -226,32 +287,3 @@ color: #303030;
 } */
 
 
-/*------------------5 Row Animation----------*/
-
-.text-animation-wrapper {
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    overflow-x: hidden;
-}
-
-.phrase-container {
-    display: flex;
-    justify-content: center;
-    justify-content: space-between;
-    z-index: -10;
-}
-
-.phrase {
-    font-family: Arimo;
-    color: #303030;
-    font-size: 6.4vw;
-    font-weight: 800;
-}
-
-.phrase.highlight {
-    color: #F25000 !important;
-    border-bottom: solid #303030;
-}

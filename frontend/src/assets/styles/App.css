@@ -10,23 +10,21 @@
 }
 
 .nav-blank {
-   width: 235px;
+   width: 220px;
 }
 
 @media (min-width: 1400px) {
    .app-container {
-      /* max-width: none; */
+      max-width: none;
    }
 }
 
 
 @media screen and (max-width: 992px) {
    .app-container {
-    /* margin-left: auto !important; */
-    margin-top: 2vh !important;
     position: initial;
     left: initial;
-    /* margin-right: auto; */
+    max-width: none !important;
    }
 
    .nav-blank {
@@ -36,6 +34,6 @@
 
 @media screen and (max-width: 768px) {
    .app-container {
-      margin-top: 3vh !important;
+      max-width: none !important;
    }
 }

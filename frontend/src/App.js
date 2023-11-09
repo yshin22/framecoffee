@@ -1,5 +1,6 @@
 import React from 'react'
 import './assets/styles/App.css'
+import './assets/styles/titleAnimation.css'
 import {Outlet} from 'react-router-dom'
 import { Container  } from 'react-bootstrap'
 import {ToastContainer} from 'react-toastify'

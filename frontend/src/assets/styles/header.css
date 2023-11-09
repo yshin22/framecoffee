@@ -174,3 +174,9 @@ header {
     }
 }
 
+@media screen and (max-width: 576px) {
+    .logo-container button {
+        display: none;
+    }
+}
+
