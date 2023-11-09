@@ -22,7 +22,6 @@ import AdminRoute from './components/AdminRoute';
 import HomeScreen from './screens/HomeScreen';
 import AboutScreen from './screens/AboutScreen';
 import ShopScreen from './screens/ShopScreen';
-import CafeScreen from './screens/CafeScreen';
 
 import ProductScreen from './screens/ProductScreen';
 import CartScreen from './screens/CartScreen';
@@ -39,6 +38,9 @@ import ProductEditScreen from './screens/admin/ProductEditScreen';
 import UserListScreen from './screens/admin/UserListScreen';
 import UserEditScreen from './screens/admin/UserEditScreen';
 import MenuScreen from './screens/MenuScreen';
+import WholesaleScreen from './screens/WholesaleScreen';
+import GalleryScreen from './screens/GalleryScreen';
+import MusicScreen from './screens/MusicScreen';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -46,9 +48,10 @@ const router = createBrowserRouter(
       <Route index={true} path='/' element={<HomeScreen/>}/>
       <Route path='/about' element={<AboutScreen/>}/>
       <Route path='/shop' element={<ShopScreen/>}/>
-      <Route path='/cafe' element={<CafeScreen/>}/>
       <Route path='/menu' element={<MenuScreen/>}/>
-
+      <Route path='/wholesale' element={<WholesaleScreen/>}/>
+      <Route path='/gallery' element={<GalleryScreen/>}/>
+      <Route path='/music' element={<MusicScreen/>}/>
 
       <Route path='/search/:keyword' element={<ShopScreen/>}/>
       <Route path='/page/:pageNumber' element={<HomeScreen/>}/>

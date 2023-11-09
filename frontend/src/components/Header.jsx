@@ -109,7 +109,7 @@ const Header = () => {
                                     </LinkContainer>
                                 </NavDropdown.Item>
                                 <NavDropdown.Item>
-                                    <LinkContainer to='/cafe'>
+                                    <LinkContainer to='/wholesale'>
                                         <Nav.Link onClick={callFunctions} className='dropdown-item-title'>
                                             WHOLESALE
                                         </Nav.Link>
@@ -119,7 +119,7 @@ const Header = () => {
 
                             <NavDropdown title='PHOTO'>
                                 <NavDropdown.Item>
-                                    <LinkContainer to='/shop'>
+                                    <LinkContainer to='/gallery'>
                                         <Nav.Link onClick={callFunctions} className='dropdown-item-title'>
                                             GALLERY
                                         </Nav.Link>

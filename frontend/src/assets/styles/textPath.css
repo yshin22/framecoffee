@@ -1,33 +1,16 @@
 
-.svg-container {
-    /* margin-left: -50%;
-    margin-right: -50%; */
+.text tspan {
+    font-weight: 800;
 }
-
-.text a {
-    text-decoration: none;
-    color: #F25000 !important;
-
-}
-
-.text {
-    color: #F25000;
-}
-
-tspan {
-    color: #F25000;
-}
-
 
 @media screen and (max-width: 576px) {
-    /* .svg-container {
-        margin-left: 0;
-        margin-right: 0;
-    } */
 
     .text {
         font-size: 24px;
-        /* font-weight: 800; */
     }
-    
+
+    .text tspan {
+        text-decoration: underline;
+        font-weight: 800;
+    }
 }
