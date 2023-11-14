@@ -1,12 +1,15 @@
 
+.about-container {
+    margin-top: 2vh;
+    margin-bottom: 5vh;
+}
 .page-title {
     border-bottom: solid #303030;
 }
 
 .page-title h1 {
-    font-size: 6vw;
+    font-size: 6rem;
     font-weight: 800;
-    /* margin-bottom: 0; */
 }
 
 .sub-title {
@@ -18,22 +21,29 @@
     margin-bottom: 0;
 }
 
-/* .page-title h2 {
-    margin-left: 15px;
-} */
-
 .image-row {
     border-bottom: solid #303030;
 }
 
 .image-row h1 {
-    font-size: 3vw;
+    font-size: clamp(1rem, 4vw, 4rem);
     font-weight: 700;
     line-height: 1.2em;
+    /* margin: 0 auto; */
+}
+
+.img-container {
+    display: flex;
+    justify-content: center;
 }
 
 .img-container img {
-    width: 80%;
+    max-width: 80%;
+}
+
+.txt-container {
+    display: flex;
+    justify-content: center;
 }
 
 .selectWord {
@@ -41,6 +51,9 @@
 }
 
 @media screen and (max-width: 992px) {
+    .about-container {
+        margin-top: 12vh;
+    }
     .page-title h1{
         font-size: 4rem;
     }
