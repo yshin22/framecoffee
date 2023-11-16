@@ -1,0 +1,9 @@
+.shop-container {
+    margin-top: 2vh;
+}
+
+@media screen and (max-width: 992px) {
+    .shop-container {
+        margin-top: 12vh;
+    }
+}

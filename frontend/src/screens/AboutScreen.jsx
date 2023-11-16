@@ -6,6 +6,8 @@ import woven from '../assets/gallery/hat_music.jpg';
 import Footer from '../components/Footer';
 
 const AboutScreen = () => {
+
+  
   return (
     <>
       <Container className='about-container'>
@@ -31,7 +33,7 @@ const AboutScreen = () => {
           </Col>
         </Row>
         <Row className='image-row py-4'>
-          <Col xs={{span: 12, order:'2'}} sm={{span: 6, order:'1'}}>
+          <Col className='txt-container' xs={{span: 12, order:'2'}} sm={{span: 6, order:'1'}}>
             <h1>
             <span className='selectWord'>Coffee</span> is more than a beverage, however. It is a memory, 
             an anticipation, a lifetime of consoling moments of modest 
@@ -46,7 +48,7 @@ const AboutScreen = () => {
           <Col className='img-container' sm={true}>
             <img src={latte} alt=''/>
           </Col>
-          <Col sm={true}>
+          <Col className='txt-container' sm={true}>
             <h1>
             Having a good cup of <span className='selectWord'>coffee</span> in a good place, that is what 
             we love to share with you.

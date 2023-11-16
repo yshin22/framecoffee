@@ -1,4 +1,5 @@
-import {Row, Col} from 'react-bootstrap'
+import {Row, Col, Container} from 'react-bootstrap';
+import '../assets/styles/shop.css';
 import { useParams } from 'react-router-dom';
 import Product from '../components/Product';
 import { useGetProductsQuery } from '../slices/productsApiSlice';
@@ -14,7 +15,7 @@ const ShopScreen = () => {
   const { data, isLoading, error } = useGetProductsQuery({keyword, pageNumber}); 
 
   return (
-    <>
+    <Container className='shop-container'>
     { isLoading ? (
         <Loader/>) 
         : error ? (
@@ -41,7 +42,7 @@ const ShopScreen = () => {
           page={data.page}
           keyword = {keyword ? keyword : ''}/>
         </>) }
-    </>
+    </Container>
   )
 }
 

@@ -14,7 +14,7 @@ const Footer = () => {
                         <Row className='pt-3 px-3'>
                             <Col className='contact-us'>
                                 <h1>CONTACT US</h1>
-                                <h3>(571) 340-3851</h3>
+                                {/* <h3>(571) 340-3851</h3> */}
                         
                             </Col>
                         </Row>

@@ -7,6 +7,15 @@
     border-bottom: solid #303030;
 }
 
+@keyframes animate-fade {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
 .page-title h1 {
     font-size: 6rem;
     font-weight: 800;
@@ -26,9 +35,9 @@
 }
 
 .image-row h1 {
-    font-size: clamp(1rem, 4vw, 4rem);
+    font-size: clamp(2rem, 4vw, 4rem);
     font-weight: 700;
-    line-height: 1.2em;
+    line-height: 1.3em;
     /* margin: 0 auto; */
 }
 
@@ -38,7 +47,9 @@
 }
 
 .img-container img {
-    max-width: 80%;
+    max-width: 90%;
+    object-fit: contain;
+
 }
 
 .txt-container {
@@ -50,11 +61,19 @@
     color: #F25000;
 }
 
+
 @media screen and (max-width: 992px) {
     .about-container {
         margin-top: 12vh;
     }
     .page-title h1{
         font-size: 4rem;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .txt-container {
+        padding: 5vh 11vw 0 11vw;
+        text-align: center;           
     }
 }
