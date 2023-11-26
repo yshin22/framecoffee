@@ -14,6 +14,7 @@ import TitleAnimation from '../components/TitleAnimation';
 import Footer from '../components/Footer';
 import InstaFeeds from '../components/InstaFeeds';
 import TextPath from '../components/TextPath';
+import HomeContact from '../components/HomeContact';
 
 
   
@@ -36,7 +37,10 @@ const HomeScreen = () => {
       </div>
       <div className='sec2'>
         <TextPath/>
-      </div>      
+      </div>
+      <div>
+        <HomeContact/>
+      </div>     
       <Footer/>
            {/* { !keyword ? <ProductCarousel/> : <Link to='/' className='btn btn-light mb-4'>Go Back</Link>} */}
     </div>

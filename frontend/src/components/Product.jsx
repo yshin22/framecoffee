@@ -24,7 +24,7 @@ const Product = ({product}) => {
             
             <div>
                 <p>
-                    Origin | Ethiopia
+                    Origin |
                 </p>
                 <p>
                     Cupping Note |
