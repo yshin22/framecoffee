@@ -41,8 +41,10 @@
     font-size: 20px;
     font-family: Arimo;
     font-weight: 600;
+    color: #303030;
     transition: color 0.2s ease-in-out;
     transition: background 0.2s ease-in-out;
+
 }
 
 .contact-btn:hover {
@@ -58,6 +60,7 @@
     font-size: 20px;
     font-family: Arimo;
     font-weight: 600;
+    color: #303030;
 }
 
 .vert-splitter {
