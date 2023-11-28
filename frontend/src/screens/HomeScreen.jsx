@@ -3,7 +3,7 @@ import '../assets/styles/home.css'
 import { useParams } from 'react-router-dom';
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
-import {Row, Col} from 'react-bootstrap';
+import {Row, Col, Container} from 'react-bootstrap';
 import Product from '../components/Product';
 import { useGetProductsQuery } from '../slices/productsApiSlice';
 import ProductCarousel from '../components/ProductCarousel';
@@ -25,7 +25,7 @@ const HomeScreen = () => {
   // const { data, isLoading, error } = useGetProductsQuery({keyword, pageNumber}); 
 
   return (
-    <div className='home-wrapper'>
+    <Container className='home-wrapper'>
       <div className='sec1'>
         <TitleAnimation/>
       </div>
@@ -46,7 +46,7 @@ const HomeScreen = () => {
       </div>
       <Footer/>
            {/* { !keyword ? <ProductCarousel/> : <Link to='/' className='btn btn-light mb-4'>Go Back</Link>} */}
-    </div>
+    </Container>
   )
   
 }
