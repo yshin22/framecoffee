@@ -1,13 +1,119 @@
-
+.homecontact-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .contact-page {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    margin: 30px;
 }
 
 .wholesale-page {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    margin: 10px;
+
+}
+
+.contact-page h1 {
+    font-family: Arimo;
+    font-size: 70px;
+    font-weight: 600;
+}
+
+.wholesale-page h1 {
+    font-size: 48px;
+}
+.wholesale-page P {
+    font-size: 24px;
+}
+
+.contact-btn {
+    background: transparent;
+    border: solid #303030;
+    font-size: 20px;
+    font-family: Arimo;
+    font-weight: 600;
+    transition: color 0.2s ease-in-out;
+    transition: background 0.2s ease-in-out;
+}
+
+.contact-btn:hover {
+    background: #303030;
+    color: white;
+}
+
+.wholesale-btn {
+    /* margin-top: 20px; */
+    bottom: 0;
+    background: transparent;
+    border: solid #303030;
+    font-size: 20px;
+    font-family: Arimo;
+    font-weight: 600;
+}
+
+.vert-splitter {
+    border-left: 2.5px solid #303030;
+    width: 0px;
+    left: 50%;
+    margin-left: -3px;
+    top: 0;
+    padding: 0;
+}
+
+.horz-splitter {
+    border-bottom: solid #303030;
+    height: 0px;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    display: none;
+}
+
+@media screen and (max-width: 992px) {
+    .vert-splitter {
+        display: none;
+    }
+    .horz-splitter {
+        display: initial;
+    }
+
+} 
+
+@media screen and (max-width: 768px){
+    .wholesale-page {
+        /* margin-top: 10vh; */
+    }
+
+}
+
+@media screen and (max-width: 576px) {
+    .contact-page h1 {
+        font-size: 56px;
+        font-weight: 600;
+    }
+    .contact-page {
+        margin: initial;
+    }
+    .wholesale-page h1 {
+        font-size: 56px;
+        font-weight: 600;
+    }
+    .wholesale-page p {
+        display: none;
+    }
+    .wholesale-page {
+        margin-top: 8vh;
+        margin: initial;
+    }
+
 }
 
 

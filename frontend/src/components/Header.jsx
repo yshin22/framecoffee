@@ -145,7 +145,7 @@ const Header = () => {
 
                         <div className='nav-cart-login' style={visible ? {...showSearch} : {...hideSearch}}>
                             
-                            <SearchBox isVisible={visible} onVisible={callFunctions} className='search-box'/>
+                            {/* <SearchBox isVisible={visible} onVisible={callFunctions} className='search-box'/> */}
 
                             <div className='ncl-1'>
                                 <LinkContainer to="/cart">

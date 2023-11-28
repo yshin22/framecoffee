@@ -1,0 +1,9 @@
+.email-container {
+    padding-right: 8vw;
+}
+
+@media screen and (max-width: 992px) {
+    .email-container {
+        padding-right: initial;
+    }
+}

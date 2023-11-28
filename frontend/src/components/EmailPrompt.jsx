@@ -1,6 +1,8 @@
-import React from 'react'
+import React from 'react';
+import '../assets/styles/emailprompt.css';
 import { useState } from 'react';
 import {toast} from 'react-toastify';
+import {Form, Button} from 'react-bootstrap';
 
 const EmailPrompt = () => {
 
@@ -47,44 +49,36 @@ const EmailPrompt = () => {
       };
 
   return (
-    <div>
-        <form style={{
-            display: "flex",
-            height: "100vh",
-            justifyContent: "center",
-            alignItems: "center",
-        }}
-        onSubmit={submitEmail}
-        >
-            <fieldset style={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                width: "50%",
-            }}>
-                <legend>Email Form</legend>
-                <input
-                    placeholder='Name'
-                    onChange={handleStateChange}
-                    name='name'
-                    value={mailerState.name}
-                />
-                <input
-                    placeholder='Email'
-                    onChange={handleStateChange}
-                    name='email'
-                    value={mailerState.email}
-                />
-                <textarea style={{ minHeight: "200px" }}
-                    placeholder='Message'
-                    onChange={handleStateChange}
-                    name='message'
-                    value={mailerState.message}
-                />
-                <button>Send Message</button>
-            </fieldset>
-        </form>
-    </div>
+        <Form className="email-container" onSubmit={submitEmail}>
+          <h1>CONTACT US</h1>
+          <Form.Group className='mb-3' controlId='formBasicText'>
+            <Form.Control
+              placeholder='Name'
+              onChange={handleStateChange}
+              name='name'
+              value={mailerState.name}
+            />
+          </Form.Group>
+          <Form.Group className='mb-3' controlId='formBasicEmail'>
+              <Form.Control
+                placeholder='Email'
+                onChange={handleStateChange}
+                name='email'
+                value={mailerState.email}
+              />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formBasicTextArea">
+            <Form.Control 
+              as="textarea" 
+              rows={3}
+              onChange={handleStateChange}
+              name='message'
+              placeholder='Message'
+              value={mailerState.message}
+            />
+          </Form.Group>
+            <button className='contact-btn'>Submit</button>
+        </Form>
   )
 }
 

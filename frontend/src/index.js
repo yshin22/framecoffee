@@ -41,6 +41,10 @@ import MenuScreen from './screens/MenuScreen';
 import WholesaleScreen from './screens/WholesaleScreen';
 import GalleryScreen from './screens/GalleryScreen';
 import MusicScreen from './screens/MusicScreen';
+import PrivacyPolicy from './screens/PrivacyPolicy';
+import RefundPolicy from './screens/RefundPolicy';
+import TermsOfService from './screens/TermsOfService';
+import ShippingPolicy from './screens/ShippingPolicy';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -61,6 +65,12 @@ const router = createBrowserRouter(
       <Route path='/login' element={<LoginScreen/>}/>
       <Route path='/register' element={<RegisterScreen/>}/>
       <Route path='/shipping' element={<ShippingScreen/>}/>
+
+      <Route path='/privacypolicy' element={<PrivacyPolicy/>}/>
+      <Route path='/refundpolicy' element={<RefundPolicy/>}/>
+      <Route path='/termsofservice' element={<TermsOfService/>}/>
+      <Route path='/shippingpolicy' element={<ShippingPolicy/>}/>
+
 
       <Route path='' element={<PrivateRoute/>}>
         <Route path='/shipping' element={<ShippingScreen/>}/>

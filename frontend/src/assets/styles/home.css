@@ -7,11 +7,17 @@
 }
 
 .sec3 {
-    /* height: 100vh; */
     display: flex;
     justify-content: center;
     background-color: #e6e2de;
 
+}
+
+.contact-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 @media screen and (max-width: 992px) {

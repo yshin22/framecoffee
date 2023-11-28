@@ -38,9 +38,12 @@ const HomeScreen = () => {
       <div className='sec2'>
         <TextPath/>
       </div>
-      <div>
+      {/* <div className='contact-container'> */}
         <HomeContact/>
-      </div>     
+      {/* </div> */}
+      <div className='sec2'>
+        <TextPath/>
+      </div>
       <Footer/>
            {/* { !keyword ? <ProductCarousel/> : <Link to='/' className='btn btn-light mb-4'>Go Back</Link>} */}
     </div>

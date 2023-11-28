@@ -23,8 +23,7 @@ const App = () => {
             <Outlet/>
           </Container>
         </main>
-        <ToastContainer/>
-     
+        <ToastContainer/>     
     </>
   )
 }

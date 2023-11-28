@@ -3,28 +3,12 @@
 footer {
     background-color: #e6e2de;
     height: auto;
-    /* border-top: solid #303030; */
-    /* width: 100vw;
-    margin-left: 180px; */
 }
 
-footer .container {
+.footer-container {
+    margin-top: 12vh;
     max-width: 100%;
-}
-
-.contact-us h1 {
-    font-size: 3rem;
-    font-weight: 800;
-}
-
-.locations h2 {
-    font-size: 3rem;
-    font-weight: 700;
-}
-
-.hours h2 {
-    font-size: 3rem;
-    font-weight: 700;
+    height: 45vh;
 }
 
 .frame-logo {
@@ -36,13 +20,44 @@ footer .container {
 
 }
 
+.policy-container {
+    display: flex;
+    margin-top: 7vh;
+}
+
+.policy-container .col {
+    display: flex;
+    justify-content: center;
+}
+
+.policy-container .nav-link {
+    padding: 5px;
+    width: fit-content;
+    border-bottom: 2.5px solid #303030;
+    font-weight: 500;
+    background: transparent;
+    transition: color 0.3s ease-in-out;
+    transition: background 0.3s ease-in-out;
+}
+
+.policy-container .nav-link:hover {
+    color: white;
+    background: #303030;
+}
+
 @media screen and (max-width: 992px) {
     footer {
         margin-left: initial;
     }
     
-    footer .container {
+    .footer-container {
         max-width: initial;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .policy-container {
+        margin-top: 4vh;
     }
 }
 

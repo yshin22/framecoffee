@@ -7,17 +7,27 @@ const HomeContact = () => {
 
   return (
     <>
-        <Container>
+        <Container className='homecontact-container'>
             <Row>
                 <Col className='contact-page' sm>
-                    <h1>Contact us</h1>
                     <EmailPrompt/>
                 </Col>
-
+                <div className='vert-splitter'></div>
+                <div className='horz-splitter'></div>
                 <Col className='wholesale-page' sm>
-                    <h1>Wholesale</h1>
+                    <div>
+                        <h1>WHOLESALE</h1>
+                        <p>Interested in what we have to offer? <br/>
+                        We would love to work with you!
+                        </p>
+                        {/* <p>Coming soon...</p> */}
+                        <button className='wholesale-btn'>Coming Soon...</button>
+
+                    </div>
+                    {/* <button className='wholesale-btn'>Coming Soon...</button> */}
                 </Col>
             </Row>
+
         </Container>
     </>
   )
