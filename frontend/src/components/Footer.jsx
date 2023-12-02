@@ -10,47 +10,44 @@ const Footer = () => {
   return (
     <footer>
             <Container className='footer-container'>
-                <Row>
-                    <Col>
-                        <Row className='frame-logo mx-auto py-5 px-5'>
-                            <img src={logo} alt="frame logo"/>
-                        </Row>
-                        {/* <Row className='text-center'>
-                            <p>Frame &copy; {currentYear}</p>                     
-                        </Row> */}
-                    </Col>
-                </Row>
-                <Row className='policy-container'>
-                    <Col>
+                <div className='frame-logo-container'>
+                    <div className='frame-logo mx-auto py-3 px-3'>
+                        <img src={logo} alt="frame logo"/>
+                    </div>
+                    {/* <Row className='text-center'>
+                        <p>Frame &copy; {currentYear}</p>                     
+                    </Row> */}
+                </div>
+                <div className='policy-container'>
+                    <div className='policy-item'>
                         <LinkContainer to='/privacypolicy'>
                             <Nav.Link> 
                                 Privacy Policy
                             </Nav.Link>
                         </LinkContainer>
-                    </Col>
-                    <Col>
+                    </div>
+                    <div className='policy-item'>
                         <LinkContainer to='/privacypolicy'>
                             <Nav.Link> 
                                 Refund Policy
                             </Nav.Link>
                         </LinkContainer>
-                    </Col>
-                    <Col>
+                    </div>
+                    <div className='policy-item'>
                         <LinkContainer to='/privacypolicy'>
                             <Nav.Link> 
                                 Terms of Service
                             </Nav.Link>
                         </LinkContainer>
-                    </Col>
-                    <Col>
+                    </div>
+                    <div className='policy-item'>
                         <LinkContainer to='/privacypolicy'>
                             <Nav.Link> 
                                 Shipping Policy
                             </Nav.Link>
                         </LinkContainer>
-                    </Col>
-                </Row>
-                
+                    </div>
+                </div>              
             </Container>
     </footer>
   )
