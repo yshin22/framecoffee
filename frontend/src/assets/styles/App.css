@@ -39,3 +39,9 @@
       max-width: none !important;
    }
 }
+
+@media screen and (max-width: 576px) {
+   .app-container {
+      margin-top: 88px;
+   }
+}
