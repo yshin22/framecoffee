@@ -1,0 +1,10 @@
+.productscreen-container {
+    margin-top: 13vh;
+}
+
+
+@media screen and (max-width: 576px){
+    .productscreen-container {
+        margin-top: 88px;
+    }   
+}

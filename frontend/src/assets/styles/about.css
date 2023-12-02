@@ -65,7 +65,7 @@
 
 @media screen and (max-width: 992px) {
     .about-container {
-        margin-top: 12vh;
+        margin-top: 13vh;
     }
     .page-title h1{
         font-size: 4rem;
@@ -73,6 +73,9 @@
 }
 
 @media screen and (max-width: 576px) {
+    .about-container {
+        margin-top: 88px;
+    }
     .txt-container {
         padding: 5vh 11vw 0 11vw;
         text-align: center;           

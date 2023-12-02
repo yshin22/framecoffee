@@ -2,8 +2,29 @@
     margin-top: 2vh;
 }
 
+.page-title {
+}
+
+.page-title h1 {
+}
+
 @media screen and (max-width: 992px) {
     .shop-container {
         margin-top: 12vh;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .shop-container {
+        margin-top: 88px;
+    }
+    .page-title {
+        margin-top: 2vh;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        text-align: center;
+    }
+    .page-title h1 {
+        margin-bottom: 0;
     }
 }

@@ -95,6 +95,12 @@
         justify-content: space-evenly;
 
     }
+    .contact-page {
+        margin: 0;
+    }
+    .wholesale-page {
+        margin: 0;
+    }
 
 } 
 

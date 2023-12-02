@@ -47,7 +47,8 @@ const Footer = () => {
                             </Nav.Link>
                         </LinkContainer>
                     </div>
-                </div>              
+                </div> 
+                
             </Container>
     </footer>
   )

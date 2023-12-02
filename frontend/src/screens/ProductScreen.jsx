@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
+import '../assets/styles/productscreen.css'
 import { useParams, useNavigate} from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import {Form, Row, Col, Image, ListGroup, Card, Button} from 'react-bootstrap'
@@ -53,7 +54,7 @@ const ProductScreen = () => {
     };
 
     return (
-    <>
+    <div className='productscreen-container'>
         <Link className='btn btn-light my-3' to='/shop'>Go Back</Link>
 
         {isLoading ? (
@@ -77,9 +78,9 @@ const ProductScreen = () => {
                     <ListGroup.Item>
                         <h3>{product.name}</h3>
                     </ListGroup.Item>
-                    <ListGroup.Item>
+                    {/* <ListGroup.Item>
                         <Rating value={product.rating} text={`${product.numReviews} reviews`}></Rating>
-                    </ListGroup.Item>
+                    </ListGroup.Item> */}
                     <ListGroup.Item>
                         Price: ${product.price}
                     </ListGroup.Item>
@@ -141,7 +142,7 @@ const ProductScreen = () => {
                 </Card>
             </Col>
         </Row>
-        <Row className='review'>
+        {/* <Row className='review'>
             <Col md={6}>
                 <h2>Reviews</h2>
                 {product.reviews.length === 0 && <Message>No Reviews</Message>}
@@ -202,11 +203,11 @@ const ProductScreen = () => {
                     </ListGroup.Item>
                 </ListGroup>
             </Col>
-        </Row>
+        </Row> */}
         </>
         )}
         
-    </>
+    </div>
   )
 }
 
