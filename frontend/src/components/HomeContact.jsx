@@ -9,12 +9,12 @@ const HomeContact = () => {
     <>
         <Container className='homecontact-container'>
             <Row>
-                <Col className='contact-page' sm>
+                <Col className='contact-page' sm={true}>
                     <EmailPrompt/>
                 </Col>
                 <div className='vert-splitter'></div>
                 <div className='horz-splitter'></div>
-                <Col className='wholesale-page' sm>
+                <Col className='wholesale-page' sm={true}>
                     <div>
                         <h1>WHOLESALE</h1>
                         <p>Interested in what we have to offer? <br/>

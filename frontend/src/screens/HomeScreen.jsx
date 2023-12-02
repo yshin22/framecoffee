@@ -25,28 +25,21 @@ const HomeScreen = () => {
   // const { data, isLoading, error } = useGetProductsQuery({keyword, pageNumber}); 
 
   return (
-    <Container className='home-wrapper'>
+    <div className='home-wrapper'>
       <div className='sec1'>
         <TitleAnimation/>
       </div>
+      <TextPath/>
       <div className='sec2'>
-        <TextPath/>
-      </div>
-      <div className='sec3'>
         <InstaFeeds token={process.env.REACT_APP_INS_TOKEN} limit={9}/>
       </div>
-      <div className='sec2'>
-        <TextPath/>
-      </div>
-      {/* <div className='contact-container'> */}
+      <TextPath/>
+      <div className='sec3'>
         <HomeContact/>
-      {/* </div> */}
-      <div className='sec2'>
-        <TextPath/>
       </div>
+      <TextPath/>
       <Footer/>
-           {/* { !keyword ? <ProductCarousel/> : <Link to='/' className='btn btn-light mb-4'>Go Back</Link>} */}
-    </Container>
+    </div>
   )
   
 }

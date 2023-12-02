@@ -6,9 +6,9 @@ const TextPath = () => {
 
     
   return (
-    <div className='svg-container' style={{borderBottom: "solid #303030", borderTop:'solid #303030'}}>
+    <div className='svg-container' style={{border: 'solid #303030'}}>
         <a href='https://apps.apple.com/us/app/frame-coffee-roasters/id6448272834' rel='noreferrer' target='_blank'>
-            <svg className="svgwave"  viewBox="0 0 1000 40">
+            <svg className="svgwave"  viewBox="0 0 800 40">
                 <path id="wavepath" d="M0 25h1000" style={{fill: "transparent", stroke: "transparent", strokeWidth: "1px"}}></path>
                 <text className='svg-text' text-anchor="middle">
                     <textPath className='text' href='#wavepath' startOffset='0%' textLength="3500">

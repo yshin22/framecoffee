@@ -1,22 +1,17 @@
 .home-wrapper {
-    /* overflow-x: hidden; */
+    
 }
 .sec1 {
     height: 100vh ;
 }
 
 .sec2 {
-    /* height: fit-content; */
-}
-
-.sec3 {
     display: flex;
     justify-content: center;
     background-color: #e6e2de;
-
 }
 
-.contact-container {
+.sec3 {
     display: flex;
     justify-content: center;
     align-items: center;

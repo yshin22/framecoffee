@@ -84,6 +84,7 @@ header {
     margin-top: 5vh;
     transform: translateX(0%);
     transition: transform 1s;
+    width: fit-content;
     margin-left: auto;
     
 }
@@ -124,7 +125,7 @@ header {
 @media screen and (max-width: 992px) {
     .navbar-main {
         height: auto;
-        width: 100vw;
+        width: 100%;
         display: flex;
         border-right: none;
         border-bottom: solid #303030;
@@ -175,6 +176,10 @@ header {
 }
 
 @media screen and (max-width: 576px) {
+
+    .logo-container {
+    }
+    
     .logo-container button {
         display: none;
     }

@@ -2,6 +2,7 @@
 .about-container {
     margin-top: 2vh;
     margin-bottom: 5vh;
+    /* overflow-x: hidden; */
 }
 .page-title {
     border-bottom: solid #303030;
