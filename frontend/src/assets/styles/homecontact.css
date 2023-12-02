@@ -1,11 +1,3 @@
-.homecontact-container {
-    /* height: 100vh; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow-x: hidden;
-}
-
 .contact-page {
     display: flex;
     flex-direction: column;
@@ -100,14 +92,14 @@
 
 @media screen and (max-width: 576px) {
     .contact-page h1 {
-        font-size: 56px;
+        font-size: 12vw;
         font-weight: 600;
     }
     .contact-page {
         margin: initial;
     }
     .wholesale-page h1 {
-        font-size: 56px;
+        font-size: 12vw;
         font-weight: 600;
     }
     .wholesale-page p {

@@ -7,7 +7,7 @@ const HomeContact = () => {
 
   return (
     <>
-        <Container className='homecontact-container'>
+        <Container>
             <Row>
                 <Col className='contact-page' sm={true}>
                     <EmailPrompt/>
