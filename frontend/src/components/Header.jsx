@@ -108,13 +108,13 @@ const Header = () => {
                                         </Nav.Link>
                                     </LinkContainer>
                                 </NavDropdown.Item>
-                                <NavDropdown.Item>
+                                {/* <NavDropdown.Item>
                                     <LinkContainer to='/wholesale'>
                                         <Nav.Link onClick={callFunctions} className='dropdown-item-title'>
                                             WHOLESALE
                                         </Nav.Link>
                                     </LinkContainer>
-                                </NavDropdown.Item>
+                                </NavDropdown.Item> */}
                             </NavDropdown>
 
                             <NavDropdown title='PHOTO'>
@@ -135,7 +135,7 @@ const Header = () => {
 
                             </NavDropdown>
 
-                            <LinkContainer to='/cafe'>
+                            <LinkContainer to='/music'>
                                 <Nav.Link onClick={callFunctions}>
                                      MUSIC
                                 </Nav.Link>

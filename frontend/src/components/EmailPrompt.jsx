@@ -13,6 +13,7 @@ const EmailPrompt = () => {
       });
 
       function handleStateChange(e) {
+
         setMailerState((prevState) => ({
           ...prevState,
           [e.target.name]: e.target.value,
@@ -22,7 +23,8 @@ const EmailPrompt = () => {
       const submitEmail = async (e) => {
         e.preventDefault();
         console.log({ mailerState });
-        const response = await fetch("http://localhost:4000/send", {
+
+        const response = await fetch("https://framecoffeeroasters.onrender.com/send", {
           method: "POST",
           headers: {
             "Content-type": "application/json",
