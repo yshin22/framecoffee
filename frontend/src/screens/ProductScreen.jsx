@@ -12,6 +12,7 @@ import Loader from '../components/Loader'
 import Message from '../components/Message'
 import { addToCart } from '../slices/cartSlice' 
 import {toast} from 'react-toastify'
+import Footer from '../components/Footer'
 
 const ProductScreen = () => {
 

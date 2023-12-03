@@ -77,7 +77,7 @@ const EmailPrompt = () => {
               value={mailerState.message}
             />
           </Form.Group>
-            <button className='contact-btn'>Submit</button>
+          <Button className='contact-btn'>Submit</Button>
         </Form>
   )
 }

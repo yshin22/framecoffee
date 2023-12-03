@@ -12,6 +12,7 @@ footer {
     justify-content: space-evenly ;
     max-width: 100%;
     height: 45vh;
+    /* border: solid #303030; */
 }
 
 .frame-logo-container {
@@ -51,6 +52,10 @@ footer {
     background: #303030;
 }
 
+.policy-item {
+    text-align: center;
+}
+
 @media screen and (max-width: 992px) {
     footer {
         margin-left: initial;
@@ -74,10 +79,6 @@ footer {
 
     .policy-item:first-child .nav-link {
         border-left: solid #303030;
-    }
-
-    .policy-item {
-        text-align: center;
     }
 
     .frame-logo img {

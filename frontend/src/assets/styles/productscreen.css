@@ -1,10 +1,16 @@
 .productscreen-container {
-    margin-top: 13vh;
+    /* margin-top: 13vh; */
 }
 
 
-@media screen and (max-width: 576px){
+@media screen and (max-width: 992px) {
     .productscreen-container {
         margin-top: 88px;
+    }
+}
+
+@media screen and (max-width: 576px){
+    .productscreen-container {
+        /* margin-top: 88px; */
     }   
 }
