@@ -62,7 +62,7 @@ export const productsApiSlice =  apiSlice.injectEndpoints({
                 url: `${PRODUCTS_URL}/top`
             }),
             keepUnusedDataFor: 5
-        })
+        }),
     })
 });
 

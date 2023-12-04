@@ -38,6 +38,7 @@ import ProductEditScreen from './screens/admin/ProductEditScreen';
 import UserListScreen from './screens/admin/UserListScreen';
 import UserEditScreen from './screens/admin/UserEditScreen';
 import MenuScreen from './screens/MenuScreen';
+import MenuEditScreen from './screens/admin/MenuEditScreen';
 import WholesaleScreen from './screens/WholesaleScreen';
 import GalleryScreen from './screens/GalleryScreen';
 import MusicScreen from './screens/MusicScreen';
@@ -87,6 +88,7 @@ const router = createBrowserRouter(
         <Route path='/admin/product/:id/edit' element={<ProductEditScreen/>}/>
         <Route path='/admin/userlist' element={<UserListScreen/>}/>
         <Route path='/admin/user/:id/edit' element={<UserEditScreen/>}/>
+        <Route path='/admin/menuedit' element={<MenuEditScreen/>}/>
       </Route>
     </Route>
   )

@@ -184,6 +184,9 @@ const Header = () => {
                                         <LinkContainer to='/admin/orderlist'>
                                             <NavDropdown.Item onClick={callFunctions}>Orders</NavDropdown.Item>
                                         </LinkContainer>
+                                        <LinkContainer to='/admin/menuedit'>
+                                            <NavDropdown.Item onClick={callFunctions}>Menu</NavDropdown.Item>
+                                        </LinkContainer>
                                     </NavDropdown>
                                 )}
                             </div>

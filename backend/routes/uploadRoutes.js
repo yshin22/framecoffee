@@ -1,6 +1,7 @@
 import path from 'path';
 import express from 'express';
 import multer from 'multer';
+import Menu from '../models/uploadModel.js';
 
 const router = express.Router();
 
@@ -32,6 +33,7 @@ function fileFilter(req, file, cb) {
 
 const upload = multer({ storage, fileFilter });
 const uploadSingleImage = upload.single('image');
+const uploadMultipleImages = upload.array('images', 4);
 
 router.post('/', (req, res) => {
   uploadSingleImage(req, res, function (err) {
@@ -45,5 +47,32 @@ router.post('/', (req, res) => {
     });
   });
 });
+
+// router.post('/upload/menu', upload.single('image'), (req,res) => {
+//   console.log(req.file);
+// })
+
+router.post('/menu', async(req, res) => {
+  uploadSingleImage(req, res, function (err) {
+    if (err) {
+      return res.status(400).send('error message:' + { message: err.message });
+    }
+
+    // Menu.create({image: `/${req.file.path}`});
+
+    res.status(200).send({
+      message: 'Image uploaded successfully',
+      // image: `/${req.file.path}`,
+      image: req.file.filename,
+    });
+  });
+});
+
+// router.get('/getmenuimage', (req,res) => {
+//   Menu.find()
+//   // console.log("getting image")
+//   .then(menu => res.json(menu))
+//   .catch(err => res.json(err))
+// })
 
 export default router;

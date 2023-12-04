@@ -1,0 +1,37 @@
+.menu-container {
+    margin-top: 2vh;
+    margin-bottom: 5vh;
+}
+
+.menu-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: auto;
+}
+
+.menu-wrapper {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+    /* height: 100vh; */
+}
+
+.menu-wrapper img {
+    max-width: 70%;
+}
+
+@media screen and (max-width: 992px) {
+    .menu-container {
+        margin-top: 13vh
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .menu-container {
+        margin-top: 88px;
+    }
+    .menu-wrapper img {
+        max-width: 100%;
+    }
+}
