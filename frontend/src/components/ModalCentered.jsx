@@ -18,7 +18,7 @@ const ModalCentered = (props) => {
         <Modal.Title id="contained-modal-title-vcenter">
         </Modal.Title>
       </Modal.Header>
-      <Modal.Body>
+      <Modal.Body style={{padding: '0'}}>
         <img style={{maxWidth: '100%'}} src={(props.image === 1) ? 
             Menu1 : (props.image === 2) ?
              Menu2 : Menu3} alt="menu images" 
