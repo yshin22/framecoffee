@@ -56,6 +56,9 @@ const createProduct = asyncHandler(async (req,res) => {
         countInStock: 0,
         newReviews: 0,
         description: 'Sample description',
+        origin: 'Sample origin',
+        roastingLevel: 'Sample roasting level',
+        cuppingNote: 'Sample cupping note',
     })
     const createdProduct = await product.save();
     res.status(201).json(createdProduct);
@@ -65,7 +68,7 @@ const createProduct = asyncHandler(async (req,res) => {
 // @route PUT /api/products/:id
 // @access Private/Admin
 const updateProduct = asyncHandler(async (req,res) => {
-    const {name, price, description, image, brand, category, countInStock} = req.body;
+    const {name, price, description, image, brand, category, countInStock, origin, roastingLevel, cuppingNote} = req.body;
 
     const product = await Product.findById(req.params.id);
 
@@ -77,6 +80,9 @@ const updateProduct = asyncHandler(async (req,res) => {
         product.brand = brand;
         product.category = category;
         product.countInStock = countInStock;
+        product.origin = origin;
+        product.roastingLevel = roastingLevel;
+        product.cuppingNote = cuppingNote;
 
         const updateProduct = await product.save();
         res.json(updateProduct);

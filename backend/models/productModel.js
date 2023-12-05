@@ -66,7 +66,21 @@ const productSchema = new mongoose.Schema({
         type: Number,
         required: true,
         default: 0
-    }
+    },
+    origin: {
+        type: String,
+        required: false,
+    },
+    roastingLevel: {
+        type: Number,
+        required: false,
+        default: 0,
+    },
+    cuppingNote: {
+        type: String,
+        required: false,
+    },
+
 }, {timestamps: true});
 
 const Product = mongoose.model("Product", productSchema);

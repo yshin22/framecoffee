@@ -7,11 +7,16 @@ header {
     background-color: #e6e2de !important;
 }
 .navbar-toggler {
+    border: solid #303030;
     color: #303030 !important;
 }
-.navbar-toggler-icon {
-    color: #303030 !important;
+
+.navbar-toggler:focus {
+    box-shadow: 3px 3px 3px #303030 !important;
 }
+/* .navbar-toggler-icon {
+    color: #303030 !important;
+} */
 
 .navbar-main {
     height: 100vh;

@@ -4,6 +4,10 @@ import { Link } from 'react-router-dom'
 import Rating from './Rating'
 
 const Product = ({product}) => {
+
+    const origin = product.origin;
+    const cuppingNote = product.cuppingNote;
+    const roastingLevel = product.roastingLevel
   return (
     <Card className="my-3 p-3 rounded">
         <Link to={`/product/${product._id}`}>
@@ -22,17 +26,32 @@ const Product = ({product}) => {
 
             </Card.Text> */}
             
+{/* 
             <div>
                 <p>
-                    Origin |
+                    {product.category === 'Coffee Bean' ? (
+
+                    )}
                 </p>
                 <p>
-                    Cupping Note |
+
                 </p>
                 <p>
-                    Roasting Level |
+
                 </p>
-            </div>
+            </div> */}
+            {(product.category === 'Coffee Beans') && 
+                <div>
+                    <p>
+                        <span style={{fontWeight: '800', textDecorationLine: 'underline'}}>Origin</span>: <i> {product.origin}</i>
+                    </p>
+                    <p>
+                        <span style={{fontWeight: '800', textDecorationLine: 'underline'}}>Cupping Note</span>: <i> {product.cuppingNote}</i>
+                    </p>
+                    <p>
+                        <span style={{fontWeight: '800', textDecorationLine: 'underline'}}>Roasting Level</span>: <i>{product.roastingLevel}</i>
+                    </p>
+                </div>}
 
             <Card.Text as="h3">
                 ${product.price}

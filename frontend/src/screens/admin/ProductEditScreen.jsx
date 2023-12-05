@@ -21,6 +21,9 @@ const ProductEditScreen = () => {
     const [category, setCategory] = useState('');
     const [countInStock, setCountInStock] = useState(0);
     const [description, setDescription] = useState('');
+    const [origin, setOrigin] = useState('');
+    const [cuppingNote, setCuppingNote] = useState('');
+    const [roastingLevel, setRoastingLevel] = useState(0);
 
     const {data: product, isLoading, error, refetch} = useGetProductDetailsQuery(productId);
     console.log(product);
@@ -40,6 +43,9 @@ const ProductEditScreen = () => {
             setCategory(product.category);
             setCountInStock(product.countInStock);
             setDescription(product.description);
+            setOrigin(product.origin);
+            setCuppingNote(product.cuppingNote);
+            setRoastingLevel(product.roastingLevel);
         }
     }, [product]);
 
@@ -55,6 +61,9 @@ const ProductEditScreen = () => {
             category,
             description,
             countInStock,
+            origin,
+            cuppingNote,
+            roastingLevel,
           }).unwrap(); // NOTE: here we need to unwrap the Promise to catch any rejection in our catch block
           toast.success('Product updated');
           refetch();
@@ -162,6 +171,36 @@ const ProductEditScreen = () => {
                         placeholder='Enter description'
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}> 
+                        </Form.Control>
+                    </Form.Group>
+
+                    <Form.Group controlId='origin' className='my-2'>
+                        <Form.Label>Origin</Form.Label>
+                        <Form.Control
+                        type='text'
+                        placeholder='Enter Origin'
+                        value={origin}
+                        onChange={(e) => setOrigin(e.target.value)}> 
+                        </Form.Control>
+                    </Form.Group>
+
+                    <Form.Group controlId='cuppingNote' className='my-2'>
+                        <Form.Label>Cupping Note</Form.Label>
+                        <Form.Control
+                        type='text'
+                        placeholder='Enter Cupping Note'
+                        value={cuppingNote}
+                        onChange={(e) => setCuppingNote(e.target.value)}> 
+                        </Form.Control>
+                    </Form.Group>
+
+                    <Form.Group controlId='roastingLevel' className='my-2'>
+                        <Form.Label>Roasting Level</Form.Label>
+                        <Form.Control
+                        type='number'
+                        placeholder='Enter Roasting Level'
+                        value={roastingLevel}
+                        onChange={(e) => setRoastingLevel(e.target.value)}> 
                         </Form.Control>
                     </Form.Group>
 
