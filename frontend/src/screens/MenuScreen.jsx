@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import '../assets/styles/menuscreen.css'
-import Menu1 from '../assets/gallery/FALL_MENU_1.jpg';
-import Menu2 from '../assets/gallery/FALL_MENU_2.jpg';
-import Menu3 from '../assets/gallery/FALL_MENU_3.jpg';
-import { Container, Row, Modal } from 'react-bootstrap';
+import '../assets/styles/screens/menuscreen.css'
+import Menu1 from '../assets/images/FALL_MENU_1.jpg';
+import Menu2 from '../assets/images/FALL_MENU_2.jpg';
+import Menu3 from '../assets/images/FALL_MENU_3.jpg';
+import { Container, Row} from 'react-bootstrap';
 import Footer from '../components/Footer';
 import TextPath from '../components/TextPath'
 import ModalCentered from '../components/ModalCentered';
@@ -18,7 +18,7 @@ const MenuScreen = () => {
     <>
       <Container className='menu-container'>
         <Row className='page-title'>
-          <h1>Menu</h1>
+          <h1>MENU</h1>
         </Row>
 
         <Row className='sub-title py-2'>

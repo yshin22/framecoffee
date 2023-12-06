@@ -1,15 +1,16 @@
 import { LinkContainer } from 'react-router-bootstrap';
-import { Table, Button } from 'react-bootstrap';
+import { Table, Button, Container } from 'react-bootstrap';
 import { FaTimes } from 'react-icons/fa';
 import Message from '../../components/Message';
 import Loader from '../../components/Loader';
 import { useGetOrdersQuery } from '../../slices/ordersApiSlice';
+import '../../assets/styles/screens/orderlistscreen.css'
 
 const OrderListScreen = () => {
   const { data: orders, isLoading, error } = useGetOrdersQuery();
 
   return (
-    <>
+    <Container className='orderlist-container'>
       <h1>Orders</h1>
       {isLoading ? (
         <Loader />
@@ -63,7 +64,7 @@ const OrderListScreen = () => {
           </tbody>
         </Table>
       )}
-    </>
+    </Container>
   );
 };
 

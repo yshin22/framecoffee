@@ -25,21 +25,6 @@ const Product = ({product}) => {
                 <Rating value={product.rating} text={`${product.numReviews} reviews`}/>
 
             </Card.Text> */}
-            
-{/* 
-            <div>
-                <p>
-                    {product.category === 'Coffee Bean' ? (
-
-                    )}
-                </p>
-                <p>
-
-                </p>
-                <p>
-
-                </p>
-            </div> */}
             {(product.category === 'Coffee Beans') && 
                 <div>
                     <p>
@@ -51,7 +36,8 @@ const Product = ({product}) => {
                     <p>
                         <span style={{fontWeight: '800', textDecorationLine: 'underline'}}>Roasting Level</span>: <i>{product.roastingLevel}</i>
                     </p>
-                </div>}
+                </div>
+            }
 
             <Card.Text as="h3">
                 ${product.price}

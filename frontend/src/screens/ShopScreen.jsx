@@ -1,5 +1,5 @@
 import {Row, Col, Container} from 'react-bootstrap';
-import '../assets/styles/shop.css';
+import '../assets/styles/screens/shopscreen.css';
 import { useParams } from 'react-router-dom';
 import Product from '../components/Product';
 import { useGetProductsQuery } from '../slices/productsApiSlice';

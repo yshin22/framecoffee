@@ -2,13 +2,14 @@ import React from 'react';
 import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import {Button, Row, Col, ListGroup, Image, Card} from 'react-bootstrap';
+import {Button, Row, Col, ListGroup, Image, Card, Container} from 'react-bootstrap';
 import CheckoutSteps from '../components/CheckoutSteps';
 import {toast} from 'react-toastify';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
 import { useCreateOrderMutation } from '../slices/ordersApiSlice';
 import { clearCartItems } from '../slices/cartSlice';
+import '../assets/styles/screens/placeorderscreen.css';
 
 const PlaceOrderScreen = () => {
     const navigate = useNavigate();
@@ -46,7 +47,7 @@ const PlaceOrderScreen = () => {
     };
 
   return (
-    <>
+    <Container className='placeOrder-container'>
         <CheckoutSteps step1 step2 step3 step4/>
         <Row>
             <Col md={8}>
@@ -146,7 +147,7 @@ const PlaceOrderScreen = () => {
                 </Card>
             </Col>
         </Row>
-    </>
+    </Container>
   )
 }
 

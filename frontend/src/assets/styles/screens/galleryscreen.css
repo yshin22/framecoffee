@@ -1,0 +1,15 @@
+.gallery-container {
+    margin-top: 2vh;
+}
+
+@media screen and (max-width: 992px) {
+    .gallery-container {
+        margin-top: 13vh;
+    }
+}
+
+@media screen and (max-width: 576px){
+    .gallery-container {
+        margin-top: 88px;
+    }
+}

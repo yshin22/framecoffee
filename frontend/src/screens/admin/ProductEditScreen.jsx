@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { Form, Button} from 'react-bootstrap';
+import { Form, Button, Container} from 'react-bootstrap';
 import Message from '../../components/Message';
 import Loader from '../../components/Loader';
 import FormContainer from '../../components/FormContainer';
@@ -10,6 +10,7 @@ import {
     useGetProductDetailsQuery, 
     useUploadProductImageMutation } 
     from '../../slices/productsApiSlice';
+import '../../assets/styles/screens/producteditscreen.css'
 
 const ProductEditScreen = () => {
     const {id: productId} = useParams();
@@ -86,7 +87,8 @@ const ProductEditScreen = () => {
       } 
 
 
-  return ( <>
+  return ( 
+    <Container className='productEdit-container'>
     <Link to='/admin/productlist' className='btn btn-light my-2'>
         Go Back
     </Link>
@@ -215,7 +217,7 @@ const ProductEditScreen = () => {
                 </Form>
             )}
     </FormContainer>
-  </>
+  </Container>
   )
 }
 

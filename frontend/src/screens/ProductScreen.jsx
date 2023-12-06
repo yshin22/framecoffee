@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
-import '../assets/styles/productscreen.css'
+import '../assets/styles/screens/productscreen.css'
 import { useParams, useNavigate} from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import {Form, Row, Col, Image, ListGroup, Card, Button} from 'react-bootstrap'
@@ -91,13 +91,15 @@ const ProductScreen = () => {
                                 <ListGroup.Item>
                                     <span>Price</span>: ${product.price}
                                 </ListGroup.Item>
-                                <ListGroup.Item>
-                                    <span>Origin</span>: <i> {product.origin}</i>
-                                    <br/>
-                                    <span>Cupping Note</span>: <i> {product.cuppingNote}</i>
-                                    <br/>
-                                    <span>Roasting Level</span>: <i> {product.roastingLevel}</i>
-                                </ListGroup.Item>
+                                {(product.category === 'Coffee Beans') && 
+                                    <ListGroup.Item>
+                                        <span>Origin</span>: <i> {product.origin}</i>
+                                        <br/>
+                                        <span>Cupping Note</span>: <i> {product.cuppingNote}</i>
+                                        <br/>
+                                        <span>Roasting Level</span>: <i> {product.roastingLevel}</i>
+                                    </ListGroup.Item>
+                                }
                                 <ListGroup.Item>
                                     {product.description}
                                 </ListGroup.Item>

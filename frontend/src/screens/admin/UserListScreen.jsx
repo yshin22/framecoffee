@@ -1,10 +1,11 @@
 import { LinkContainer } from 'react-router-bootstrap';
-import { Table, Button } from 'react-bootstrap';
+import { Table, Button, Container } from 'react-bootstrap';
 import { FaTrash, FaTimes, FaEdit, FaCheck } from 'react-icons/fa';
 import Message from '../../components/Message';
 import Loader from '../../components/Loader';
 import {toast} from 'react-toastify'
 import { useGetUsersQuery, useDeleteUserMutation } from '../../slices/usersApiSlice';
+import '../../assets/styles/screens/userlistscreen.css'
 
 const UserListScreen = () => {
   const { data: users, refetch, isLoading, error } = useGetUsersQuery();
@@ -24,7 +25,7 @@ const UserListScreen = () => {
   }
 
   return (
-    <>
+    <Container className='userlist-container'>
       <h1>Users</h1>
       {loadingDelete && <Loader/>}
       {isLoading ? (
@@ -75,7 +76,7 @@ const UserListScreen = () => {
           </tbody>
         </Table>
       )}
-    </>
+    </Container>
   );
 };
 

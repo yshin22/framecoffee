@@ -1,8 +1,8 @@
 import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
-import Menu1 from '../assets/gallery/FALL_MENU_1.jpg';
-import Menu2 from '../assets/gallery/FALL_MENU_2.jpg';
-import Menu3 from '../assets/gallery/FALL_MENU_3.jpg';
+import Menu1 from '../assets/images/FALL_MENU_1.jpg';
+import Menu2 from '../assets/images/FALL_MENU_2.jpg';
+import Menu3 from '../assets/images/FALL_MENU_3.jpg';
 
 const ModalCentered = (props) => {
 

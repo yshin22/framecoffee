@@ -1,0 +1,9 @@
+.userlist-container {
+    margin-top: 3vh;
+}
+
+@media screen and (max-width: 992px) {
+    .userlist-container {
+        margin-top: 13vh;
+    }
+}

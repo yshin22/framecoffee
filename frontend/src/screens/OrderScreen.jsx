@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import {Link, useParams} from 'react-router-dom';
-import {Row, Col, ListGroup, Image, Button, Card} from 'react-bootstrap';
+import {Row, Col, ListGroup, Image, Button, Card, Container} from 'react-bootstrap';
 import {toast} from 'react-toastify';
 import {useSelector } from 'react-redux';
 import {PayPalButtons, usePayPalScriptReducer} from '@paypal/react-paypal-js'
@@ -13,6 +13,8 @@ import {
     useDeliverOrdersMutation
 } 
 from '../slices/ordersApiSlice';
+import '../assets/styles/screens/orderscreen.css';
+import Footer from '../components/Footer';
 
 
 const OrderScreen = () => {
@@ -108,8 +110,8 @@ const OrderScreen = () => {
   <Message variant='danger'/>
   ) : (
     <>
-    <h1>Order {order._id}</h1>
-    <Row>
+    <Container className='order-container'>
+    <Row className='order-row'>
         <Col md={8}>
             <ListGroup variant='flush'>
                 <ListGroup.Item>
@@ -155,6 +157,7 @@ const OrderScreen = () => {
 
                 <ListGroup.Item>
                     <h2>Order Items</h2>
+                    <h3>ORDER# {order._id}</h3>
                     {order.orderItems.map((item, index) => (
                         <ListGroup.Item key={index}>
                             <Row>
@@ -240,6 +243,8 @@ const OrderScreen = () => {
             </Card>
         </Col>
     </Row>
+    </Container>
+    <Footer/>
     </>
   );
 }
