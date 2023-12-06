@@ -1,0 +1,33 @@
+.artShow-container {
+    /* margin-top: 2vh; */
+    height: 100vh;
+}
+.coming-soon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    text-align: center;
+    /* font-size: 14vw; */
+    /* align-items: center; */
+}
+
+.coming-soon h1 {
+    font-size: 12vw;
+    font-weight: 700;
+    color: #F25000;
+    text-decoration-line:underline;
+    /* text-decoration-color: #303030; */
+}
+
+@media screen and (max-width: 992px) {
+    .artShow-container {
+        /* margin-top: 13vh; */
+    }
+}
+
+@media screen and (max-width: 576px){
+    .artShow-container {
+        /* margin-top: 88px; */
+    }
+}

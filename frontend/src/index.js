@@ -42,6 +42,8 @@ import MenuEditScreen from './screens/admin/MenuEditScreen';
 import WholesaleScreen from './screens/WholesaleScreen';
 import GalleryScreen from './screens/GalleryScreen';
 import MusicScreen from './screens/MusicScreen';
+import ArtShowScreen from './screens/ArtShowScreen';
+
 import PrivacyPolicy from './screens/PrivacyPolicy';
 import RefundPolicy from './screens/RefundPolicy';
 import TermsOfService from './screens/TermsOfService';
@@ -56,6 +58,7 @@ const router = createBrowserRouter(
       <Route path='/menu' element={<MenuScreen/>}/>
       <Route path='/wholesale' element={<WholesaleScreen/>}/>
       <Route path='/gallery' element={<GalleryScreen/>}/>
+      <Route path='/artshow' element={<ArtShowScreen/>}/>
       <Route path='/music' element={<MusicScreen/>}/>
 
       <Route path='/search/:keyword' element={<ShopScreen/>}/>

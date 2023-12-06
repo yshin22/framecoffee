@@ -126,7 +126,7 @@ const Header = () => {
                                     </LinkContainer>
                                 </NavDropdown.Item>
                                 <NavDropdown.Item >
-                                    <LinkContainer to='/shop'>
+                                    <LinkContainer to='/artshow'>
                                         <Nav.Link onClick={callFunctions} className='dropdown-item-title'>
                                             ARTSHOW    
                                         </Nav.Link>
