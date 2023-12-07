@@ -8,46 +8,47 @@ const Feed = (props) => {
     switch (media_type) {
         case "VIDEO":
             post = (
-                <a href={permalink} rel='noreferrer' target='_blank'>
-                    <video
-                        width='100%'
-                        height='auto' 
-                        src={media_url} 
-                        type="video/mp4" 
-                        controls playsinline>
-                    </video>
-                </a>
-
+                <div style={{display: 'flex', justifyContent: 'center'}}>
+                    <a href={permalink} rel='noreferrer' target='_blank'>
+                        <video
+                            width='100%'
+                            height='auto' 
+                            src={media_url} 
+                            type="video/mp4" 
+                            controls playsinline>
+                        </video>
+                    </a>
+                </div>
             )
             break;
         case "CAROUSEL_ALBUM":
             post = (
-                <a href={permalink} rel='noreferrer' target='_blank'>
-                    <img 
-                        width='100%'
-                        height='auto'
-                        id={id} 
-                        src={media_url} 
-                        alt={caption} 
-                    />                   
-                </a>
+                <div style={{display: 'flex', justifyContent: 'center'}}>
+                    <a href={permalink} rel='noreferrer' target='_blank'>
+                        <img 
+                            width='100%'
+                            height='auto'
+                            id={id} 
+                            src={media_url} 
+                            alt={caption} 
+                        />                   
+                    </a>
+                </div>
             );
             break;
         default:
             post = (
-                <a href={permalink} rel='noreferrer' target='_blank'>
-                    <img 
-                        width='100%'
-                        height='auto'
-                        id={id} 
-                        src={media_url} 
-                        alt={caption} 
-                    />
-                    <div className='insta-overlay'>
-                        <div>Hey how are you</div>
-                    </div>
-                    <FaInstagram/>
-                </a>
+                <div style={{display: 'flex', justifyContent: 'center'}}>
+                    <a href={permalink} rel='noreferrer' target='_blank'>
+                        <img 
+                            width='100%'
+                            height='auto'
+                            id={id} 
+                            src={media_url} 
+                            alt={caption} 
+                        />
+                    </a>
+                </div>
             );
     }       
 

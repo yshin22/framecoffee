@@ -45,14 +45,16 @@ const InstaFeeds = ({token, ...props}) => {
         <div className="insta-container">
             
             {/* {imagesList.map((image, index) => (
-                <img style={{objectFit: 'cover'}} key={index} src={image} alt={`image-${index}`}/>
+                <div style={{display: 'flex', justifyContent: 'center'}}>
+                    <img style={{objectFit: 'cover'}} key={index} src={image} alt={`image-${index}`}/>
+                </div>
             ))} */}
             {feeds.map((feed, index) => (
                 <>
                 <Feed key={feed.id} feed={feed} />
-                <div className='insta-overlay'>
+                {/* <div className='insta-overlay'>
                         <FaInstagram/>
-                </div>
+                </div> */}
                 </>
             ))}            
 
