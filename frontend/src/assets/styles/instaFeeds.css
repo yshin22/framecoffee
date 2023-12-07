@@ -12,9 +12,34 @@
     width: 100%;
     height: auto;
     display: block;
+    backface-visibility: hidden;
     transition: all 100ms ease-out;
   }
+
+  .insta-overlay {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  /* .insta-container video {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: all 100ms ease-out;
+  } */
   
   .insta-container img:hover {
+    opacity: 0.3;
     transform: scale(1.04);
+    cursor: pointer;
+  }
+
+  .insta-overlay:hover {
+    opacity: 1;
   }

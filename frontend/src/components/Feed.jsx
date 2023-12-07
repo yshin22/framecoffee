@@ -1,4 +1,5 @@
 import React from 'react'
+import {FaInstagram} from 'react-icons/fa'
 
 const Feed = (props) => {
     const { id, caption, media_type, media_url, permalink} = props.feed
@@ -7,35 +8,45 @@ const Feed = (props) => {
     switch (media_type) {
         case "VIDEO":
             post = (
-                <video
-                    width='100%'
-                    height='auto' 
-                    src={media_url} 
-                    type="video/mp4" 
-                    controls playsinline>
-                </video>
+                <a href={permalink}>
+                    <video
+                        width='100%'
+                        height='auto' 
+                        src={media_url} 
+                        type="video/mp4" 
+                        controls playsinline>
+                    </video>
+                </a>
+
             )
             break;
         case "CAROUSEL_ALBUM":
             post = (
-                <img 
-                    width='100%'
-                    height='auto'
-                    id={id} 
-                    src={media_url} 
-                    alt={caption} 
-                />
+                <a href={permalink}>
+                    <img 
+                        width='100%'
+                        height='auto'
+                        id={id} 
+                        src={media_url} 
+                        alt={caption} 
+                    />                   
+                </a>
             );
             break;
         default:
             post = (
-                <img 
-                    width='100%'
-                    height='auto'
-                    id={id} 
-                    src={media_url} 
-                    alt={permalink} 
-                />
+                <a href={permalink}>
+                    <img 
+                        width='100%'
+                        height='auto'
+                        id={id} 
+                        src={media_url} 
+                        alt={caption} 
+                    />
+                    <div className='insta-overlay'>
+                        <FaInstagram/>
+                    </div>
+                </a>
             );
     }       
 

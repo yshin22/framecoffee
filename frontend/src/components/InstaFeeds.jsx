@@ -44,7 +44,7 @@ const InstaFeeds = ({token, ...props}) => {
         <div className="insta-container">
             
             {/* {imagesList.map((image, index) => (
-                <img key={index} src={image} alt={`image-${index}`}/>
+                <img style={{objectFit: 'cover'}} key={index} src={image} alt={`image-${index}`}/>
             ))} */}
             {feeds.map((feed, index) => (
                 <Feed key={feed.id} feed={feed} />
