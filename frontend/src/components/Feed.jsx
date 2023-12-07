@@ -8,47 +8,42 @@ const Feed = (props) => {
     switch (media_type) {
         case "VIDEO":
             post = (
-                <div style={{display: 'flex', justifyContent: 'center'}}>
-                    <a href={permalink} rel='noreferrer' target='_blank'>
-                        <video
-                            width='100%'
-                            height='auto' 
-                            src={media_url} 
-                            type="video/mp4" 
-                            controls playsinline>
-                        </video>
-                    </a>
-                </div>
+                <a href={permalink} rel='noreferrer' target='_blank' style={{display: 'flex', justifyContent: 'center'}}>
+                    <video
+                        width='100%'
+                        height='auto' 
+                        src={media_url} 
+                        type="video/mp4" 
+                        controls playsinline>
+                    </video>
+                </a>
+
             )
             break;
         case "CAROUSEL_ALBUM":
             post = (
-                <div style={{display: 'flex', justifyContent: 'center'}}>
-                    <a href={permalink} rel='noreferrer' target='_blank'>
-                        <img 
-                            width='100%'
-                            height='auto'
-                            id={id} 
-                            src={media_url} 
-                            alt={caption} 
-                        />                   
-                    </a>
-                </div>
+                <a href={permalink} rel='noreferrer' target='_blank' style={{display: 'flex', justifyContent: 'center'}}>
+                    <img 
+                        width='100%'
+                        height='auto'
+                        id={id} 
+                        src={media_url} 
+                        alt={caption} 
+                    />                   
+                </a>
             );
             break;
         default:
             post = (
-                <div style={{display: 'flex', justifyContent: 'center'}}>
-                    <a href={permalink} rel='noreferrer' target='_blank'>
-                        <img 
-                            width='100%'
-                            height='auto'
-                            id={id} 
-                            src={media_url} 
-                            alt={caption} 
-                        />
-                    </a>
-                </div>
+                <a href={permalink} rel='noreferrer' target='_blank' style={{display: 'flex', justifyContent: 'center'}}>
+                    <img 
+                        width='100%'
+                        height='auto'
+                        id={id} 
+                        src={media_url} 
+                        alt={caption} 
+                    />
+                </a>
             );
     }       
 
