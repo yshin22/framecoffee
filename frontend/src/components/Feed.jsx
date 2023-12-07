@@ -11,7 +11,7 @@ const Feed = (props) => {
                 <a href={permalink} rel='noreferrer' target='_blank' style={{display: 'flex', justifyContent: 'center'}}>
                     <video
                         width='100%'
-                        height='auto' 
+                        // height='auto' 
                         src={media_url} 
                         type="video/mp4" 
                         controls playsinline>
@@ -25,7 +25,7 @@ const Feed = (props) => {
                 <a href={permalink} rel='noreferrer' target='_blank' style={{display: 'flex', justifyContent: 'center'}}>
                     <img 
                         width='100%'
-                        height='auto'
+                        // height='auto'
                         id={id} 
                         src={media_url} 
                         alt={caption} 
@@ -38,7 +38,7 @@ const Feed = (props) => {
                 <a href={permalink} rel='noreferrer' target='_blank' style={{display: 'flex', justifyContent: 'center'}}>
                     <img 
                         width='100%'
-                        height='auto'
+                        // height='auto'
                         id={id} 
                         src={media_url} 
                         alt={caption} 
