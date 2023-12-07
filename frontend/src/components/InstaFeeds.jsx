@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef} from 'react'
 import axios from 'axios'
 
 import Feed from './Feed'
+import {FaInstagram} from 'react-icons/fa'
 
 import '../assets/styles/instaFeeds.css';
 
@@ -49,6 +50,7 @@ const InstaFeeds = ({token, ...props}) => {
             {feeds.map((feed, index) => (
                 <Feed key={feed.id} feed={feed} />
             ))}
+            <i className='fa-solid fa-coffee fa-2xl'></i>
             
 
         </div>

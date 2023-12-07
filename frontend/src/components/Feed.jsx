@@ -44,7 +44,7 @@ const Feed = (props) => {
                         alt={caption} 
                     />
                     <div className='insta-overlay'>
-                        <div><FaInstagram/></div>
+                        <div>Hey how are you</div>
                     </div>
                     <FaInstagram/>
                 </a>

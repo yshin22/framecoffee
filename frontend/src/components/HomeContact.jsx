@@ -27,6 +27,7 @@ const HomeContact = () => {
                     {/* <button className='wholesale-btn'>Coming Soon...</button> */}
                 </Col>
             </Row>
+        
 
         </Container>
     </>
