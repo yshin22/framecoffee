@@ -46,6 +46,7 @@ const Feed = (props) => {
                     <div className='insta-overlay'>
                         <div><FaInstagram/></div>
                     </div>
+                    <FaInstagram/>
                 </a>
             );
     }       
