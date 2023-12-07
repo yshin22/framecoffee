@@ -14,7 +14,7 @@ const Feed = (props) => {
                         height='auto' 
                         src={media_url} 
                         type="video/mp4" 
-                        controls playsinline>
+                        autoPlay muted>
                     </video>
                 </a>
 
