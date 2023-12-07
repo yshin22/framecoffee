@@ -8,7 +8,7 @@ const Feed = (props) => {
     switch (media_type) {
         case "VIDEO":
             post = (
-                <a href={permalink}>
+                <a href={permalink} rel='noreferrer' target='_blank'>
                     <video
                         width='100%'
                         height='auto' 
@@ -22,7 +22,7 @@ const Feed = (props) => {
             break;
         case "CAROUSEL_ALBUM":
             post = (
-                <a href={permalink}>
+                <a href={permalink} rel='noreferrer' target='_blank'>
                     <img 
                         width='100%'
                         height='auto'
@@ -35,7 +35,7 @@ const Feed = (props) => {
             break;
         default:
             post = (
-                <a href={permalink}>
+                <a href={permalink} rel='noreferrer' target='_blank'>
                     <img 
                         width='100%'
                         height='auto'
@@ -44,7 +44,7 @@ const Feed = (props) => {
                         alt={caption} 
                     />
                     <div className='insta-overlay'>
-                        <FaInstagram/>
+                        <div><FaInstagram/></div>
                     </div>
                 </a>
             );
