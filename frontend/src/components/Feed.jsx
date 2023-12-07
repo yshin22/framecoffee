@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Feed = (props) => {
-    const { id, caption, media_type, media_url} = props.feed
+    const { id, caption, media_type, media_url, permalink} = props.feed
     let post;
 
     switch (media_type) {
@@ -34,7 +34,7 @@ const Feed = (props) => {
                     height='auto'
                     id={id} 
                     src={media_url} 
-                    alt={caption} 
+                    alt={permalink} 
                 />
             );
     }       
