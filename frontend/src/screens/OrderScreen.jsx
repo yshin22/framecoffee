@@ -209,21 +209,15 @@ const OrderScreen = () => {
                     </ListGroup.Item>
 
                     {!order.isPaid && (
-                        <ListGroup.Item>
+                        <ListGroup.Item style={{zIndex: '5'}}>
                             {loadingPay && <Loader/>}
                             {isPending ? <Loader/> : (
                                 <div>
-                                    {/* <Button onClick={onApproveTest}
-                                     style={{marginBottom: '10px'}}>
-                                        Test Pay Order
-                                    </Button> */}
-                                    <div>
-                                        <PayPalButtons
-                                        createOrder={createOrder}
-                                        onApprove={onApprove}
-                                        onError={onError}>
-                                        </PayPalButtons>
-                                    </div>
+                                    <PayPalButtons
+                                    createOrder={createOrder}
+                                    onApprove={onApprove}
+                                    onError={onError}>
+                                    </PayPalButtons>
                                 </div>
                             )}
                         </ListGroup.Item>

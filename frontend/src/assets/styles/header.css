@@ -1,6 +1,7 @@
 header {
     overflow: hidden;
     position: absolute;
+    z-index: 100;
 }
 
 .bg-dark {
@@ -23,7 +24,7 @@ header {
     min-width: 400px;
     display: flex;
     flex-direction: column;
-    z-index: 8;
+    z-index: 100;
     position: fixed;
     border-right: solid  #303030;
     left: -210px;

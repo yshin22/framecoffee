@@ -19,6 +19,7 @@
 
 .menu-wrapper img {
     max-width: 70%;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 992px) {
