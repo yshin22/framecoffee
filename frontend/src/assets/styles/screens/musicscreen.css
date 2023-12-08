@@ -1,0 +1,25 @@
+.musicScreen-container {
+    margin-top: 2vh;
+    min-height: 100vh;
+}
+
+
+.music-player-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3vh;
+    /* height: 100vh; */
+}
+
+@media screen and (max-width: 992px) {
+    .musicScreen-container {
+        margin-top: 13vh;
+    }
+}
+
+@media screen and (max-width: 576px){
+    .musicScreen-container {
+        margin-top: 88px;
+    }
+}
