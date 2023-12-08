@@ -139,7 +139,7 @@ const PlaceOrderScreen = () => {
                             disabled={cart.cartItems.length === 0}
                             onClick={placeOrderHandler}
                             >
-                                Place Order
+                                Continue
                             </Button>
                             {isLoading && <Loader/>}
                         </ListGroup.Item>

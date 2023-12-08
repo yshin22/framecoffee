@@ -60,6 +60,9 @@ const OrderScreen = () => {
             try {
                 await payOrder({orderId, details});
                 refetch();
+                /*
+                    product qty = product qty - order qty 
+                */
                 toast.success('Payment Successful');
             } catch (err) {
                 toast.error(err?.data?.message || err.message);
