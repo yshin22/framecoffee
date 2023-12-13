@@ -21,10 +21,9 @@ const MusicScreen = () => {
       <Row className='music-player-container'>
 
         <Col md={6}>
-        <iframe allow="autoplay *; encrypted-media *;" frameborder="0" height="450" style={{
-            width:"100%", maxWidth: "660px", overflow: "hidden", background:"transparent"}}
-            sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation 
-            6allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/album/jannabis-small-pieces-i-ep/1539127949"></iframe>
+        <iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="450" style={{
+            width:"100%", maxWidth: "660px", overflow: "hidden", background:"transparent"}} sandbox="allow-forms allow-popups allow-same-origin 
+            allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/playlist/f-r-a-m-e/pl.u-PDb4zXEtJNMZ3P"></iframe>
         </Col>
 
         <Col md={6} style={{}}>
