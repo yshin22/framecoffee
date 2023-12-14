@@ -8,15 +8,6 @@ import {Nav} from 'react-bootstrap';
 const Footer = () => {
     const currentYear = new Date().getFullYear();
 
-    function initMap() {
-        const map = new google.maps.Map(document.getElementById("map"), {
-          zoom: 4,
-          center: { lat: -33, lng: 151 },
-          disableDefaultUI: true,
-        });
-      }
-      
-      window.initMap = initMap;
   return (
     <footer>
             <Container className='footer-container'>
