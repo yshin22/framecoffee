@@ -1,6 +1,5 @@
 import React from 'react'
 import '../assets/styles/screens/musicscreen.css'
-import {Helmet} from 'react-helmet';
 import { useEffect } from 'react';
 import { Container, Row, Col} from 'react-bootstrap';
 import Footer from '../components/Footer';

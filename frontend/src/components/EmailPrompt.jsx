@@ -59,6 +59,7 @@ const EmailPrompt = () => {
               onChange={handleStateChange}
               name='name'
               value={mailerState.name}
+              required
             />
           </Form.Group>
           <Form.Group className='mb-3' controlId='formBasicEmail'>
@@ -67,6 +68,7 @@ const EmailPrompt = () => {
                 onChange={handleStateChange}
                 name='email'
                 value={mailerState.email}
+                required
               />
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicTextArea">
@@ -77,6 +79,7 @@ const EmailPrompt = () => {
               name='message'
               placeholder='Message'
               value={mailerState.message}
+              required
             />
           </Form.Group>
           <button className='contact-btn' type="submit">Submit</button>

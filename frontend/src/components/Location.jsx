@@ -7,35 +7,51 @@ import { Row, Col, Container } from 'react-bootstrap';
 const Location = () => {
   return (
     <Container className='location-container'>
-        <Row className='location-title'>
-            <h1>COME VISIT US</h1>
-        </Row>
+        <div className='location-wrapper'>
+            <Row className='location-title'>
+                <h1>COME VISIT</h1>
+            </Row>
 
-        <Row>
-            <Col className='map-container'>
-                <img src={store} alt="store front" />
-                {/* <div style={{width: "100%"}}><iframe width="300" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" 
-                src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=302%20Maple%20Ave%20W,%20Vienna%20VA%2022180+(Frame%20Coffee%20Roasters)&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
-                <a href="https://www.maps.ie/population/">Calculate population in area</a></iframe></div> */}
-            </Col>
+            <Row className='location-row'>
+                <Col className='map-container'sm={6}>
+                    <img src={store} alt="store front" />
+                    {/* <div style={{width: "100%"}}><iframe width="300" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" 
+                    src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=302%20Maple%20Ave%20W,%20Vienna%20VA%2022180+(Frame%20Coffee%20Roasters)&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
+                    <a href="https://www.maps.ie/population/">Calculate population in area</a></iframe></div> */}
+                </Col>
 
-            <Col className='address-container'>
-                <h2>
-                    302 MAPLE AVE W, VIENNA, VA 22180
-                </h2>
-            </Col>
-        </Row>
+                <Col className='address-container'>
+                    <div className='location-address-title'>
+                        <h2>ADDRESS</h2>
+                    </div>
+                    <div className='location-address'>
+                        <h3>
+                            <a href="https://maps.app.goo.gl/kL6TWRwvUyfgpmCX8">
+                                302 MAPLE AVE W, VIENNA, VA 22180
+                            </a>
+                        </h3>
+                    </div>
 
-        <Row>
-            <Col className='storeHours-container'>
-                <h3>M - F | 7 - 5</h3>
-                <h3>S - S | 8 - 5</h3>
-            </Col>
+                </Col>
+            </Row>
 
-            <Col className='map-container'>
-                <img src={inside} alt="store inside" />
-            </Col>
-        </Row>
+            <Row className='location-row'>
+                <Col className='storeHours-container' xs={{span: 12, order:'2'}} sm={{span: 6, order:'1'}}>
+                    <div className='open-hours-title'>
+                        <h2>OPEN HOURS</h2>
+                    </div>
+                    <div className='open-hours'>
+                        <h3>M - F | 7 - 5</h3>
+                        <h3>S - S | 8 - 5</h3>
+                    </div>
+                </Col>
+
+                <Col className='map-container' xs={{span: 12, order: '1'}} sm={{span: 6, order: '2'}}>
+                    <img src={inside} alt="store inside" />
+                </Col>
+            </Row>
+
+        </div>
     </Container>
   )
 }

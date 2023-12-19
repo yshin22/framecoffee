@@ -3,7 +3,16 @@
     flex-direction: column;
     justify-content: space-evenly;
     margin-top: 2vh;
-    margin-bottom: 2vh
+    margin-bottom: 2vh;
+    /* background-image: url('../images/store_front.jpg'); */
+    height: 100%;
+}
+
+.location-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .location-title {
@@ -25,8 +34,7 @@
 .location-container img {
     object-fit: contain;
     max-width: 100%;
-    border: solid #303030;
-    padding: 2px;
+    /* border: solid #303030; */
 }
 
 .storeHours-container {
@@ -36,9 +44,82 @@
     align-items: center;
 }
 
+.open-hours-title {
+    border-bottom: solid #303030;
+}
+.open-hours-title h2 {
+    margin-bottom: 0;
+    font-size: 36px;
+}
+
+.open-hours {
+    margin-top: 2vh;
+}
+
+.location-address-title {
+    border-bottom: solid #303030;
+}
+
+.location-address-title h2{
+    margin-bottom: 0;
+    font-size: 36px;
+}
+
+.location-address {
+    margin-top: 2vh;
+}
+
+.location-address a {
+    /* border: #303030 solid; */
+    padding: 2px;
+    text-decoration: none;
+    color: #303030;
+    transition: background 0.3s ease-in-out;
+}
+
+.location-address a:hover {
+    transition: background 0.3s ease-in-out;
+    background-color: #303030;
+    color: white;
+}
+
 .address-container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
+}
+
+@media screen and (max-width: 576px) {
+
+    .location-title {
+        margin-top: initial;
+        text-align: center;
+        margin-top: 2vh;
+        margin-bottom: 2vh;
+    }
+
+    .location-title h1 {
+        font-size: 12vw;
+        margin-bottom: 0;
+    }
+
+    .storeHours-container {
+        margin-top: 2vh;
+    }
+
+    .address-container {
+        margin-top: 2vh;
+    }
+
+    .location-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+
+    .location-row {
+        margin-bottom: 4vh;
+    }
 }
