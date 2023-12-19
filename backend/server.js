@@ -53,11 +53,12 @@ transporter.verify((err, success) => {
 
 app.post("/send", function (req,res) {
   let mailOptions = {
-    from: `${req.body.mailerState.email}`,
+    from: 'test@email.com',
     to: process.env.EMAIL,
     subject: `Message from: ${req.body.mailerState.email}`,
     text: `${req.body.mailerState.message}`,
   };
+  console.log(req.body.mailerState.name)
 
   transporter.sendMail(mailOptions, function (err, data) {
     if (err) {

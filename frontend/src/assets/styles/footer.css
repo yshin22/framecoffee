@@ -8,7 +8,7 @@ footer {
 .footer-container {
     /* margin-top: 12vh; */
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-evenly ;
     max-width: 100%;
     height: 45vh;
@@ -17,6 +17,7 @@ footer {
 
 .frame-logo-container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
 }
 

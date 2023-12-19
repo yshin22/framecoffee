@@ -23,6 +23,7 @@ const EmailPrompt = () => {
       const submitEmail = async (e) => {
         e.preventDefault();
         console.log({ mailerState });
+        // console.log()
 
         const response = await fetch("https://framecoffeeroasters.onrender.com/send", {
           method: "POST",
@@ -58,6 +59,7 @@ const EmailPrompt = () => {
               placeholder='Name'
               onChange={handleStateChange}
               name='name'
+              required
               value={mailerState.name}
             />
           </Form.Group>
@@ -66,6 +68,7 @@ const EmailPrompt = () => {
                 placeholder='Email'
                 onChange={handleStateChange}
                 name='email'
+                required
                 value={mailerState.email}
               />
           </Form.Group>
@@ -76,6 +79,7 @@ const EmailPrompt = () => {
               onChange={handleStateChange}
               name='message'
               placeholder='Message'
+              required
               value={mailerState.message}
             />
           </Form.Group>
