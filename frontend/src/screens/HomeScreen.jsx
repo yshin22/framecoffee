@@ -15,6 +15,7 @@ import Footer from '../components/Footer';
 import InstaFeeds from '../components/InstaFeeds';
 import TextPath from '../components/TextPath';
 import HomeContact from '../components/HomeContact';
+import Location from '../components/Location';
 
 
   
@@ -36,6 +37,10 @@ const HomeScreen = () => {
       <TextPath/>
       <div className='sec3'>
         <HomeContact/>
+      </div>
+      <TextPath/>
+      <div className='sec4'>
+        <Location/>
       </div>
       <TextPath/>
       <Footer/>
