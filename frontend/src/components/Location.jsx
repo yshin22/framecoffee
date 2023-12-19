@@ -27,7 +27,7 @@ const Location = () => {
                     <div className='location-address'>
                         <h3>
                             <a href="https://maps.app.goo.gl/kL6TWRwvUyfgpmCX8">
-                                302 MAPLE AVE W, VIENNA, VA 22180
+                                Vienna, VA
                             </a>
                         </h3>
                     </div>
