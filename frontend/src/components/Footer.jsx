@@ -31,21 +31,21 @@ const Footer = () => {
                         </LinkContainer>
                     </div>
                     <div className='policy-item'>
-                        <LinkContainer to='/privacypolicy'>
+                        <LinkContainer to='/refundpolicy'>
                             <Nav.Link> 
                                 Refund Policy
                             </Nav.Link>
                         </LinkContainer>
                     </div>
                     <div className='policy-item'>
-                        <LinkContainer to='/privacypolicy'>
+                        <LinkContainer to='/termsofservice'>
                             <Nav.Link> 
                                 Terms of Service
                             </Nav.Link>
                         </LinkContainer>
                     </div>
                     <div className='policy-item'>
-                        <LinkContainer to='/privacypolicy'>
+                        <LinkContainer to='/shippingpolicy'>
                             <Nav.Link> 
                                 Shipping Policy
                             </Nav.Link>

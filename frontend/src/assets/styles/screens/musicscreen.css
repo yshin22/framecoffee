@@ -1,15 +1,19 @@
 .musicScreen-container {
+    display: flex;
+    flex-direction: column;
     margin-top: 2vh;
     min-height: 100vh;
 }
-
 
 .music-player-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 3vh;
-    /* height: 100vh; */
+    flex-grow: 1;
+}
+
+.apple-playlist {
+    
 }
 
 @media screen and (max-width: 992px) {

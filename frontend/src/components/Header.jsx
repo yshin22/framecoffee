@@ -6,7 +6,7 @@ import {Badge, Navbar, Nav, Container, NavDropdown} from 'react-bootstrap'
 import {FaLaptopHouse, FaShoppingCart, FaUser} from 'react-icons/fa'
 import { useLogoutMutation } from '../slices/usersApiSlice'
 import { logout } from '../slices/authSlice'
-import logo from "../assets/logo.png"
+import logo from "../assets/frame-logo.png"
 import {LinkContainer} from 'react-router-bootstrap'
 import SearchBox from './SearchBox'
 import {useSelector, useDispatch} from 'react-redux'

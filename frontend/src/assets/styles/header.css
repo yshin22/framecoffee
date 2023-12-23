@@ -92,7 +92,10 @@ header {
     transition: transform 1s;
     width: fit-content;
     margin-left: auto;
-    
+}
+
+.logo-container img {
+    width: 75px;
 }
 
 .logo {

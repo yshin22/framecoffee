@@ -1,0 +1,25 @@
+
+.tos-container {
+    margin-top: 2vh;
+}
+
+.tos-content-wrapper {
+    margin-top: 2vh;
+    /* display: flex; */
+    /* flex-direction: column; */
+    justify-content: center;
+}
+
+
+@media screen and (max-width: 992px) {
+    .tos-container {
+        margin-top: 13vh;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .tos-container {
+        margin-top: 88px;
+    }
+}
+

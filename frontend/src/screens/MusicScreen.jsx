@@ -3,12 +3,14 @@ import '../assets/styles/screens/musicscreen.css'
 import { useEffect } from 'react';
 import { Container, Row, Col} from 'react-bootstrap';
 import Footer from '../components/Footer';
+import Loader from '../components/Loader';
 
 const MusicScreen = () => {
   
   return (
     <>
     <Container className='musicScreen-container'>
+
       <Row className='page-title'>
         <h1>MUSIC</h1>
       </Row>
@@ -18,28 +20,13 @@ const MusicScreen = () => {
       </Row>
 
       <Row className='music-player-container'>
-
-        <Col md={6}>
-        <iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="450" style={{
-            width:"100%", maxWidth: "660px", overflow: "hidden", background:"transparent"}} sandbox="allow-forms allow-popups allow-same-origin 
-            allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/playlist/f-r-a-m-e/pl.u-PDb4zXEtJNMZ3P"></iframe>
-        </Col>
-
-        <Col md={6} style={{}}>
-          <Row>
-            <iframe allow="autoplay *; encrypted-media *;" frameborder="0" height="150" style={{
-            width:"100%", maxWidth: "660px", overflow: "hidden", background:"transparent"}} 
-            sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation
-            allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/album/regret/1040965893?i=1040966395"></iframe>
-          </Row>
-          <Row className='mt-3'>
-            <iframe allow="autoplay *; encrypted-media *;" frameborder="0" height="150" style={{
-              width:"100%", maxWidth: "660px", overflow: "hidden", background:"transparent"
-            }} sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation
-            allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/album/still-fighting-it/190084442?i=190084514"></iframe> 
-          </Row>
+        <Col md={6} className='apple-playlist'>
+          <iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="450" style={{
+          width:"100%", maxWidth: "700px", overflow: "hidden", background:"transparent"}} sandbox="allow-forms allow-popups allow-same-origin 
+          allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/playlist/f-r-a-m-e/pl.u-PDb4zXEtJNMZ3P"></iframe>
         </Col>
       </Row>
+
     </Container>
     <Footer/>
     </>

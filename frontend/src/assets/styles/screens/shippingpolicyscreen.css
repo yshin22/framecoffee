@@ -1,0 +1,28 @@
+
+
+.shippingPolicy-container {
+    margin-top: 2vh;
+    height: 100vh;
+}
+
+.shipping-content-wrapper {
+    /* margin-top: 2vh; */
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+@media screen and (max-width: 992px) {
+    .shippingPolicy-container {
+        margin-top: 13vh;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .shippingPolicy-container {
+        margin-top: 88px;
+    }
+}
+
