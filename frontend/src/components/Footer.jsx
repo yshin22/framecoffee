@@ -6,7 +6,11 @@ import { LinkContainer } from 'react-router-bootstrap';
 import {Nav} from 'react-bootstrap';
 
 const Footer = () => {
-    const currentYear = new Date().getFullYear();
+
+    function topFunction() {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+      }
 
   return (
     <footer>
@@ -24,28 +28,28 @@ const Footer = () => {
                 </div>
                 <div className='policy-container'>
                     <div className='policy-item'>
-                        <LinkContainer to='/privacypolicy'>
+                        <LinkContainer to='/privacypolicy' onClick={topFunction}>
                             <Nav.Link> 
                                 Privacy Policy
                             </Nav.Link>
                         </LinkContainer>
                     </div>
                     <div className='policy-item'>
-                        <LinkContainer to='/refundpolicy'>
+                        <LinkContainer to='/refundpolicy' onClick={topFunction}>
                             <Nav.Link> 
                                 Refund Policy
                             </Nav.Link>
                         </LinkContainer>
                     </div>
                     <div className='policy-item'>
-                        <LinkContainer to='/termsofservice'>
+                        <LinkContainer to='/termsofservice' onClick={topFunction}>
                             <Nav.Link> 
                                 Terms of Service
                             </Nav.Link>
                         </LinkContainer>
                     </div>
                     <div className='policy-item'>
-                        <LinkContainer to='/shippingpolicy'>
+                        <LinkContainer to='/shippingpolicy' onClick={topFunction}>
                             <Nav.Link> 
                                 Shipping Policy
                             </Nav.Link>
