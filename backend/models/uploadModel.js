@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 
 const menuSchema = mongoose.Schema({
-    image: String
+    image: [String],
 }, {timestamps: true})
 
 

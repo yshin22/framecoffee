@@ -19,11 +19,18 @@ export const uploadApiSlice = apiSlice.injectEndpoints({
                 method: 'POST',
                 body: data,
             }),
+            keepUnusedDataFor: 5
         }),
+        getMenuImages: builder.query({
+            query: () => ({
+                url: UPLOAD_URL,
+            }),
+            keepUnusedDataFor: 5
+        })
     })
 })
 
 export const {
     useUploadMenuImageMutation,
-    useGetMenuImageQuery,
+    useGetMenuImagesQuery,
 } = uploadApiSlice;

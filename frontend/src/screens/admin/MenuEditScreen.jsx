@@ -1,8 +1,8 @@
 import React from 'react'
-import {Form, Button} from 'react-bootstrap';
+import {Form, Button, Row, Col} from 'react-bootstrap';
 import {
     useUploadMenuImageMutation,
-    // useGetMenuImageQuery,
+    useGetMenuImagesQuery,
 } from '../../slices/uploadApiSlice';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
@@ -17,11 +17,15 @@ const MenuEditScreen = () => {
     const [image, setImage] = useState();
 
     const [uploadMenuImage, {isLoading: loadingUpdate}] = useUploadMenuImageMutation();
-    // const {data: menu, isLoading, error, refetch} = useGetMenuImageQuery();
+    const {data: menus} = useGetMenuImagesQuery();
 
     const uploadFileHandler = async (e) => {
         const formData = new FormData();
-        formData.append('image', file);
+
+        for (let i = 0; i < file.length; i++) {
+          formData.append('images', file[i]);
+        }
+        // formData.append('image', file);
         try {
             const res = await uploadMenuImage(formData).unwrap();
             toast.success(res.message);
@@ -38,11 +42,24 @@ const MenuEditScreen = () => {
     // }, [menu])
 
   return (
-    <div>
-        <input type='file' onChange={e => setFile(e.target.files[0])} multiple/>
+    <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', height: '100vh'}}>
+        <input type='file' onChange={e => setFile(e.target.files)} multiple/>
+        {console.log(file)};
         <button onClick={uploadFileHandler}>Upload</button>
 
-        <img style={{height: '300px', width: '250px'}}src={`http://localhost:4000/uploads/` + image} alt="menu"/>
+        <Row>
+          {image?.map((i) => (
+            <Col>
+              <img style={{height: '300px', width: '250px'}}src={`http://localhost:4000/uploads/` + i} alt="menu"/>
+            </Col>
+          ))}
+          <Col>
+          
+          </Col>
+        </Row>
+        {/* <img style={{height: '300px', width: '250px'}}src={`http://localhost:4000/uploads/` + image} alt="menu"/> */}
+
+        {/* {console.log(menus)} */}
     </div>
   )
 }
