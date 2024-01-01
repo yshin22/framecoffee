@@ -35,8 +35,44 @@ const upload = multer({ storage, fileFilter, limits: {
 const uploadSingleImage = upload.single('image');
 const uploadMultipleImages = upload.any();
 
+const options = {
+  projection: {_id: 0, image: 1}
+}
+
+// router.post('/productimage', (req, res) => {
+//   uploadSingleImage(req, res, function (err) {
+//     if (err) {
+//       return res.status(400).send({ message: err.message });
+//     }
+
+//     res.status(200).send({
+//       message: 'Image uploaded successfully',
+//       image: `/${req.file.path}`,
+//     });
+//   });
+// });
+
+const postProductImage = (req,res) => {
+  uploadSingleImage(req,res, function (err) {
+    if (err) {
+      return res.status(400).send({ message: err.message });
+    }
+    res.status(200).send({
+      message: 'Image uploaded successfully',
+      image: `/${req.file.path}`,
+    });
+  });
+};
+
+const deleteMenus = asyncHandler(async(req, res) => {
+  await Menu.deleteMany({});
+  console.log("items deleted")
+  res.json({message : 'product updated and deleted'});
+})
+
 const getMenus = asyncHandler(async(req, res) => {
-  const menus = await Menu.find({});
+  const menus = await Menu.findOne({});
+  console.log(menus);
   res.json(menus);
 });
 
@@ -55,7 +91,7 @@ const postMenu = asyncHandler(async(req, res) => {
         for (let i = 0; i < req.files.length; i++) {
             menuList.push(req.files[i].filename);
         }
-        console.log(menuList);
+        // console.log(menuList);
 
       const menu = new Menu({
         image: menuList,
@@ -73,11 +109,10 @@ const postMenu = asyncHandler(async(req, res) => {
   });
 });
 
-// const deleteMenu = asyncHandler(async (req,res) => {
-//     const menu = await
-// })
 
 export {
   getMenus,
   postMenu,
+  deleteMenus,
+  postProductImage,
 };

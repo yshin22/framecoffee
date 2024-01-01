@@ -22,7 +22,7 @@ export const productsApiSlice =  apiSlice.injectEndpoints({
         }),
         createProduct: builder.mutation({
             query: () => ({
-                url: PRODUCTS_URL,
+                url: `${PRODUCTS_URL}`,
                 method: 'POST',
             }),
             // stop data from being caches, so that we have fresh data
@@ -38,7 +38,7 @@ export const productsApiSlice =  apiSlice.injectEndpoints({
         }),
         uploadProductImage: builder.mutation({
             query: (data) => ({
-                url: `${UPLOAD_URL}`,
+                url: `${UPLOAD_URL}/productimage`,
                 method: 'POST',
                 body: data,
             }),

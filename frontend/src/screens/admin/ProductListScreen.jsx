@@ -40,9 +40,11 @@ const deleteHandler = async (id) => {
 const createProductHandler = async () => {
     if (window.confirm('are you sure you want to create a new product')) {
         try {
+            console.log('here')
             await createProduct();
             refetch()
         } catch (err) {
+            console.log(err);
             toast.error(err?.data?.message || err.error);
         }
     }

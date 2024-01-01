@@ -57,7 +57,7 @@ const createProduct = asyncHandler(async (req,res) => {
         newReviews: 0,
         description: 'Sample description',
         origin: 'Sample origin',
-        roastingLevel: 'Sample roasting level',
+        roastingLevel: 0,
         cuppingNote: 'Sample cupping note',
     })
     const createdProduct = await product.save();

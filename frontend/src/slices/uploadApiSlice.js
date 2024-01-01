@@ -26,11 +26,19 @@ export const uploadApiSlice = apiSlice.injectEndpoints({
                 url: UPLOAD_URL,
             }),
             keepUnusedDataFor: 5
-        })
+        }),
+        deleteMenu: builder.mutation({
+            query: () => ({
+                url: `${UPLOAD_URL}/menudelete`,
+                method: 'DELETE',
+            }),
+            keepUnusedDataFor: 5
+        }),
     })
 })
 
 export const {
     useUploadMenuImageMutation,
     useGetMenuImagesQuery,
+    useDeleteMenuMutation,
 } = uploadApiSlice;

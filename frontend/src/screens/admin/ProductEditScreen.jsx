@@ -27,7 +27,6 @@ const ProductEditScreen = () => {
     const [roastingLevel, setRoastingLevel] = useState(0);
 
     const {data: product, isLoading, error, refetch} = useGetProductDetailsQuery(productId);
-    console.log(product);
 
     const [updateProduct, {isLoading: loadingUpdate}] = useUpdateProductMutation();
 
