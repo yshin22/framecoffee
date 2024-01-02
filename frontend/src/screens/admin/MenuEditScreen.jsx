@@ -9,12 +9,14 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import Loader from '../../components/Loader';
 import { toast } from 'react-toastify';
+import '../../assets/styles/screens/menueditscreen.css'
 
 
 
 const MenuEditScreen = () => {
 
     const [file, setFile] = useState();
+    const [filesArray, setFilesArray] = useState();
     const [image, setImage] = useState();
 
     const [uploadMenuImage, {isLoading: loadingUpdate}] = useUploadMenuImageMutation();
@@ -22,7 +24,7 @@ const MenuEditScreen = () => {
     const [deleteMenu, isLoading] = useDeleteMenuMutation();
 
     const {data: menus} = useGetMenuImagesQuery();
-
+    
     const uploadFileHandler = async (e) => {
         const formData = new FormData();
 
@@ -40,24 +42,25 @@ const MenuEditScreen = () => {
         }
       }
 
-      const deleteHandler = async (e) => {
-        try {
-          await deleteMenu();
-          toast.success('deleted')
-        } catch (err) {
-          toast.error(err?.data?.message || err.error);
+      useEffect(() => {
+        if (file) { 
+          setFilesArray(Array.from(file));
         }
-      }
-
-      function doubleFunction() {
-        deleteHandler();
-        uploadFileHandler();
-      };
+        // Array.from(file).map((f) => (
+        //   console.log(f)
+        // ))
+      }, [file]);
 
   return (
     <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', height: '100vh'}}>
         <input type='file' onChange={e => setFile(e.target.files)} multiple/>
-        {console.log(file)}
+        <Row>
+          {filesArray?.map((f) => (
+            <Col>
+              {f.name}
+            </Col>
+          ))}
+        </Row>
         <button onClick={uploadFileHandler}>Upload</button>
 
         <Row>

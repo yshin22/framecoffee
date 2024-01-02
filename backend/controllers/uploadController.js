@@ -66,21 +66,21 @@ const postProductImage = (req,res) => {
 
 const deleteMenus = asyncHandler(async(req, res) => {
   await Menu.deleteMany({});
-  console.log("items deleted")
+  // console.log("items deleted")
   res.json({message : 'product updated and deleted'});
 })
 
 const getMenus = asyncHandler(async(req, res) => {
   const menus = await Menu.findOne({});
-  console.log(menus);
+  // console.log(menus);
   res.json(menus);
 });
 
 const postMenu = asyncHandler(async(req, res) => {
   uploadMultipleImages(req, res, async function (err) {
-    console.log(req.files[0].filename);
-    console.log(req.files[1].filename);
-    console.log(req.files[2].filename);
+    // console.log(req.files[0].filename);
+    // console.log(req.files[1].filename);
+    // console.log(req.files[2].filename);
     if (err) {
       return res.status(400).send('error message:' + { message: err.message });
     }
