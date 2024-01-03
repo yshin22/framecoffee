@@ -17,7 +17,6 @@ const Feed = (props) => {
                         playsInline autoPlay muted loop>
                     </video>
                 </a>
-
             )
             break;
         case "CAROUSEL_ALBUM":

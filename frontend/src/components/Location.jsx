@@ -5,6 +5,7 @@ import store from '../assets/images/store_front.jpg';
 import { Row, Col, Container } from 'react-bootstrap';
 
 const Location = () => {
+    
   return (
     <Container className='location-container'>
         <div className='location-wrapper'>
@@ -13,6 +14,7 @@ const Location = () => {
             </Row>
 
             <Row className='location-row'>
+
                 <Col className='map-container'sm={6}>
                     <img src={store} alt="store front" />
                     {/* <div style={{width: "100%"}}><iframe width="300" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" 
@@ -22,7 +24,7 @@ const Location = () => {
 
                 <Col className='address-container'>
                     <div className='location-address-title'>
-                        <h2>ADDRESS</h2>
+                        <h2>LOCATIONS</h2>
                     </div>
                     <div className='location-address'>
                         <h3>
@@ -31,11 +33,12 @@ const Location = () => {
                             </a>
                         </h3>
                     </div>
-
                 </Col>
+             
             </Row>
 
             <Row className='location-row'>
+
                 <Col className='storeHours-container' xs={{span: 12, order:'2'}} sm={{span: 6, order:'1'}}>
                     <div className='open-hours-title'>
                         <h2>OPEN HOURS</h2>
