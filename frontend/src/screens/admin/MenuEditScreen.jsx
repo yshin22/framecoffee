@@ -46,9 +46,6 @@ const MenuEditScreen = () => {
         if (file) { 
           setFilesArray(Array.from(file));
         }
-        // Array.from(file).map((f) => (
-        //   console.log(f)
-        // ))
       }, [file]);
 
   return (
@@ -56,9 +53,10 @@ const MenuEditScreen = () => {
         <input type='file' onChange={e => setFile(e.target.files)} multiple/>
         <Row>
           {filesArray?.map((f) => (
-            <Col>
+            <Row>
+              {console.log(f)}
               {f.name}
-            </Col>
+            </Row>
           ))}
         </Row>
         <button onClick={uploadFileHandler}>Upload</button>
@@ -66,7 +64,9 @@ const MenuEditScreen = () => {
         <Row>
           {image?.map((i) => (
             <Col>
-              <img style={{height: '300px', width: '250px'}}src={`/uploads/` + i} alt="menu"/>
+              {/* <img style={{height: '300px', width: '250px'}}src={`/uploads/` + i} alt="menu"/> */}
+              <img style={{height: '300px', width: '250px'}}src={`http://localhost:4000/uploads/` + i} alt="menu"/>
+
             </Col>
           ))}
           <Col>

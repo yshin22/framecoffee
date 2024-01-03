@@ -25,7 +25,7 @@ export const uploadApiSlice = apiSlice.injectEndpoints({
             query: () => ({
                 url: UPLOAD_URL,
             }),
-            keepUnusedDataFor: 5
+            // keepUnusedDataFor: 5
         }),
         deleteMenu: builder.mutation({
             query: () => ({

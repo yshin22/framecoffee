@@ -46,7 +46,8 @@ const MenuScreen = () => {
                   <Row>
                     {menus.image?.map((i) => (
                       <Col>
-                        <img style={{height: '300px', width: '250px'}}src={`/uploads/` + i} alt="menu"/>
+                        {/* <img style={{height: '300px', width: '250px'}}src={`/uploads/` + i} alt="menu"/> */}
+                        <img style={{height: '300px', width: '250px'}}src={`http://localhost:4000/uploads/` + i} alt="menu"/>
                       </Col>
                     ))}
                   </Row>
