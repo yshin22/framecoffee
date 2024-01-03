@@ -99,7 +99,10 @@ const postMenu = asyncHandler(async(req, res) => {
   
       const createdMenu = await menu.save();
   
-      res.status(200).json(createdMenu);
+      res.status(200).send({
+        menu: createdMenu,
+        message: 'Menu uploaded successfully',
+      })
       
       // .send({
       //   message: 'Image uploaded successfully',
