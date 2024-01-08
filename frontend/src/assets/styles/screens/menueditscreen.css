@@ -1,0 +1,75 @@
+.menuEdit-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin-top: 2vh;
+}
+
+.menuEdit-container input[type="file"]::file-selector-button {
+    background: none;
+    border: solid;
+    padding: 5px;
+    font-weight: 600;
+    font-size: 20px;
+    border-radius: 8px;
+    transition: color 0.3s ease-in-out;
+    transition: background 0.3s ease-in-out;
+}
+
+.menuEdit-container input[type="file"]::file-selector-button:hover {
+    background-color: #303030;
+    color: white;
+    cursor: pointer;
+}
+
+.file-img-container {
+    border: solid;
+    border-radius: 10px;
+    height: 50%;
+    overflow-x: scroll;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.file-img {
+    width: fit-content;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.file-btn-container {
+    border: solid;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.file-name-container {
+    border: solid #303030;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.file-name-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.file-upload-btn {
+    background: none;
+    border: solid;
+    padding: 5px;
+    font-weight: 600;
+    font-size: 20px;
+    border-radius: 8px;
+    transition: color 0.3s ease-in-out;
+    transition: background 0.3s ease-in-out;
+}
+
+.file-upload-btn:hover {
+    background-color: #303030;
+    color: white;
+    cursor: pointer;
+}
