@@ -55,8 +55,8 @@ const MenuEditScreen = () => {
           <div className='file-img-container'>
             {image?.map((i) => (
               <div className='file-img'>
-                {/* <img style={{height: '300px', width: '250px'}}src={`/uploads/` + i} alt="menu"/> */}
-                <img style={{height: '300px', width: '250px'}}src={`http://localhost:4000/uploads/` + i} alt="menu"/>
+                <img style={{height: '300px', width: '250px'}}src={`/uploads/` + i} alt="menu"/>
+                {/* <img style={{height: '300px', width: '250px'}}src={`http://localhost:4000/uploads/` + i} alt="menu"/> */}
               </div>
             ))}
           </div>

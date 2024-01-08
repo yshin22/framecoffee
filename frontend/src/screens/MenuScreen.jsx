@@ -46,8 +46,8 @@ const MenuScreen = () => {
                   <div className='menu-slider-wrapper'>
                     {menus.image?.map((i) => (
                       <div className='menu-column'>
-                        {/* <img style={{height: '300px', width: '250px'}}src={`/uploads/` + i} alt="menu"/> */}
-                        <img src={`http://localhost:4000/uploads/` + i} alt="menu"/>
+                        <img src={`/uploads/` + i} alt="menu"/>
+                        {/* <img src={`http://localhost:4000/uploads/` + i} alt="menu"/> */}
                       </div>
                     ))}
                   </div>

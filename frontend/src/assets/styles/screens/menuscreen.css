@@ -25,7 +25,6 @@
 
 .menu-column {
     flex: 0 0 auto;
-    /* margin: 20px; */
     width: 100%;
     display: flex;
     justify-content: center;
@@ -38,7 +37,6 @@
 .menu-column img {
     max-width: 100%;
     height: 90%;
-    /* width: 100%; */
     cursor: pointer;
 }
 
