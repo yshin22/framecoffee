@@ -1,15 +1,46 @@
 .artShow-container {
-    /* margin-top: 2vh; */
-    height: 100vh;
+    margin-top: 2vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
 }
 .coming-soon {
     display: flex;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
     height: 100%;
     text-align: center;
     /* font-size: 14vw; */
     /* align-items: center; */
+}
+
+.carousel-container {
+    /* display: flex; */
+    /* height: 100vh; */
+    /* justify-content: center; */
+}
+
+.artist-container {
+    margin: 2vh;
+}
+
+.artShow-carousel {
+    /* max-width: 40%; */
+    margin: 2vh;
+    border: solid #303030;
+    padding: 5px;
+    height: fit-content;
+}
+
+.artShow-carousel img {
+    width: 100%;
+}
+
+.artist-desc span{
+    font-size: 16px;
+    font-style: italic;
+    color: gray;
 }
 
 .coming-soon h1 {
@@ -22,12 +53,12 @@
 
 @media screen and (max-width: 992px) {
     .artShow-container {
-        /* margin-top: 13vh; */
+        margin-top: 13vh;
     }
 }
 
 @media screen and (max-width: 576px){
     .artShow-container {
-        /* margin-top: 88px; */
+        margin-top: 88px;
     }
 }
