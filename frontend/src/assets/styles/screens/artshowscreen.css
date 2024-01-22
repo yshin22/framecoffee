@@ -21,6 +21,12 @@
     /* justify-content: center; */
     max-width: 100%;
     margin-top: 2vh;
+    display: flex;
+    align-items: center;
+}
+
+.artist-wrapper {
+    /* height: 90vh; */
 }
 
 .artist-container {
@@ -60,7 +66,7 @@
     
 }
 
-.hr-container {
+/* .hr-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -68,6 +74,30 @@
     font-size: 48px;
     font-weight: 600;
     margin: 100px auto;
+} */
+
+.hr-container {
+    display: flex;
+    flex-direction: column;
+    /* margin-top: 100px; */
+    /* margin-bottom: 10vh; */
+    /* justify-content: center; */
+}
+.top-hr {
+    display: flex;
+    justify-content: space-evenly;
+}
+.mid-hr {
+    display: flex;
+    justify-content: space-evenly;
+}
+.btm-hr {
+    display: flex;
+    justify-content: space-evenly;
+}
+.hr-phrase {
+    font-size: 6vw;
+    font-weight: 700;
 }
 
 :root {

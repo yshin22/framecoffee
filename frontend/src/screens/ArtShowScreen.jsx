@@ -60,7 +60,7 @@ const ArtShowScreen = () => {
               <h2>This weeks local Artist</h2>
             </Row>
             
-            <Row>
+            <Row className='artist-wrapper'>
               <Col className='carousel-container' lg={6}>
                 <Carousel className='artShow-carousel'>
                   <Carousel.Item>
@@ -100,10 +100,91 @@ const ArtShowScreen = () => {
               </Col>
             </Row>
             
-            <div className='hr-container'>
+            {/* <div className='hr-container'>
               <div className='top-hr'>FEATURED WORKS</div>
               <div className='mid-hr'>FEATURED WORKS</div>
               <div className='btm-hr'>FEATURED WORKS</div>
+            </div> */}
+
+            <div className='hr-container'>
+              <div className='top-hr'>
+                <div className='hr-phrase'>
+                  F
+                </div>
+                <div className='hr-phrase'>
+                  E
+                </div>
+                <div className='hr-phrase'>
+                  A
+                </div>
+                <div className='hr-phrase'>
+                  T
+                </div>
+                <div className='hr-phrase'>
+                  U
+                </div>
+                <div className='hr-phrase'>
+                  R
+                </div>
+                <div className='hr-phrase'>
+                  E
+                </div>
+                <div className='hr-phrase'>
+                  D
+                </div>
+              </div>
+              <div className='mid-hr'>
+              <div className='hr-phrase'>
+                  F
+                </div>
+                <div className='hr-phrase'>
+                  E
+                </div>
+                <div className='hr-phrase'>
+                  A
+                </div>
+                <div className='hr-phrase'>
+                  T
+                </div>
+                <div className='hr-phrase'>
+                  U
+                </div>
+                <div className='hr-phrase'>
+                  R
+                </div>
+                <div className='hr-phrase'>
+                  E
+                </div>
+                <div className='hr-phrase'>
+                  D
+                </div>
+              </div>
+              <div className='btm-hr'>
+              <div className='hr-phrase'>
+                  F
+                </div>
+                <div className='hr-phrase'>
+                  E
+                </div>
+                <div className='hr-phrase'>
+                  A
+                </div>
+                <div className='hr-phrase'>
+                  T
+                </div>
+                <div className='hr-phrase'>
+                  U
+                </div>
+                <div className='hr-phrase'>
+                  R
+                </div>
+                <div className='hr-phrase'>
+                  E
+                </div>
+                <div className='hr-phrase'>
+                  D
+                </div>
+              </div>
             </div>
 
             <Row className='m-2 artist-gallery-container'>
