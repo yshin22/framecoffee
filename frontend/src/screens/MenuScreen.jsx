@@ -55,8 +55,8 @@ const MenuScreen = () => {
                     <Carousel className='menu-carousel' variant='dark' slide={false} interval={null}>
                       {menus.image?.map((i) => (
                         <Carousel.Item className='menu-carousel-item'>
-                          {/* <img src={`/uploads/` + i} alt="menu"/> */}
-                          <img src={`http://localhost:4000/uploads/` + i} alt="menu"/>
+                          <img src={`/uploads/` + i} alt="menu"/>
+                          {/* <img src={`http://localhost:4000/uploads/` + i} alt="menu"/> */}
                         </Carousel.Item>
                       ))}
                     </Carousel>
