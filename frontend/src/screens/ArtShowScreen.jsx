@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../assets/styles/screens/artshowscreen.css';
 import {Container, Row, Col, Carousel} from 'react-bootstrap';
 import beans from '../assets/images/frame_beans.jpg';
@@ -30,6 +30,22 @@ import image22 from '../assets/gallery/Wall.jpg';
 import image23 from '../assets/gallery/wayoflight.jpeg';
 
 const ArtShowScreen = () => {
+
+  useEffect(() => {
+    window.addEventListener(
+      "scroll",
+      () => {
+        document.body.style.setProperty(
+          "--scroll",
+          window.scrollY / (document.body.offsetHeight - window.innerHeight)
+        );
+      },
+      false
+    );
+  })  
+
+  document.body.style.setProperty('--phrase', document.documentElement.scrollTop * 1)
+
   return (
     <>
         <Container className='artShow-container'>
@@ -39,6 +55,9 @@ const ArtShowScreen = () => {
 
             <Row className='page-title'>
               <h1>ART SHOW</h1>
+            </Row>
+            <Row className='sub-title py-2'>
+              <h2>This weeks local Artist</h2>
             </Row>
             
             <Row>
@@ -72,45 +91,52 @@ const ArtShowScreen = () => {
                   </p>
                 </div>
                 <div className='artist-social'>
-                  <h3>@instagram</h3>
-                  <h3>@twitter</h3>
-                  <h3>@website</h3>
+                  <span>@instagram</span>
+                  <br />
+                  <span>@twitter</span>
+                  <br />
+                  <span>@website</span>
                 </div>
               </Col>
-              
             </Row>
+            
+            <div className='hr-container'>
+              <div className='top-hr'>FEATURED WORKS</div>
+              <div className='mid-hr'>FEATURED WORKS</div>
+              <div className='btm-hr'>FEATURED WORKS</div>
+            </div>
 
-            <Row className='mt-4'>
+            <Row className='m-2 artist-gallery-container'>
               <Col className='col-md-4 col-12 mb-4 mb-lg-0'>
-                <img class="w-100 shadow-1-strong rounded mb-4" src={image1} alt="" />
-                <img class="w-100 shadow-1-strong rounded mb-4" src={image2} alt="" />
-                <img class="w-100 shadow-1-strong rounded mb-4" src={image3} alt="" />
-                <img class="w-100 shadow-1-strong rounded mb-4" src={image4} alt="" />
-                <img class="w-100 shadow-1-strong rounded mb-4" src={image5} alt="" />
-                <img class="w-100 shadow-1-strong rounded mb-4" src={image6} alt="" />
-                <img class="w-100 shadow-1-strong rounded mb-4" src={image7} alt="" />
+                <img class="w-100 shadow-1-strong  mb-4" src={image1} alt="" />
+                <img class="w-100 shadow-1-strong  mb-4" src={image2} alt="" />
+                <img class="w-100 shadow-1-strong  mb-4" src={image3} alt="" />
+                <img class="w-100 shadow-1-strong  mb-4" src={image4} alt="" />
+                <img class="w-100 shadow-1-strong  mb-4" src={image5} alt="" />
+                <img class="w-100 shadow-1-strong  mb-4" src={image6} alt="" />
+                <img class="w-100 shadow-1-strong  mb-4" src={image7} alt="" />
               </Col>
 
               <Col class="col-md-4 col-12 mb-4 mb-lg-0'">
-                <img class="w-100 shadow-1-strong rounded mb-4" src={image8} alt="" />
-                <img class="w-100 shadow-1-strong rounded mb-4" src={image9} alt="" />
-                <img class="w-100 shadow-1-strong rounded mb-4" src={image10} alt="" />
-                <img class="w-100 shadow-1-strong rounded mb-4" src={image11} alt="" />
-                <img class="w-100 shadow-1-strong rounded mb-4" src={image12} alt="" />
-                <img class="w-100 shadow-1-strong rounded mb-4" src={image13} alt="" />
-                <img class="w-100 shadow-1-strong rounded mb-4" src={image14} alt="" />
+                <img class="w-100 shadow-1-strong  mb-4" src={image8} alt="" />
+                <img class="w-100 shadow-1-strong  mb-4" src={image9} alt="" />
+                <img class="w-100 shadow-1-strong  mb-4" src={image10} alt="" />
+                <img class="w-100 shadow-1-strong  mb-4" src={image11} alt="" />
+                <img class="w-100 shadow-1-strong  mb-4" src={image12} alt="" />
+                <img class="w-100 shadow-1-strong  mb-4" src={image13} alt="" />
+                <img class="w-100 shadow-1-strong  mb-4" src={image14} alt="" />
               </Col>
 
               <Col className='col-md-4 col-12 mb-4 mb-lg-0'>
-                <img class="w-100 shadow-1-strong rounded mb-4" src={image15} alt="" />
-                <img class="w-100 shadow-1-strong rounded mb-4" src={image16} alt="" />
-                <img class="w-100 shadow-1-strong rounded mb-4" src={image17} alt="" />
-                <img class="w-100 shadow-1-strong rounded mb-4" src={image18} alt="" />
-                <img class="w-100 shadow-1-strong rounded mb-4" src={image19} alt="" />
-                <img class="w-100 shadow-1-strong rounded mb-4" src={image20} alt="" />
-                <img class="w-100 shadow-1-strong rounded mb-4" src={image21} alt="" />
-                <img class="w-100 shadow-1-strong rounded mb-4" src={image22} alt="" />
-                <img class="w-100 shadow-1-strong rounded mb-4" src={image23} alt="" />
+                <img class="w-100 shadow-1-strong  mb-4" src={image15} alt="" />
+                <img class="w-100 shadow-1-strong  mb-4" src={image16} alt="" />
+                <img class="w-100 shadow-1-strong  mb-4" src={image17} alt="" />
+                <img class="w-100 shadow-1-strong  mb-4" src={image18} alt="" />
+                <img class="w-100 shadow-1-strong  mb-4" src={image19} alt="" />
+                <img class="w-100 shadow-1-strong  mb-4" src={image20} alt="" />
+                <img class="w-100 shadow-1-strong  mb-4" src={image21} alt="" />
+                <img class="w-100 shadow-1-strong  mb-4" src={image22} alt="" />
+                <img class="w-100 shadow-1-strong  mb-4" src={image23} alt="" />
               </Col>
             </Row>
 {/* 

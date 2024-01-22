@@ -1,12 +1,7 @@
 import { useEffect } from 'react';
 import '../assets/styles/titleAnimation.css';
-import {Row, Col} from 'react-bootstrap';
-import beans from '../assets/coffee-bean.png';
-import ProductCarousel from '../components/ProductCarousel';
-import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-import coffee from '../assets/productImages/cropped-coffee.webp';
-import {Tilt} from 'react-tilt';
+
 
 
 
