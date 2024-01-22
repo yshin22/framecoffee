@@ -88,11 +88,11 @@ const TitleAnimation = () => {
 
                 // image1.style.transform = "translateY(" + scrollPhrase + "px)";
             
-                phrase1.style.transition = "transform cubic-bezier( 0.07, 0.19, 0.05, 0.99 ) 1s";
-                phrase2.style.transition = "transform cubic-bezier( 0.07, 0.19, 0.05, 0.99 ) 1s";
-                phrase3.style.transition = "transform cubic-bezier( 0.07, 0.19, 0.05, 0.99 ) 1s";
-                phrase4.style.transition = "transform cubic-bezier( 0.07, 0.19, 0.05, 0.99 ) 1s";
-                phrase5.style.transition = "transform cubic-bezier( 0.07, 0.19, 0.05, 0.99 ) 1s";
+                phrase1.style.transition = "transform  1s";
+                phrase2.style.transition = "transform 1s";
+                phrase3.style.transition = "transform  1s";
+                phrase4.style.transition = "transform 1s";
+                phrase5.style.transition = "transform 1s";
 
                 // image1.style.transition = "transform cubic-bezier( 0.07, 0.19, 0.05, 0.99 ) 0.8s";
             };
