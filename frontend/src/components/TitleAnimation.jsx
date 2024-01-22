@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import '../assets/styles/titleAnimation.css';
 import { useParams } from 'react-router-dom';
+import _ from 'lodash';
 
 
 
@@ -96,7 +97,7 @@ const TitleAnimation = () => {
                 // image1.style.transition = "transform cubic-bezier( 0.07, 0.19, 0.05, 0.99 ) 0.8s";
             };
         }
-        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('scroll', _.throttle(handleScroll));
         return() => {
             window.removeEventListener('scroll', handleScroll);
         }
