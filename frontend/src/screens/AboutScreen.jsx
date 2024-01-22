@@ -17,7 +17,7 @@ const AboutScreen = () => {
         </Row>
 
         <Row className='sub-title py-2'>
-        <h2>Life happens, <span className='selectWord'>coffee</span> helps.</h2>
+          <h2>Life happens, <span className='selectWord'>coffee</span> helps.</h2>
         </Row>
 
         <Row className='image-row py-4'>

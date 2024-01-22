@@ -3,7 +3,7 @@ import '../assets/styles/screens/menuscreen.css'
 import Menu1 from '../assets/images/FALL_MENU_1.jpg';
 import Menu2 from '../assets/images/FALL_MENU_2.jpg';
 import Menu3 from '../assets/images/FALL_MENU_3.jpg';
-import { Container, Row, Col} from 'react-bootstrap';
+import { Container, Row, Carousel} from 'react-bootstrap';
 import Footer from '../components/Footer';
 import TextPath from '../components/TextPath'
 import ModalCentered from '../components/ModalCentered';
@@ -43,17 +43,26 @@ const MenuScreen = () => {
                     </div>
                 ) : 
                 (
-                  <div className='menu-slider-wrapper'>
-                    {menus.image?.map((i) => (
-                      <div className='menu-column'>
-                        <img src={`/uploads/` + i} alt="menu"/>
-                        {/* <img src={`http://localhost:4000/uploads/` + i} alt="menu"/> */}
-                      </div>
-                    ))}
+                  // <div className='menu-slider-wrapper'>
+                  //   {menus.image?.map((i) => (
+                  //     <div className='menu-column'>
+                  //       <img src={`/uploads/` + i} alt="menu"/>
+                  //       {/* <img src={`http://localhost:4000/uploads/` + i} alt="menu"/> */}
+                  //     </div>
+                  //   ))}
+                  // </div>
+                  <div className='menu-carousel-container'>
+                    <Carousel className='menu-carousel' variant='dark' slide={false} interval={null}>
+                      {menus.image?.map((i) => (
+                        <Carousel.Item className='menu-carousel-item'>
+                          {/* <img src={`/uploads/` + i} alt="menu"/> */}
+                          <img src={`http://localhost:4000/uploads/` + i} alt="menu"/>
+                        </Carousel.Item>
+                      ))}
+                    </Carousel>
                   </div>
                 )
           }
-
       </Container>
       <Footer/>
     </>
