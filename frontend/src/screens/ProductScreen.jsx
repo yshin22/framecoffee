@@ -3,7 +3,7 @@ import { useState } from 'react'
 import '../assets/styles/screens/productscreen.css'
 import { useParams, useNavigate} from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import {Form, Row, Col, Image, ListGroup, Card, Button} from 'react-bootstrap'
+import {Form, Row, Col, Image, ListGroup, Card, Button, Carousel} from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Rating from '../components/Rating'
 import { useGetProductDetailsQuery, useCreateReviewMutation } from '../slices/productsApiSlice'
@@ -12,6 +12,7 @@ import Loader from '../components/Loader'
 import Message from '../components/Message'
 import { addToCart } from '../slices/cartSlice' 
 import {toast} from 'react-toastify'
+import backside from '../assets/images/backside.jpg';
 import Footer from '../components/Footer'
 
 const ProductScreen = () => {
@@ -76,9 +77,17 @@ const ProductScreen = () => {
                 (
                     <>
                     <Meta title={product.name}/>
-                    <Row>
-                        <Col md={5} className='product-image-container'>
-                            <Image src={product.image} alt={product.name} fluid></Image>
+                    <Row style={{height: '100vh'}}>
+                        <Col md={4} className='product-image-container'>
+                            {/* <Image src={product.image} alt={product.name} fluid></Image> */}
+                            <Carousel className='product-img-carousel' variant='dark'>
+                                <Carousel.Item>
+                                    <img src={product.image} alt={product.name}/>
+                                </Carousel.Item>
+                                <Carousel.Item>
+                                    <img src={backside} alt="backside of beans"/>
+                                </Carousel.Item>
+                            </Carousel>
                         </Col>
                         <Col md={4}>
                             <ListGroup variant='flush'>
@@ -224,7 +233,7 @@ const ProductScreen = () => {
                 )}
                 
                 </div>
-            {/* <Footer/> */}
+            <Footer/>
         </>
    
   )

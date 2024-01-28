@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../assets/styles/screens/musicscreen.css'
 import { useEffect } from 'react';
 import { Container, Row, Col} from 'react-bootstrap';
@@ -6,6 +6,8 @@ import Footer from '../components/Footer';
 import Loader from '../components/Loader';
 
 const MusicScreen = () => {
+
+  const [loading, setLoading] = useState(true);
   
   return (
     <>
@@ -21,7 +23,8 @@ const MusicScreen = () => {
 
       <Row className='music-player-container'>
         <Col md={6} className='apple-playlist'>
-          <iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="450" style={{
+          {loading ? <Loader/> : <></>}
+          <iframe onLoad={() => setLoading(false)} allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="450" style={{
           width:"100%", maxWidth: "700px", overflow: "hidden", background:"transparent"}} sandbox="allow-forms allow-popups allow-same-origin 
           allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/playlist/f-r-a-m-e/pl.u-PDb4zXEtJNMZ3P"></iframe>
         </Col>
