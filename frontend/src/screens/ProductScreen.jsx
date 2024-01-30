@@ -85,7 +85,7 @@ const ProductScreen = () => {
                                     <img src={product.image} alt={product.name}/>
                                 </Carousel.Item>
                                 <Carousel.Item>
-                                    <img src={backside} alt="backside of beans"/>
+                                    <img src={product.secondImage} alt={product.name}/>
                                 </Carousel.Item>
                             </Carousel>
                         </Col>

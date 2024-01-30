@@ -18,6 +18,7 @@ const ProductEditScreen = () => {
     const [name, setName] = useState('');
     const [price, setPrice] = useState(0);
     const [image, setImage] = useState('');
+    const [secondImage, setSecondImage] = useState('');
     const [brand, setBrand] = useState('');
     const [category, setCategory] = useState('');
     const [countInStock, setCountInStock] = useState(0);
@@ -39,6 +40,7 @@ const ProductEditScreen = () => {
             setName(product.name);
             setPrice(product.price);
             setImage(product.image);
+            setSecondImage(product.secondImage);
             setBrand(product.brand);
             setCategory(product.category);
             setCountInStock(product.countInStock);
@@ -57,6 +59,7 @@ const ProductEditScreen = () => {
             name,
             price,
             image,
+            secondImage,
             brand,
             category,
             description,
@@ -78,13 +81,26 @@ const ProductEditScreen = () => {
         formData.append('image', e.target.files[0]);
         try {
             const res = await uploadProductImage(formData).unwrap();
+            console.log(`File Handler 1. res: ${res.image}`);
             toast.success(res.message);
             setImage(res.image);
         } catch (err) {
             toast.error(err.data.message || err.error);
         }
-      } 
+      }
 
+      const uploadFileHandler1 = async (e) => {
+        const formData = new FormData();
+        formData.append('image', e.target.files[0]);
+        try {
+            const res = await uploadProductImage(formData).unwrap();
+            console.log(`File Handler 2. res: ${res.image}`)
+            toast.success(res.message);
+            setSecondImage(res.image);
+        } catch (err) {
+            toast.error(err.data.message || err.error);
+        }
+      } 
 
   return ( 
     <Container className='productEdit-container'>
@@ -139,14 +155,14 @@ const ProductEditScreen = () => {
                         <Form.Control
                         type='text'
                         placeholder='Enter image url'
-                        value={image}
-                        onChange={(e) => setImage}
+                        value={secondImage}
+                        onChange={(e) => setSecondImage}
                         >
                         </Form.Control>
                         <Form.Control
                         type='file'
                         label='Choose file'
-                        onChange={uploadFileHandler}
+                        onChange={uploadFileHandler1}
                         ></Form.Control>
                     </Form.Group>
                     {loadingUpload && <Loader/>}

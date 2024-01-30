@@ -35,10 +35,6 @@ const upload = multer({ storage, fileFilter, limits: {
 const uploadSingleImage = upload.single('image');
 const uploadMultipleImages = upload.any();
 
-const options = {
-  projection: {_id: 0, image: 1}
-}
-
 // router.post('/productimage', (req, res) => {
 //   uploadSingleImage(req, res, function (err) {
 //     if (err) {
@@ -57,6 +53,7 @@ const postProductImage = (req,res) => {
     if (err) {
       return res.status(400).send({ message: err.message });
     }
+    console.log(`/${req.file.path}`);
     res.status(200).send({
       message: 'Image uploaded successfully',
       image: `/${req.file.path}`,
