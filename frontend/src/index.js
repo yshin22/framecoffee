@@ -43,6 +43,8 @@ import WholesaleScreen from './screens/WholesaleScreen';
 import GalleryScreen from './screens/GalleryScreen';
 import MusicScreen from './screens/MusicScreen';
 import ArtShowScreen from './screens/ArtShowScreen';
+import ArtShowListScreen from './screens/admin/ArtShowListScreen';
+import ArtShowEditScreen from './screens/admin/ArtShowEditScreen';
 
 import PrivacyPolicy from './screens/PrivacyPolicy';
 import RefundPolicy from './screens/RefundPolicy';
@@ -92,6 +94,10 @@ const router = createBrowserRouter(
         <Route path='/admin/userlist' element={<UserListScreen/>}/>
         <Route path='/admin/user/:id/edit' element={<UserEditScreen/>}/>
         <Route path='/admin/menuedit' element={<MenuEditScreen/>}/>
+        <Route path='/admin/artshowlist' element={<ArtShowListScreen/>}/>
+        <Route path='/admin/artshow/:id/edit' element={<ArtShowEditScreen/>}/>
+
+
       </Route>
     </Route>
   )

@@ -80,6 +80,7 @@ const createProductHandler = async () => {
                         </tr>
                     </thead>
                     <tbody>
+                        {console.log(data)}
                         {data.products.map((product) => (
                             <tr key={product._id}>
                                 <td>{product._id}</td>

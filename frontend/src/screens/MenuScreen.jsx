@@ -1,8 +1,5 @@
 import React, { useState } from 'react'
 import '../assets/styles/screens/menuscreen.css'
-import Menu1 from '../assets/images/FALL_MENU_1.jpg';
-import Menu2 from '../assets/images/FALL_MENU_2.jpg';
-import Menu3 from '../assets/images/FALL_MENU_3.jpg';
 import { Container, Row, Carousel} from 'react-bootstrap';
 import Footer from '../components/Footer';
 import TextPath from '../components/TextPath'

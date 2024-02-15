@@ -61,6 +61,33 @@ const postProductImage = (req,res) => {
   });
 };
 
+// @desc POST multiple artshow images to /uploads and return a list of the filenames
+// @route POST /api/uploads/artshow
+const postArtShowImages = asyncHandler(async (req, res) => {
+  uploadSingleImage(req, res, async function (err) {
+    console.log(`BACKEND FILES: ${req.file.file}`);
+    // console.log(req.files[0].filename);
+    // console.log(req.files[1].filename);
+    // console.log(req.files[2].filename);
+    // if (err) {
+    //   return res.status(400).send('error message:' + { message: err.message });
+    // }
+    // else {
+
+    //     var imageList = [];
+
+    //     for (let i = 0; i < req.files.length; i++) {
+    //         imageList.push(req.files[i].filename);
+    //     }
+          
+    //     res.status(200).send({
+    //     images: imageList,
+    //     message: 'Images uploaded successfully',
+    //   })
+    // }
+  });
+})
+
 const deleteMenus = asyncHandler(async(req, res) => {
   await Menu.deleteMany({});
   // console.log("items deleted")
@@ -88,23 +115,16 @@ const postMenu = asyncHandler(async(req, res) => {
         for (let i = 0; i < req.files.length; i++) {
             menuList.push(req.files[i].filename);
         }
-        // console.log(menuList);
-
+        
       const menu = new Menu({
         image: menuList,
       })
-  
       const createdMenu = await menu.save();
   
       res.status(200).send({
         menu: createdMenu,
         message: 'Menu uploaded successfully',
       })
-      
-      // .send({
-      //   message: 'Image uploaded successfully',
-      //   image: req.file.filename,
-      // });
     }
   });
 });
@@ -115,4 +135,5 @@ export {
   postMenu,
   deleteMenus,
   postProductImage,
+  postArtShowImages,
 };

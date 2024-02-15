@@ -77,6 +77,7 @@ const ProductEditScreen = () => {
       };
 
       const uploadFileHandler = async (e) => {
+        console.log(e.target.files[0]);
         const formData = new FormData();
         formData.append('image', e.target.files[0]);
         try {
