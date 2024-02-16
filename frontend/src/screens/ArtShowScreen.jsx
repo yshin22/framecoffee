@@ -23,7 +23,7 @@ const ArtShowScreen = () => {
               <h1>ART SHOW</h1>
             </Row>
             <Row className='sub-title py-2'>
-              <h2>This weeks local Artist</h2>
+              <h2>This weeks local Artist {artshow?.name}</h2>
             </Row>
 
             {/* {console.log(artshow)} */}
@@ -41,8 +41,12 @@ const ArtShowScreen = () => {
                 <Row className='artist-wrapper'>
                   <Col className='carousel-container' lg={6}>
                     <Carousel className='artShow-carousel'>
-                      <Carousel.Item>
-                      </Carousel.Item>
+                      {artshow.main_images?.map((i) => (
+                        <Carousel.Item>
+                          <img src={`/uploads/` + i} alt="art show img"/>
+                          {/* <img src={`http://localhost:4000/uploads/` + i} alt="menu"/> */}
+                        </Carousel.Item>
+                      ))}
                     </Carousel>
                   </Col>
 

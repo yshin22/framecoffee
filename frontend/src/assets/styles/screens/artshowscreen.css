@@ -46,6 +46,7 @@
 
 .artShow-carousel img {
     width: 100%;
+    object-fit: cover;
 }
 
 .artist-desc span{
