@@ -39,8 +39,8 @@ const getArtshowFeat = asyncHandler(async (req,res) => {
 // @access private/ Admin
 const createArtshow = asyncHandler(async (req,res) => {
     const artshow = new Artshow({
-        main_image: '/images/sample.jpg',
-        other_image: '/images/sample.jpg',
+        main_images: '/images/sample.jpg',
+        other_images: '/images/sample.jpg',
         name: 'Sample Name',
         title: 'Sample Title',
         script: 'Sample Script',
@@ -54,14 +54,14 @@ const createArtshow = asyncHandler(async (req,res) => {
 // @route PUT /api/artshow/:id
 // @access private/ Admin
 const updateArtshow = asyncHandler(async(req,res) => {
-    const {main_image, other_image, name, title, script, isFeat} = req.body;
+    const {main_images, other_images, name, title, script, isFeat} = req.body;
 
     const artshow = await Artshow.findById(req.params.id);
     // console.log(artshow)
 
     if (artshow) {
-        artshow.main_image = main_image;
-        artshow.other_image = other_image;
+        artshow.main_images = main_images;
+        artshow.other_images = other_images;
         artshow.name = name;
         artshow.title = title;
         artshow.script = script;

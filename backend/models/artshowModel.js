@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
 
 const artshowSchema = mongoose.Schema({
-    main_image: String,
-    other_image: [String],
+    main_images: [String],
+    other_images: [String],
     name: String,
     title: String,
     script: String,

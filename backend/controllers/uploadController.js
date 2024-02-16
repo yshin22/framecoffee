@@ -30,7 +30,7 @@ function fileFilter(req, file, cb) {
 }
 
 const upload = multer({ storage, fileFilter, limits: {
-    fileSize: 1000000
+  fileSize: 130000000, fieldSize: 130000000
 }});
 const uploadSingleImage = upload.single('image');
 const uploadMultipleImages = upload.any();
@@ -64,28 +64,33 @@ const postProductImage = (req,res) => {
 // @desc POST multiple artshow images to /uploads and return a list of the filenames
 // @route POST /api/uploads/artshow
 const postArtShowImages = asyncHandler(async (req, res) => {
-  uploadSingleImage(req, res, async function (err) {
-    console.log(`BACKEND FILES: ${req.file.file}`);
-    // console.log(req.files[0].filename);
-    // console.log(req.files[1].filename);
-    // console.log(req.files[2].filename);
-    // if (err) {
-    //   return res.status(400).send('error message:' + { message: err.message });
-    // }
-    // else {
+  try {
+    uploadMultipleImages(req, res, async function (err) {
+      // console.log(`BACKEND FILES: ${req.files}`);
+      console.log(req.files[0].filename);
+      console.log(req.files[1].filename);
+      console.log(req.files[2].filename);
+      if (err) {
+        return res.status(400).send('error message:' + { message: err.message });
+      }
+      else {
+  
+          var imageList = [];
+  
+          for (let i = 0; i < req.files.length; i++) {
+              imageList.push(req.files[i].filename);
+          }
+            
+          res.status(200).send({
+          images: imageList,
+          message: 'Images uploaded successfully',
+        })
+      }
+    });
+  } catch (err) {
+      console.log(err);
+  }
 
-    //     var imageList = [];
-
-    //     for (let i = 0; i < req.files.length; i++) {
-    //         imageList.push(req.files[i].filename);
-    //     }
-          
-    //     res.status(200).send({
-    //     images: imageList,
-    //     message: 'Images uploaded successfully',
-    //   })
-    // }
-  });
 })
 
 const deleteMenus = asyncHandler(async(req, res) => {

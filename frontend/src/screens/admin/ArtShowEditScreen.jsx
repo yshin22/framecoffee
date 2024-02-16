@@ -17,8 +17,8 @@ const ArtShowEditScreen = () => {
   const [name, setName] = useState('');
   const [title, setTitle] = useState('');
   const [script, setScript] = useState('');
-  const [image, setImage] = useState('');
-  const [otherImage, setOtherImage] = useState('');
+  const [main_images, setImage] = useState('');
+  const [other_images, setOtherImage] = useState('');
   const [isFeat, setIsFeat] = useState(false);
 
   const [imageArray, setImageArray] = useState('');
@@ -36,8 +36,8 @@ const ArtShowEditScreen = () => {
       setName(artshow.name);
       setTitle(artshow.title);
       setScript(artshow.script);
-      setImage(artshow.main_image);
-      setOtherImage(artshow.other_image);
+      setImage(artshow.main_images);
+      setOtherImage(artshow.other_images);
       setIsFeat(artshow.isFeat);
     }
   }, [artshow]);
@@ -50,8 +50,8 @@ const ArtShowEditScreen = () => {
         name,
         title,
         script,
-        image,
-        otherImage,
+        main_images,
+        other_images,
         isFeat,
       }).unwrap(); // NOTE: here we need to unwrap the Promise to catch any rejection in our catch block
       toast.success('Artshow updated');
@@ -63,22 +63,41 @@ const ArtShowEditScreen = () => {
   };
 
   const uploadFileHandler = async (e) => {
-    console.log(e.target.files[0])
+    console.log(e.target.files)
     const formData = new FormData();
-    formData.append('image', e.target.files[0]);
-    // for (let i = 0; i < image?.length; i++) {
-    //   formData.append('images', image[i]);
-    // }
+    // formData.append('image', e.target.files);
+    for (let i = 0; i < e.target.files.length; i++) {
+      console.log(e.target.files[i]);
+      formData.append('images', e.target.files[i]);
+    }
     try {
       const res = await uploadProductImage(formData).unwrap();
-      // toast.success(res.message);
-      // console.log(res.images);
-      // setImage(res.images);
-  } catch (err) {
+      toast.success(res.message);
+      console.log(res.images);
+      setImage(res.images);
+    } catch (err) {
       toast.error(err.data.message || err.error);
+    }
   }
 
+  const uploadFileHandler1 = async (e) => {
+    console.log(e.target.files)
+    const formData = new FormData();
+    // formData.append('image', e.target.files);
+    for (let i = 0; i < e.target.files.length; i++) {
+      console.log(e.target.files[i]);
+      formData.append('images', e.target.files[i]);
+    }
+    try {
+      const res = await uploadProductImage(formData).unwrap();
+      toast.success(res.message);
+      console.log(res.images);
+      setOtherImage(res.images);
+    } catch (err) {
+        toast.error(err.data.message || err.error);
+    }
   }
+
   //Upload file handler for images
   return (
     <Container>
@@ -117,7 +136,7 @@ const ArtShowEditScreen = () => {
                         <Form.Control
                         type='text'
                         placeholder='Enter image url'
-                        value={image}
+                        value={main_images}
                         onChange={(e) => setImage}
                         >
                         </Form.Control>
@@ -125,7 +144,7 @@ const ArtShowEditScreen = () => {
                         type='file'
                         label='Choose file'
                         onChange={uploadFileHandler}
-                
+                        multiple
                         ></Form.Control>
                     </Form.Group>
 
@@ -134,14 +153,15 @@ const ArtShowEditScreen = () => {
                         <Form.Control
                         type='text'
                         placeholder='Enter image url'
-                        value={otherImage}
+                        value={other_images}
                         onChange={(e) => setOtherImage}
                         >
                         </Form.Control>
                         <Form.Control
                         type='file'
                         label='Choose file'
-                        // onChange={uploadFileHandler1}
+                        onChange={uploadFileHandler1}
+                        multiple
                         ></Form.Control>
                     </Form.Group>
                     {loadingUpload && <Loader/>}
