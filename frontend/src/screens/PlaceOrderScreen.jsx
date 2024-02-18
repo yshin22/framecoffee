@@ -29,7 +29,16 @@ const PlaceOrderScreen = () => {
     },[cart.paymentMethod, cart.shippingAddress.address, navigate]);
 
     const placeOrderHandler = async () => {
-        try {   
+        try {
+            console.log('INSIDE HANDLER');
+            console.log(`${cart.cartItems}`)
+            console.log(`${cart.shippingAddress}`)
+            console.log(`${cart.paymentMethod}`)
+            console.log(`${cart.itemsPrice}`)
+            console.log(`${cart.shippingPrice}`)
+            console.log(`${cart.taxPrice}`)
+            console.log(`${cart.totalPrice}`)
+
             const res = await createOrder({
                 orderItems: cart.cartItems,
                 shippingAddress: cart.shippingAddress,
@@ -39,6 +48,7 @@ const PlaceOrderScreen = () => {
                 taxPrice: cart.taxPrice,
                 totalPrice: cart.totalPrice,
             }).unwrap();
+            console.log('AFTER CREATE ORDER')
             dispatch(clearCartItems());
             navigate(`/order/${res._id}`);
         } catch (error) {

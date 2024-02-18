@@ -12,8 +12,8 @@ const ShippingPolicy = () => {
         </Row>
 
         <div className='shipping-content-wrapper'>
-        All orders will be processed and shipped out within 1 working business 
-        day with UPS ground shipping for 3-5 day arrival.
+        All orders will be processed and shiXpped out within 1 working business 
+        day with USPS ground shipping for 3-5 day arrival.
         </div>
     </Container>
     <Footer/>
