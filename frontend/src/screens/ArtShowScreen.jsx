@@ -38,36 +38,35 @@ const ArtShowScreen = () => {
               </div>
             ) : (
               <>
-                <Row className='artist-wrapper'>
-                  <Col className='carousel-container' lg={6}>
-                    <Carousel className='artShow-carousel'>
+                <Row className='artist-wrapper m-md-4'>
+                  <Col className='carousel-container m-md-2' lg={6}>
+                    <Carousel className='artShow-carousel' interval={null}>
                       {artshow.main_images?.map((i) => (
                         <Carousel.Item>
                           <img src={`/uploads/` + i} alt="art show img"/>
-                          {/* <img src={`http://localhost:4000/uploads/` + i} alt="menu"/> */}
                         </Carousel.Item>
                       ))}
                     </Carousel>
                   </Col>
 
                   <Col className='artist-container'>
-                    <div className='artist-desc'>
+                    <Row className='artist-desc'>
                       <h1>{artshow.name} <span>{artshow.title}</span></h1>
                       <p>
                         {artshow.script}
                       </p>
-                    </div>
-                    <div className='artist-social'>
+                    </Row>
+                    <Row className='artist-social'>
                       <span>@instagram</span>
                       <br />
                       <span>@twitter</span>
                       <br />
                       <span>@website</span>
-                    </div>
+                    </Row>
                   </Col>
                 </Row>
             
-                <div className='hr-container'>
+                <Row className='hr-container'>
                   <div className='top-hr'>
                     <div className='hr-phrase'>
                       F
@@ -143,48 +142,22 @@ const ArtShowScreen = () => {
                       E
                     </div>
                     <div className='hr-phrase'>
-                      D
+                      D 
                     </div>
                   </div>
-                </div>
-
+                </Row>
                 <Row className='m-2 artist-gallery-container'>
-                  {/* <Col className='col-md-4 col-12 mb-4 mb-lg-0'>
-                    <img class="w-100 shadow-1-strong  mb-4" src={image1} alt="" />
-                    <img class="w-100 shadow-1-strong  mb-4" src={image2} alt="" />
-                    <img class="w-100 shadow-1-strong  mb-4" src={image3} alt="" />
-                    <img class="w-100 shadow-1-strong  mb-4" src={image4} alt="" />
-                    <img class="w-100 shadow-1-strong  mb-4" src={image5} alt="" />
-                    <img class="w-100 shadow-1-strong  mb-4" src={image6} alt="" />
-                    <img class="w-100 shadow-1-strong  mb-4" src={image7} alt="" />
-                  </Col>
-
-                  <Col class="col-md-4 col-12 mb-4 mb-lg-0'">
-                    <img class="w-100 shadow-1-strong  mb-4" src={image8} alt="" />
-                    <img class="w-100 shadow-1-strong  mb-4" src={image9} alt="" />
-                    <img class="w-100 shadow-1-strong  mb-4" src={image10} alt="" />
-                    <img class="w-100 shadow-1-strong  mb-4" src={image11} alt="" />
-                    <img class="w-100 shadow-1-strong  mb-4" src={image12} alt="" />
-                    <img class="w-100 shadow-1-strong  mb-4" src={image13} alt="" />
-                    <img class="w-100 shadow-1-strong  mb-4" src={image14} alt="" />
-                  </Col>
-
-                  <Col className='col-md-4 col-12 mb-4 mb-lg-0'>
-                    <img class="w-100 shadow-1-strong  mb-4" src={image15} alt="" />
-                    <img class="w-100 shadow-1-strong  mb-4" src={image16} alt="" />
-                    <img class="w-100 shadow-1-strong  mb-4" src={image17} alt="" />
-                    <img class="w-100 shadow-1-strong  mb-4" src={image18} alt="" />
-                    <img class="w-100 shadow-1-strong  mb-4" src={image19} alt="" />
-                    <img class="w-100 shadow-1-strong  mb-4" src={image20} alt="" />
-                    <img class="w-100 shadow-1-strong  mb-4" src={image21} alt="" />
-                    <img class="w-100 shadow-1-strong  mb-4" src={image22} alt="" />
-                    <img class="w-100 shadow-1-strong  mb-4" src={image23} alt="" />
-                  </Col> */}
+                    {artshow.other_images?.map((i, index) => (
+                      // divide the length of images into 3
+                      <Col className='col-md-4 col-12 mb-4 mb-lg-4'>
+                        <img class="w-100 h-100 shadow-1-strongx" style={{objectFit: 'cover'}}
+                        src={`/uploads/` + i} alt="Collage of images"/>
+                      </Col>
+                    ))}
                 </Row>
             </>
             )
           }
-            
         </Container>
         <Footer/>
     </>
