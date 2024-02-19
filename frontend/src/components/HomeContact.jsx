@@ -1,6 +1,7 @@
 import React from 'react'
 import '../assets/styles/homecontact.css'
 import { Container, Row, Col } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 import EmailPrompt from './EmailPrompt'
 
 const HomeContact = () => {
@@ -21,8 +22,7 @@ const HomeContact = () => {
                         We would love to work with you!
                         </p>
                         {/* <p>Coming soon...</p> */}
-                        <button className='wholesale-btn'>Coming Soon...</button>
-
+                        <Link className='wholesale-btn' to='/wholesale'>Click Here</Link>
                     </div>
                     {/* <button className='wholesale-btn'>Coming Soon...</button> */}
                 </Col>
