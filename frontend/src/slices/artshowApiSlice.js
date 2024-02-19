@@ -19,7 +19,8 @@ export const artshowApiSlice = apiSlice.injectEndpoints({
         getArtShowFeat: builder.query({
             query: () => ({
                 url: `${ARTSHOW_URL}/featured`,
-            })
+            }),
+            keepUnusedDataFor: 5,
         }),
         createArtShow: builder.mutation({
             query: () => ({
@@ -48,6 +49,12 @@ export const artshowApiSlice = apiSlice.injectEndpoints({
                 url: `${ARTSHOW_URL}/${artshowId}`,
                 method: 'DELETE',
             })
+        }),
+        updateFeat: builder.mutation({
+            query: () => ({
+                url: ARTSHOW_URL,
+                method: 'PUT',
+            })
         })
     })
 });
@@ -60,4 +67,5 @@ export const {
     useUpdateArtShowMutation,
     useUploadArtShowImageMutation,
     useDeleteArtShowMutation,
+    useUpdateFeatMutation,
 } = artshowApiSlice;

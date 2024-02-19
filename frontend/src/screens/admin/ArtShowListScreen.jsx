@@ -11,7 +11,7 @@ import {
     useDeleteArtShowMutation
 } from '../../slices/artshowApiSlice';
 import {toast} from 'react-toastify';
-// import '../../assets/styles/screens/productlistscreen.css';
+import '../../assets/styles/screens/artshowlistscreen.css';
 
 const ArtShowListScreen = () => {
 
@@ -48,12 +48,12 @@ const ArtShowListScreen = () => {
     }
     
   return (
-    <Container>
+    <Container className='artShowList-container'>
         <Row>
             <Col>
                 <h1>Artists</h1>
             </Col>
-            <Col>
+            <Col className='text-end'>
                 <Button className='btn-sm m-3' onClick={createArtshowHandler}>
                     <FaEdit/> Create Artist
                 </Button>

@@ -28,7 +28,7 @@ const Location = () => {
                     </div>
                     <div className='location-address'>
                         <h3>
-                            <a href="https://maps.app.goo.gl/kL6TWRwvUyfgpmCX8">
+                            <a href="https://maps.app.goo.gl/B6xWVJHjEfDtPcQ58" target="_blank">
                                 Vienna, VA
                             </a>
                         </h3>

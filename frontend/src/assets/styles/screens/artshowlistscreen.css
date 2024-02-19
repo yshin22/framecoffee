@@ -1,0 +1,17 @@
+
+
+.artShowList-container {
+    margin-top: 3vh;
+}
+
+@media screen and (max-width: 992px) {
+    .artShowList-container {
+        margin-top: 13vh;
+    }
+}
+
+@media screen and (max-width: 576px){
+    .artShowList-container {
+        margin-top: 88px;
+    }
+}

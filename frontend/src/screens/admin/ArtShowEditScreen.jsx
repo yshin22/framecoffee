@@ -9,6 +9,7 @@ import {
   useUpdateArtShowMutation,
   useGetArtShowDetailsQuery,
   useUploadArtShowImageMutation,
+  useUpdateFeatMutation,
 } from '../../slices/artshowApiSlice';
 
 const ArtShowEditScreen = () => {
@@ -19,15 +20,18 @@ const ArtShowEditScreen = () => {
   const [script, setScript] = useState('');
   const [main_images, setImage] = useState('');
   const [other_images, setOtherImage] = useState('');
+  const [quote, setQuote] = useState('');
+  const [instagram, setInstagram] = useState('');
+  const [website, setWebsite] = useState('');
   const [isFeat, setIsFeat] = useState(false);
-
-  const [imageArray, setImageArray] = useState('');
 
   const {data: artshow, isLoading, error, refetch} = useGetArtShowDetailsQuery(artshowId);
 
   const [updateArtshow, {isLoading: loadingUpdate}] = useUpdateArtShowMutation();
 
   const [uploadProductImage, {isLoading: loadingUpload}] = useUploadArtShowImageMutation();
+
+  const [updateFeat] = useUpdateFeatMutation();
 
   const navigate = useNavigate();
 
@@ -38,6 +42,9 @@ const ArtShowEditScreen = () => {
       setScript(artshow.script);
       setImage(artshow.main_images);
       setOtherImage(artshow.other_images);
+      setQuote(artshow.quote);
+      setInstagram(artshow.instagram);
+      setWebsite(artshow.website);
       setIsFeat(artshow.isFeat);
     }
   }, [artshow]);
@@ -52,6 +59,9 @@ const ArtShowEditScreen = () => {
         script,
         main_images,
         other_images,
+        quote,
+        instagram,
+        website,
         isFeat,
       }).unwrap(); // NOTE: here we need to unwrap the Promise to catch any rejection in our catch block
       toast.success('Artshow updated');
@@ -98,9 +108,23 @@ const ArtShowEditScreen = () => {
     }
   }
 
+  const featHandler = async (e) => {
+    try {
+      if (isFeat === false) {
+        const res = await updateFeat();
+        toast.success(res.message);
+        setIsFeat(true);
+      } else {
+        setIsFeat(false);
+      }
+    } catch (err) { 
+      console.log(err)
+    }
+  };
+
   //Upload file handler for images
   return (
-    <Container>
+    <Container className='artShowEdit-container'>
       <Link to='/admin/artshowlist' className='btn btn-light my-2'>
         Go Back
       </Link>
@@ -128,6 +152,36 @@ const ArtShowEditScreen = () => {
                         placeholder='Enter Title'
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}> 
+                        </Form.Control>
+                    </Form.Group>
+
+                    <Form.Group controlId='title' className='my-2'>
+                        <Form.Label>Quote</Form.Label>
+                        <Form.Control
+                        type='text'
+                        placeholder='Enter Quote'
+                        value={quote}
+                        onChange={(e) => setQuote(e.target.value)}> 
+                        </Form.Control>
+                    </Form.Group>
+
+                    <Form.Group controlId='title' className='my-2'>
+                        <Form.Label>Instagram</Form.Label>
+                        <Form.Control
+                        type='text'
+                        placeholder='Instagram Link'
+                        value={instagram}
+                        onChange={(e) => setInstagram(e.target.value)}> 
+                        </Form.Control>
+                    </Form.Group>
+
+                    <Form.Group controlId='title' className='my-2'>
+                        <Form.Label>Website</Form.Label>
+                        <Form.Control
+                        type='text'
+                        placeholder='Website Link'
+                        value={website}
+                        onChange={(e) => setWebsite(e.target.value)}> 
                         </Form.Control>
                     </Form.Group>
 
@@ -181,7 +235,7 @@ const ArtShowEditScreen = () => {
                             type='checkbox'
                             label='Is Featured'
                             checked={isFeat}
-                            onChange={(e) => setIsFeat(e.target.checked)}>                        
+                            onChange={featHandler}>                        
                             </Form.Check>
                     </Form.Group>
 

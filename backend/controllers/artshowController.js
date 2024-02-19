@@ -29,9 +29,15 @@ const getArtshowById = asyncHandler(async (req,res) => {
 // @access public
 const getArtshowFeat = asyncHandler(async (req,res) => {
     const artshow = await Artshow.find({isFeat: true});
-    console.log(`FEATURED ARTISTS: ${artshow}`);
-    // return the first of artshow object since only one "artshow" will be featured
-    res.json(artshow[0]);
+    if (artshow) {
+        // console.log(`FEATURED ARTISTS: ${artshow}`);
+        // return the first of artshow object since only one "artshow" will be featured
+        res.json(artshow[0]);
+    } else {
+        res.status(404);
+        throw new Error('Resource not found');
+    }
+    
 })
 
 // @desc Create an Artshow
@@ -44,17 +50,20 @@ const createArtshow = asyncHandler(async (req,res) => {
         name: 'Sample Name',
         title: 'Sample Title',
         script: 'Sample Script',
+        quote: 'Sample Quote',
+        instagram: '@instagram',
+        website: '@website',
         isFeat: false,
     });
     const createdArtshow = await artshow.save();
-    res.status(201).json(createArtshow);
+    res.status(201).json(createdArtshow);
 })
 
 // @desc Update an Artshow
 // @route PUT /api/artshow/:id
 // @access private/ Admin
 const updateArtshow = asyncHandler(async(req,res) => {
-    const {main_images, other_images, name, title, script, isFeat} = req.body;
+    const {main_images, other_images, name, title, script, quote, instagram, website, isFeat} = req.body;
 
     const artshow = await Artshow.findById(req.params.id);
     // console.log(artshow)
@@ -65,6 +74,9 @@ const updateArtshow = asyncHandler(async(req,res) => {
         artshow.name = name;
         artshow.title = title;
         artshow.script = script;
+        artshow.quote = quote;
+        artshow.instagram = instagram;
+        artshow.website = website;
         artshow.isFeat = isFeat;
 
         const updateArtshow = await artshow.save();
@@ -90,6 +102,16 @@ const deleteArtshow = asyncHandler(async (req,res) => {
     }
 })
 
+// @desc set all featured artist to false
+// @route PUT /api/artshow/:id
+// @ access private/ admin
+const updateFeatForAll = asyncHandler(async (req, res) => {
+    await Artshow.updateMany({isFeat: true}, {$set: {isFeat: false}});
+    res.status(200).send(
+        {message: 'Set artist to Featured'}
+    )
+})
+
 export {
     getArtshows,
     getArtshowById,
@@ -97,4 +119,5 @@ export {
     createArtshow,
     updateArtshow,
     deleteArtshow,
+    updateFeatForAll,
 };

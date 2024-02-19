@@ -6,6 +6,9 @@ const artshowSchema = mongoose.Schema({
     name: String,
     title: String,
     script: String,
+    quote: String,
+    instagram: String,
+    website: String,
     isFeat: {
         type: Boolean,
         default: false,

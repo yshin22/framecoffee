@@ -1,17 +1,12 @@
-import React, { useEffect, useState } from 'react';
 import '../assets/styles/screens/artshowscreen.css';
 import {Container, Row, Col, Carousel} from 'react-bootstrap';
 import Footer from '../components/Footer';
 import {
-  useGetArtShowDetailsQuery,
   useGetArtShowFeatQuery,
 } from '../slices/artshowApiSlice';
 import Loader from '../components/Loader';
-import Message from '../components/Message';
 
 const ArtShowScreen = () => {
-
-  // const {data: artshow, isLoading, error, refetch} = useGetArtShowDetailsQuery();
 
   const {data: artshow, isLoading, error, refetch} = useGetArtShowFeatQuery();
 
@@ -23,19 +18,123 @@ const ArtShowScreen = () => {
               <h1>ART SHOW</h1>
             </Row>
             <Row className='sub-title py-2'>
-              <h2>This weeks local Artist {artshow?.name}</h2>
+              <h2>{artshow?.quote}</h2>
             </Row>
 
             {/* {console.log(artshow)} */}
 
             {isLoading ? (
               <Loader/>
-            ) : error ? (
-              <div>
-                <Message variant='danger'>
-                    {error?.data?.message || error.error}
-                </Message>
-              </div>
+            ) : !artshow ? (
+                <Container className='coming-soon-container'>
+                  <Row className='hr-container'>
+                    <div className='top-hr'>
+                      <div className='hr-phrase'>
+                        C
+                      </div>
+                      <div className='hr-phrase'>
+                        O
+                      </div>
+                      <div className='hr-phrase'>
+                        M
+                      </div>
+                      <div className='hr-phrase'>
+                        I
+                      </div>
+                      <div className='hr-phrase'>
+                        N
+                      </div>
+                      <div className='hr-phrase'>
+                        G
+                      </div>
+                      <div className='hr-phrase'>
+                        &nbsp;
+                      </div>
+                      <div className='hr-phrase'>
+                        S
+                      </div>
+                      <div className='hr-phrase'>
+                        O
+                      </div>
+                      <div className='hr-phrase'>
+                        O
+                      </div>
+                      <div className='hr-phrase'>
+                        N
+                      </div>
+                    </div>
+                  <div className='mid-hr'>
+                    <div className='hr-phrase'>
+                      C
+                    </div>
+                    <div className='hr-phrase'>
+                      O
+                    </div>
+                    <div className='hr-phrase'>
+                      M
+                    </div>
+                    <div className='hr-phrase'>
+                      I
+                    </div>
+                    <div className='hr-phrase'>
+                      N
+                    </div>
+                    <div className='hr-phrase'>
+                      G
+                    </div>
+                    <div className='hr-phrase'>
+                      &nbsp;
+                    </div>
+                    <div className='hr-phrase'>
+                      S
+                    </div>
+                    <div className='hr-phrase'>
+                      O
+                    </div>
+                    <div className='hr-phrase'>
+                      O
+                    </div>
+                    <div className='hr-phrase'>
+                      N
+                    </div>
+                  </div>
+                  <div className='btm-hr'>
+                    <div className='hr-phrase'>
+                        C
+                      </div>
+                      <div className='hr-phrase'>
+                        O
+                      </div>
+                      <div className='hr-phrase'>
+                        M
+                      </div>
+                      <div className='hr-phrase'>
+                        I
+                      </div>
+                      <div className='hr-phrase'>
+                        N
+                      </div>
+                      <div className='hr-phrase'>
+                        G
+                      </div>
+                      <div className='hr-phrase'>
+                        &nbsp;
+                      </div>
+                      <div className='hr-phrase'>
+                        S
+                      </div>
+                      <div className='hr-phrase'>
+                        O
+                      </div>
+                      <div className='hr-phrase'>
+                        O
+                      </div>
+                      <div className='hr-phrase'>
+                        N
+                      </div>
+                    </div>
+                  </Row>  
+                </Container>
             ) : (
               <>
                 <Row className='artist-wrapper mt-4'>
@@ -56,12 +155,16 @@ const ArtShowScreen = () => {
                         {artshow.script}
                       </p>
                     </Row>
-                    <Row className='artist-social'>
-                      <span>@instagram</span>
-                      <br />
-                      <span>@twitter</span>
-                      <br />
-                      <span>@website</span>
+                    <Row className='artist-social m-xs-2' >
+                      <Col className='mb-2' lg={12}> 
+                        <a href={artshow.instagram} target="_blank">INSTAGRAM</a>
+                      </Col>
+                      {artshow.website === '@website' ? ({}) : 
+                      (
+                        <Col> 
+                          <a href={artshow.website} target="_blank">WEBSITE</a>
+                        </Col>
+                      )}
                     </Row>
                   </Col>
                 </Row>
