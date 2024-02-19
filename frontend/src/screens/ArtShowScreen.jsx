@@ -38,7 +38,7 @@ const ArtShowScreen = () => {
               </div>
             ) : (
               <>
-                <Row className='artist-wrapper m-md-4'>
+                <Row className='artist-wrapper mt-4'>
                   <Col className='carousel-container m-md-2' lg={6}>
                     <Carousel className='artShow-carousel' interval={null}>
                       {artshow.main_images?.map((i) => (
