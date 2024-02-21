@@ -24,7 +24,9 @@ const EmailPrompt = () => {
         e.preventDefault();
         console.log({ mailerState });
 
-        const response = await fetch("https://framecoffeeroasters.onrender.com/send", {
+        // Change URL in "fetch('URL')" to below when LIVE and not DEV
+        // https://framecoffeeroasters.onrender.com/send
+        const response = await fetch("http://localhost:3000/send", {
           method: "POST",
           headers: {
             "Content-type": "application/json",
@@ -36,9 +38,9 @@ const EmailPrompt = () => {
             const resData = await res;
             console.log(resData);
             if (resData.status === "success") {
-              alert("Message Sent");
+              alert("Message sent successfully!\n\nWe will get back to you as soon as possible");
             } else if (resData.status === "fail") {
-              alert("Message failed to send");
+              alert("Failed to send message: Something went wrong on our end...\n\nPlease shoot us a message to: mainframe@framecoffee.net");
             }
           })
           .then(() => {

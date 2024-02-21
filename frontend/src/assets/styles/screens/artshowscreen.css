@@ -106,7 +106,7 @@
 
 .artist-social a{
     text-decoration: none;
-    color: #F25000;
+    color: #F25000 !important;
     font-weight: 600;
 }
 

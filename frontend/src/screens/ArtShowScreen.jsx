@@ -159,7 +159,7 @@ const ArtShowScreen = () => {
                       <Col className='mb-2' lg={12}> 
                         <a href={artshow.instagram} target="_blank">INSTAGRAM</a>
                       </Col>
-                      {artshow.website === '@website' ? ({}) : 
+                      {artshow.website === '@website' ? (<></>) : 
                       (
                         <Col> 
                           <a href={artshow.website} target="_blank">WEBSITE</a>

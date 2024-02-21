@@ -52,29 +52,54 @@ transporter.verify((err, success) => {
   err ? console.log(err) : console.log(`=== server is ready to take messages: ${success} ===`);
 })
 
-app.post("/send", function (req,res) {
-  let mailOptions = {
-    from: `${req.body.mailerState.email}`,
-    to: process.env.EMAIL,
-    subject: `Message from: ${req.body.mailerState.email}`,
-    text: `${req.body.mailerState.message}`,
-  };
+// @desc Send mail with message content from "Wholesale" page
+// @route POST URL/wholesale/send
+app.post("/wholesale/send", function (req,res) {
+    let textBody = `Business: ${req.body.mailerState.businessName}\nType of Business: ${req.body.mailerState.typeOfBusiness}\nQuantity: ${req.body.mailerState.qty} lbs/month\nEmail: ${req.body.mailerState.email}\nPhone: ${req.body.mailerState.phone}\nWebsite/ Socials: ${req.body.mailerState.social}\n\nMessage:\n\n${req.body.mailerState.message}`;
+    let mailOptions = {
+      from: `${req.body.mailerState.email}`,
+      to: process.env.EMAIL,
+      subject: `Message from: ${req.body.mailerState.email}`,
+      text: textBody,
+    };
+  
+    transporter.sendMail(mailOptions, function (err, data) {
+      if (err) {
+        res.json({
+          status: "fail",
+        })
+      } else {
+        console.log("== Message Sent ==");
+        res.json({
+          status: "success",
+        });
+      }
+    });
+})
 
-  transporter.sendMail(mailOptions, function (err, data) {
-    if (err) {
-      res.json({
-        status: "fail",
-      })
-    } else {
-      console.log("== Message Sent ==");
-      res.json({
-        status: "success",
-      });
-    }
-  });
+// @desc Send message from "Contact us" page
+// @route POST
+app.post("/send", function (req,res) { 
+    let mailOptions = {
+      from: `${req.body.mailerState.email}`,
+      to: process.env.EMAIL,
+      subject: `Message from: ${req.body.mailerState.email}`,
+      text: `Name: ${req.body.mailerState.name}\n\nMessage:\n${req.body.mailerState.message}`,
+    };
+  
+    transporter.sendMail(mailOptions, function (err, data) {
+      if (err) {
+        res.json({
+          status: "fail",
+        })
+      } else {
+        console.log("== Message Sent ==");
+        res.json({
+          status: "success",
+        });
+      }
+    });
 });
-
-
 
 // Paypal set up
 app.get('/api/config/paypal', (req, res) => 
