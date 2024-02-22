@@ -6,6 +6,12 @@ import EmailPrompt from './EmailPrompt'
 
 const HomeContact = () => {
 
+  //auto scroll after pressing button
+  function topFunction() {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  }
+
   return (
     <>
         <Container className='contact-wrapper'>
@@ -22,7 +28,7 @@ const HomeContact = () => {
                         We would love to work with you!
                         </p>
                         {/* <p>Coming soon...</p> */}
-                        <Link className='wholesale-btn' to='/wholesale'>Click Here</Link>
+                        <Link className='wholesale-btn' to='/wholesale' onClick={topFunction}>Click Here</Link>
                     </div>
                     {/* <button className='wholesale-btn'>Coming Soon...</button> */}
                 </Col>

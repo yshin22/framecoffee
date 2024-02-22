@@ -55,6 +55,7 @@ transporter.verify((err, success) => {
 // @desc Send mail with message content from "Wholesale" page
 // @route POST URL/wholesale/send
 app.post("/wholesale/send", function (req,res) {
+  console.log("wholesale backend")
     let textBody = `Business: ${req.body.mailerState.businessName}\nType of Business: ${req.body.mailerState.typeOfBusiness}\nQuantity: ${req.body.mailerState.qty} lbs/month\nEmail: ${req.body.mailerState.email}\nPhone: ${req.body.mailerState.phone}\nWebsite/ Socials: ${req.body.mailerState.social}\n\nMessage:\n\n${req.body.mailerState.message}`;
     let mailOptions = {
       from: `${req.body.mailerState.email}`,
@@ -65,6 +66,7 @@ app.post("/wholesale/send", function (req,res) {
   
     transporter.sendMail(mailOptions, function (err, data) {
       if (err) {
+        console.log(err)
         res.json({
           status: "fail",
         })

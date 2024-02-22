@@ -26,7 +26,7 @@ const EmailPrompt = () => {
 
         // Change URL in "fetch('URL')" to below when LIVE and not DEV
         // https://framecoffeeroasters.onrender.com/send
-        const response = await fetch("http://localhost:3000/send", {
+        const response = await fetch("https://framecoffeeroasters.onrender.com/send", {
           method: "POST",
           headers: {
             "Content-type": "application/json",
