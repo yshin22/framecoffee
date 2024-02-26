@@ -37,11 +37,11 @@ const addOrderItems = asyncHandler(async (req,res) => {
             shippingPrice,
             totalPrice,
         });
-        console.log('created order')
+        // console.log('created order')
 
         // Save the order
         const createdOrder = await order.save();
-        console.log(`${createdOrder}`)
+        // console.log(`${createdOrder}`)
         // Pass in new created order
         res.status(200).json(createdOrder);
     }

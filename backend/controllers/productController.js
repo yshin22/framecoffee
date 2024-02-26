@@ -23,7 +23,9 @@ const getProducts = asyncHandler(async (req,res) => {
 // @route GET /api/products/:ID
 // @access public
 const getProductById = asyncHandler(async (req,res) => {
+    console.log(`PRODUCT CONTROLLER ID: ${req.params.id}`)
     const product = await Product.findById(req.params.id);
+    // console.log(product)
 
     if (product) {
         return res.json(product);
