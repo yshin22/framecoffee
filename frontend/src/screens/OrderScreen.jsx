@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect} from 'react';
 import {Link, useParams} from 'react-router-dom';
 import {Row, Col, ListGroup, Image, Button, Card, Container} from 'react-bootstrap';
 import {toast} from 'react-toastify';
@@ -13,9 +13,6 @@ import {
     useDeliverOrdersMutation
 } 
 from '../slices/ordersApiSlice';
-import {
-    useGetProductDetailsQuery,
-} from '../slices/productsApiSlice';
 import '../assets/styles/screens/orderscreen.css';
 import Footer from '../components/Footer';
 
@@ -24,13 +21,9 @@ const OrderScreen = () => {
     // Get id from URL 
     const {id: orderId} = useParams();
 
-    const [productId, setProductId] = useState("");
-
     // Get data from "orderId" (renamed "order")
     // "refetch" to get updated/ new data
     const {data: order, refetch, isLoading, error} = useGetOrderDetailsQuery(orderId);
-
-    const {data: product, refetch: refetchProd} = useGetProductDetailsQuery(productId);
 
     const [payOrder, {isLoading: loadingPay}] = usePayOrderMutation();
 
@@ -62,37 +55,11 @@ const OrderScreen = () => {
         }
     }, [order, paypal, paypalDispatch, loadingPayPal, errorPayPal])
 
-    useEffect(() => {
-
-        if (productId) {
-            console.log(`PRODUCT ID: ${productId}`)
-            console.log(product)
-            console.log(`COUNT IN STOCK: ${product?.countInStock}`)
-        }
-        
-
-    }, [productId, product])
-
-
-    async function setQuantity() {  
-        console.log(`LENGTH OF ORDER ITEMS: ${order.orderItems.length}`)
-        for (let i=0; i < order.orderItems.length; i++) {
-            console.log(`LOOP: ${order.orderItems[i].product.toString()}`)
-            let stringProd = order.orderItems[i].product.toString()
-            await setProductId(stringProd);
-            // console.log(`ORDER QTY: ${order.orderItems[i].qty}`)
-            // let newQty = product.countInStock - order.orderItems[i].qty;
-            // console.log(`qty after: ${newQty}`)
-        }
-    }
 
     function onApprove(data, actions) {
         return actions.order.capture().then(async function(details) {
             try {
-                await payOrder({orderId, details});                
-
-                await setQuantity();
-
+                await payOrder({orderId, details, order});                
                 refetch();
                 toast.success('Payment Successful');
             } catch (err) {

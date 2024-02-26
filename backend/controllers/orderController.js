@@ -1,6 +1,6 @@
 import asyncHandler from "../middleware/asyncHandler.js";
 import Order from "../models/orderModel.js";
-
+import Product from "../models/productModel.js";
 
 // @desc Create new order
 // @route POST /api/orders
@@ -73,8 +73,17 @@ const getOrderById = asyncHandler(async (req,res) => {
 // @access private
 const updateOrderToPaid = asyncHandler(async (req,res) => {
     const order = await Order.findById(req.params.id);
+    console.log(req.body.order.orderItems);
 
     if (order) {
+        for (const i in order.orderItems) {
+            const item = order.orderItems[i];
+            const product = await Product.findById(item.product);
+            product.countInStock -= item.qty;
+            // product.sold += item.qty #not yet added to model
+            await product.save()
+        }
+
         order.isPaid = true;
         order.paidAt = Date.now();
         order.paymentResult = {
@@ -116,6 +125,10 @@ const getOrders = asyncHandler(async (req,res) => {
     const orders = await Order.find({}).populate('user', 'id name');
     res.status(200).json(orders);
 });
+
+// const updateProductQty = asyncHandler(async (req, res) => {
+    
+//   })
 
 
 export { 
