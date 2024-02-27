@@ -47,6 +47,12 @@ export const ordersApiSlice = apiSlice.injectEndpoints({
                 method: 'PUT'
             })
         }),
+        deleteOrder: builder.mutation({
+            query: (orderId) => ({
+                url: `${ORDERS_URL}/${orderId}`,
+                method: 'DELETE',
+            })
+        }),
     }),
 });
 
@@ -57,5 +63,6 @@ export const {
     useGetPayPalClientIdQuery,
     useGetMyOrdersQuery,
     useGetOrdersQuery,
-    useDeliverOrdersMutation
+    useDeliverOrdersMutation,
+    useDeleteOrderMutation,
 } = ordersApiSlice;

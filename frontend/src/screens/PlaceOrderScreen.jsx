@@ -30,15 +30,16 @@ const PlaceOrderScreen = () => {
 
     const placeOrderHandler = async () => {
         try {
-            console.log('INSIDE HANDLER');
-            console.log(`${cart.cartItems}`)
-            console.log(`${cart.shippingAddress}`)
-            console.log(`${cart.paymentMethod}`)
-            console.log(`${cart.itemsPrice}`)
-            console.log(`${cart.shippingPrice}`)
-            console.log(`${cart.taxPrice}`)
-            console.log(`${cart.totalPrice}`)
+            // console.log('INSIDE HANDLER');
+            // console.log(`${cart.cartItems}`)
+            // console.log(`${cart.shippingAddress}`)
+            // console.log(`${cart.paymentMethod}`)
+            // console.log(`${cart.itemsPrice}`)
+            // console.log(`${cart.shippingPrice}`)
+            // console.log(`${cart.taxPrice}`)
+            // console.log(`${cart.totalPrice}`)
 
+            // Create order and update PRODUCT STOCK
             const res = await createOrder({
                 orderItems: cart.cartItems,
                 shippingAddress: cart.shippingAddress,
@@ -145,7 +146,7 @@ const PlaceOrderScreen = () => {
                         </ListGroup.Item>
                         <ListGroup.Item>
                             <Button 
-                            ype='button' 
+                            type='button' 
                             className='btn-block' 
                             disabled={cart.cartItems.length === 0}
                             onClick={placeOrderHandler}

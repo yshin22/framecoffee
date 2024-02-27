@@ -1,5 +1,5 @@
 import { useEffect} from 'react';
-import {Link, useParams} from 'react-router-dom';
+import {Link, useParams, useNavigate} from 'react-router-dom';
 import {Row, Col, ListGroup, Image, Button, Card, Container} from 'react-bootstrap';
 import {toast} from 'react-toastify';
 import {useSelector } from 'react-redux';
@@ -10,20 +10,24 @@ import {
     useGetOrderDetailsQuery, 
     usePayOrderMutation, 
     useGetPayPalClientIdQuery,
-    useDeliverOrdersMutation
+    useDeliverOrdersMutation,
+    useDeleteOrderMutation,
 } 
 from '../slices/ordersApiSlice';
 import '../assets/styles/screens/orderscreen.css';
 import Footer from '../components/Footer';
 
-
 const OrderScreen = () => {
     // Get id from URL 
     const {id: orderId} = useParams();
 
+    const navigate = useNavigate();
+
     // Get data from "orderId" (renamed "order")
     // "refetch" to get updated/ new data
     const {data: order, refetch, isLoading, error} = useGetOrderDetailsQuery(orderId);
+
+    const [deleteOrder, {isLoading: loadingDelete}] = useDeleteOrderMutation();
 
     const [payOrder, {isLoading: loadingPay}] = usePayOrderMutation();
 
@@ -55,10 +59,28 @@ const OrderScreen = () => {
         }
     }, [order, paypal, paypalDispatch, loadingPayPal, errorPayPal])
 
+    // Allow cusomters to have item in cart for set duration.
+    // Delete order and update PRODUCT STOCK if time exceeded.
+    // Redirect to Cart.
+    useEffect(() => {
+        if (!userInfo?.isAdmin && !order?.isPaid) {
+            const timer = setTimeout(async() => {
+                await deleteOrder(orderId);
+                toast.error('Session has expired')
+                navigate(`/cart`);
+            }, 10000)
+
+            return () => {
+                clearTimeout(timer);
+              }
+        }
+    }, [])
+
 
     function onApprove(data, actions) {
         return actions.order.capture().then(async function(details) {
             try {
+                
                 await payOrder({orderId, details, order});                
                 refetch();
                 toast.success('Payment Successful');

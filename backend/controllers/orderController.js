@@ -21,7 +21,21 @@ const addOrderItems = asyncHandler(async (req,res) => {
     if (orderItems && orderItems.length === 0) {
         res.status(400);
         throw new Error('No order items');
-    } else {
+    } 
+    else {
+        for (const i in orderItems) {
+            console.log('here')
+            const item = orderItems[i];
+            console.log(item)
+            const product = await Product.findById(item._id);
+            if ((product.countInStock - item.qty) <= 0) {
+                console.log('one or more item are no longer in stock')
+                res.status(400)
+                throw new Error('one or more item are no longer in stock');
+            }
+            // await product.save()
+        }
+
         // Create order.
         const order = new Order({
             orderItems: orderItems.map((x) => ({
@@ -37,10 +51,22 @@ const addOrderItems = asyncHandler(async (req,res) => {
             shippingPrice,
             totalPrice,
         });
-        // console.log('created order')
 
         // Save the order
         const createdOrder = await order.save();
+
+        // Subtract order QTY from PRODUCT STOCK
+        if (createdOrder) {
+            for (const i in createdOrder.orderItems) {
+                console.log('here')
+                const item = orderItems[i];
+                console.log(item)
+                const product = await Product.findById(item._id);
+                product.countInStock -= item.qty;
+                // product.sold += item.qty #not yet added to model
+                await product.save()
+            }
+        }
         // console.log(`${createdOrder}`)
         // Pass in new created order
         res.status(200).json(createdOrder);
@@ -76,13 +102,13 @@ const updateOrderToPaid = asyncHandler(async (req,res) => {
     console.log(req.body.order.orderItems);
 
     if (order) {
-        for (const i in order.orderItems) {
-            const item = order.orderItems[i];
-            const product = await Product.findById(item.product);
-            product.countInStock -= item.qty;
-            // product.sold += item.qty #not yet added to model
-            await product.save()
-        }
+        // for (const i in order.orderItems) {
+        //     const item = order.orderItems[i];
+        //     const product = await Product.findById(item.product);
+        //     product.countInStock -= item.qty;
+        //     // product.sold += item.qty #not yet added to model
+        //     await product.save()
+        // }
 
         order.isPaid = true;
         order.paidAt = Date.now();
@@ -126,9 +152,28 @@ const getOrders = asyncHandler(async (req,res) => {
     res.status(200).json(orders);
 });
 
-// const updateProductQty = asyncHandler(async (req, res) => {
+
+
+const deleteOrderById = asyncHandler(async (req, res) => {
+    const order = await Order.findById(req.params.id);
     
-//   })
+    if (order) {
+        // Add ORDER QTY back to PRODUCT STOCK before deleting order
+        for (const i in order.orderItems) {
+            const item = order.orderItems[i];
+            const product = await Product.findById(item.product);
+            product.countInStock += item.qty;
+            // product.sold += item.qty #not yet added to model
+            await product.save()
+        }
+        await Order.deleteOne({ _id: order._id });
+        console.log('ORDER REMOVED')
+        res.json({ message: 'Order removed' });
+    } else {
+        res.status(404);
+        throw new Error('Order not found');
+    }
+  })
 
 
 export { 
@@ -137,5 +182,6 @@ export {
     getOrderById,
     getOrders,
     updateOrderToDelivered,
-    updateOrderToPaid
+    updateOrderToPaid,
+    deleteOrderById,
 }
