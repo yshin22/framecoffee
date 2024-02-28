@@ -1,6 +1,6 @@
 import { useEffect} from 'react';
-import {Link, useParams, useNavigate} from 'react-router-dom';
-import {Row, Col, ListGroup, Image, Button, Card, Container} from 'react-bootstrap';
+import {Link, useParams, useNavigate, unstable_usePrompt} from 'react-router-dom';
+import {Row, Col, ListGroup, Image, Button, Card, Container, Modal} from 'react-bootstrap';
 import {toast} from 'react-toastify';
 import {useSelector } from 'react-redux';
 import {PayPalButtons, usePayPalScriptReducer} from '@paypal/react-paypal-js'
@@ -16,6 +16,7 @@ import {
 from '../slices/ordersApiSlice';
 import '../assets/styles/screens/orderscreen.css';
 import Footer from '../components/Footer';
+import ReactRouterPrompt from 'react-router-prompt';
 
 const OrderScreen = () => {
     // Get id from URL 
@@ -38,6 +39,10 @@ const OrderScreen = () => {
     const {data: paypal, isLoading: loadingPayPal, error: errorPayPal} = useGetPayPalClientIdQuery();
 
     const { userInfo } = useSelector((state) => state.auth);
+
+    // unstable_usePrompt({
+    //     message: "Are you sure?"
+    // })
 
     useEffect(() => {
         if (!errorPayPal && !loadingPayPal && paypal.clientId) {
@@ -62,20 +67,31 @@ const OrderScreen = () => {
     // Allow cusomters to have item in cart for set duration.
     // Delete order and update PRODUCT STOCK if time exceeded.
     // Redirect to Cart.
+    // useEffect(() => {
+    //     if (!userInfo?.isAdmin && !order?.isPaid) {
+    //         const timer = setTimeout(async() => {
+    //             await deleteOrder(orderId);
+    //             toast.error('Session has expired')
+    //             navigate(`/cart`);
+    //         }, 50000)
+
+    //         return () => {
+    //             clearTimeout(timer);
+    //           }
+    //     }
+    // }, [])
+
     useEffect(() => {
-        if (!userInfo?.isAdmin && !order?.isPaid) {
-            const timer = setTimeout(async() => {
-                await deleteOrder(orderId);
-                toast.error('Session has expired')
-                navigate(`/cart`);
-            }, 10000)
-
-            return () => {
-                clearTimeout(timer);
-              }
+        function handleBeforeUnload(event) {
+            event.preventDefault();
+            return (event.returnValue = '');
         }
-    }, [])
-
+        window.addEventListener('beforeunload', handleBeforeUnload, {capture: true});
+        return () => {
+          window.removeEventListener('beforeunload', handleBeforeUnload);
+        //   alert('you have left the page')
+        };
+      }, []);
 
     function onApprove(data, actions) {
         return actions.order.capture().then(async function(details) {
@@ -133,6 +149,18 @@ const OrderScreen = () => {
   <Message variant='danger'/>
   ) : (
     <>
+    <ReactRouterPrompt>
+        {({ isActive, onConfirm, onCancel }) => (
+            <Modal show={isActive}>
+            <div>
+                <p>Do you really want to leave?</p>
+                <button onClick={onCancel}>Cancel</button>
+                <button onClick={onConfirm}>Ok</button>
+            </div>
+            </Modal>
+        )}
+    </ReactRouterPrompt>
+    
     <Container className='order-container'>
     <Row className='order-row'>
         <Col md={8}>

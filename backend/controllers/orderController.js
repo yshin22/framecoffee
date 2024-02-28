@@ -23,17 +23,18 @@ const addOrderItems = asyncHandler(async (req,res) => {
         throw new Error('No order items');
     } 
     else {
+
         for (const i in orderItems) {
             console.log('here')
             const item = orderItems[i];
             console.log(item)
-            const product = await Product.findById(item._id);
-            if ((product.countInStock - item.qty) <= 0) {
+            const product = await Product?.findById(item?._id);
+            if ((product?.countInStock - item?.qty) < 0) {
+                console.log(`DIFFERENCE: ${product.countInStock - item.qty}`)
                 console.log('one or more item are no longer in stock')
                 res.status(400)
-                throw new Error('one or more item are no longer in stock');
+                throw new Error('This item is not in stock');
             }
-            // await product.save()
         }
 
         // Create order.
