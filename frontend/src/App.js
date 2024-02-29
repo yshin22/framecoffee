@@ -10,13 +10,12 @@ import InstaFeeds from './components/InstaFeeds'
 import Footer from './components/Footer'
 
 
-
-
-
 const App = () => {
+
+
   return (
     <>
-        <Header/>
+        <Header />
         <main style={{display: 'flex', justifyContent: 'center'}}>
           <div className='nav-blank'></div>
           <Container className='app-container'>

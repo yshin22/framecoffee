@@ -5,6 +5,7 @@
 .order-row {
     height: 100vh;
 }
+
 @media screen and (max-width: 992px) {
     .order-container {
         margin-top: 13vh;

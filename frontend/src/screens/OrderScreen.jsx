@@ -1,5 +1,5 @@
-import { useEffect} from 'react';
-import {Link, useParams, useNavigate, unstable_usePrompt} from 'react-router-dom';
+import { useEffect, useState} from 'react';
+import {Link, useParams, useNavigate} from 'react-router-dom';
 import {Row, Col, ListGroup, Image, Button, Card, Container, Modal} from 'react-bootstrap';
 import {toast} from 'react-toastify';
 import {useSelector } from 'react-redux';
@@ -15,14 +15,15 @@ import {
 } 
 from '../slices/ordersApiSlice';
 import '../assets/styles/screens/orderscreen.css';
-import Footer from '../components/Footer';
-import ReactRouterPrompt from 'react-router-prompt';
+import ReactRouterPrompt from "react-router-prompt";
 
 const OrderScreen = () => {
     // Get id from URL 
     const {id: orderId} = useParams();
 
     const navigate = useNavigate();
+
+    const [timer, setTimer] = useState(false);
 
     // Get data from "orderId" (renamed "order")
     // "refetch" to get updated/ new data
@@ -39,10 +40,6 @@ const OrderScreen = () => {
     const {data: paypal, isLoading: loadingPayPal, error: errorPayPal} = useGetPayPalClientIdQuery();
 
     const { userInfo } = useSelector((state) => state.auth);
-
-    // unstable_usePrompt({
-    //     message: "Are you sure?"
-    // })
 
     useEffect(() => {
         if (!errorPayPal && !loadingPayPal && paypal.clientId) {
@@ -66,33 +63,48 @@ const OrderScreen = () => {
 
     // Allow cusomters to have item in cart for set duration.
     // Delete order and update PRODUCT STOCK if time exceeded.
+    // Set timer to "true" so that user will not be prompted
     // Redirect to Cart.
-    // useEffect(() => {
-    //     if (!userInfo?.isAdmin && !order?.isPaid) {
-    //         const timer = setTimeout(async() => {
-    //             await deleteOrder(orderId);
-    //             toast.error('Session has expired')
-    //             navigate(`/cart`);
-    //         }, 50000)
+    useEffect(() => {
+        if (!userInfo?.isAdmin && !order?.isPaid) {
+            const timer = setTimeout(async() => {
+                setTimer(true);
+                await deleteOrder(orderId);
+                toast.error('Session has expired')
+                navigate(`/cart`);
+            }, 1000000)
 
-    //         return () => {
-    //             clearTimeout(timer);
-    //           }
-    //     }
-    // }, [])
-
+            return () => {
+                clearTimeout(timer);
+              }
+        }
+    }, [timer])
+    
+    // Handler for when user is exiting page/ tab.
+    // DELETEs current order and restores stock qty of product if user continues to leave
     useEffect(() => {
         function handleBeforeUnload(event) {
             event.preventDefault();
             return (event.returnValue = '');
         }
-        window.addEventListener('beforeunload', handleBeforeUnload, {capture: true});
-        return () => {
-          window.removeEventListener('beforeunload', handleBeforeUnload);
-        //   alert('you have left the page')
-        };
-      }, []);
 
+        async function callDeleteOrder() {
+            await deleteOrder(orderId)
+        }
+
+        if (!order?.isPaid) {
+            console.log(order?.isPaid)
+            window.addEventListener('beforeunload', handleBeforeUnload, {capture: true});
+            return () => {
+              window.removeEventListener('beforeunload', handleBeforeUnload, {capture: true});
+              callDeleteOrder();
+            //   alert('you have left the page')
+            };
+        }
+      }, [order]);
+
+    // Handler for when Paypal order is approved
+    // Calls "payOrder", where "order.isPaid" is set to "true"
     function onApprove(data, actions) {
         return actions.order.capture().then(async function(details) {
             try {
@@ -142,25 +154,46 @@ const OrderScreen = () => {
         }
     }
 
-
   return isLoading ? (
   <Loader/>
   ) : error ? (
   <Message variant='danger'/>
   ) : (
     <>
-    <ReactRouterPrompt>
-        {({ isActive, onConfirm, onCancel }) => (
-            <Modal show={isActive}>
-            <div>
-                <p>Do you really want to leave?</p>
-                <button onClick={onCancel}>Cancel</button>
-                <button onClick={onConfirm}>Ok</button>
-            </div>
-            </Modal>
-        )}
-    </ReactRouterPrompt>
-    
+        <ReactRouterPrompt
+                // Prompts user when using back button on "Order" page.
+                // DELETEs current order and updates current stock
+                // 3 things must follow:
+                //
+                // 1) User is not admin:
+                //    (Admin should be able to access "orders" freely, so that
+                //    they are not always prompted. More for testing purposes, because in reality,
+                //    "orders" should appear in profile as "paid", meaning that particular orders
+                //    page shouldn't create any prompts)
+                //
+                // 2) Order is not paid
+                //
+                // 3) timer is false:
+                //    (set by settimeout to true when timer is finished. This makes
+                //    sure that user is not prompted when session expires and is automatically 
+                //    routed to "/cart")
+                when={!userInfo.isAdmin && !order.isPaid && timer === false}
+                beforeConfirm={async() => {
+                    await deleteOrder(orderId);
+                }}
+            >
+                {({ isActive, onConfirm, onCancel }) =>
+                isActive && (
+                    <Modal show={isActive}>
+                        <div>
+                            <p>Do you really want to leave? Your items will be reset</p>
+                            <button onClick={onConfirm}>Ok</button>
+                            <button onClick={onCancel}>Cancel</button>
+                        </div>
+                    </Modal>
+                )
+                }
+            </ReactRouterPrompt>
     <Container className='order-container'>
     <Row className='order-row'>
         <Col md={8}>
@@ -290,9 +323,27 @@ const OrderScreen = () => {
         </Col>
     </Row>
     </Container>
-    <Footer/>
     </>
   );
 }
 
 export default OrderScreen
+
+
+// const DisableHeader =()=> {
+//     let location = useLocation();
+//     const [count, setCount] = useState(0);
+
+//     useEffect(()=> {    
+//         setCount(count + 1);
+//         console.log('Location changed!', location.pathname);
+//     }, [location]);
+
+//     return (
+//         <div>
+//             disable header
+//         </div>
+//     )
+// }
+
+// export {DisableHeader}

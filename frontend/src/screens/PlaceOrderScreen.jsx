@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useNavigationType} from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import {Button, Row, Col, ListGroup, Image, Card, Container} from 'react-bootstrap';
 import CheckoutSteps from '../components/CheckoutSteps';

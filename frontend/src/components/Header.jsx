@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import '../assets/styles/header.css'
 import {Row, Col, Stack, NavbarToggle, Button} from 'react-bootstrap'
-import {useNavigate} from 'react-router-dom'
+import {useNavigate, useLocation} from 'react-router-dom'
 import {Badge, Navbar, Nav, Container, NavDropdown} from 'react-bootstrap'
 import {FaLaptopHouse, FaShoppingCart, FaUser} from 'react-icons/fa'
 import { useLogoutMutation } from '../slices/usersApiSlice'
@@ -21,7 +21,13 @@ import { showNav,
     hideSearch,
  } from '../utils/headerUtils'
 
+//  import {headerContext} from '../screens/OrderScreen';
+ import { useContext } from 'react';
+
+
 const Header = () => {
+
+    // const context = useContext(headerContext);
 
     const {cartItems} = useSelector((state) => state.cart);
     const {userInfo} = useSelector((state) => state.auth);
@@ -32,6 +38,11 @@ const Header = () => {
     const [logoutApiCall] = useLogoutMutation();
 
     const [visible, setVisible] = useState(false);
+
+    let location = useLocation();
+
+    const [count, setCount] = useState(0);
+    const [show, setShow] = useState('initial');
 
     const logoutHandler = async () => {
         try{
@@ -57,8 +68,26 @@ const Header = () => {
         topFunction();
     }
 
+    // Disables Navbar when user is on "order" page
+    // Done to prevent users from "clicking" links, which would mess with order/qty updating process
+    // Splicese current path (which Header.jsx always knows bc it is rendered with current page)
+    // and checks if it is "/order" page. If true, it sets "display: none";
+    useEffect(()=> {
+        let loc = location.pathname.toString().slice(0,6);
+
+        if (loc === '/order') {
+            setShow('none')
+        } else (
+            setShow('initial')
+        )
+        setCount(count + 1);
+        console.log('Location changed!', loc);
+    }, [location]);
+
+
+
   return (
-    <header>
+    <header style={{display: show}}>
         <Navbar bg='dark' variant='light' expand='lg' className='navbar-main' collapseOnSelect
         onMouseEnter={() => setVisible(true)}
         onMouseLeave={() => setVisible(false)}
