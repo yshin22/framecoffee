@@ -15,7 +15,7 @@ const CartScreen = () => {
     const cart = useSelector((state) => state.cart);
     const {cartItems} = cart;
 
-    const addToCartHandler = async(product, qty) => {
+    const addToCartHandler = (product, qty) => {
         dispatch(addToCart({...product, qty}));
     }
 
@@ -36,7 +36,7 @@ const CartScreen = () => {
                 <h1 style={{marginBottom: '20px'}}>Shopping Cart</h1>
                 {cartItems.length === 0 ? (
                     <Message>
-                        Your cart is empty <Link to='/'>Go back</Link>
+                        Your cart is empty <Link to='/shop'>Go back</Link>
                     </Message>
                 ) : (
                     <ListGroup variant='flush'>
@@ -50,7 +50,7 @@ const CartScreen = () => {
                                         <Link to={`/product/${item._id}`}>{item.name}</Link>
                                     </Col>
                                     <Col md={2}>
-                                        ${item.price }
+                                        ${(item.price).toFixed(2)}
                                     </Col>
                                     <Col md={2}>
                                         <Form.Control

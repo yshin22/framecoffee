@@ -98,7 +98,7 @@ const ProductScreen = () => {
                                     <Rating value={product.rating} text={`${product.numReviews} reviews`}></Rating>
                                 </ListGroup.Item> */}
                                 <ListGroup.Item>
-                                    <span>Price</span>: ${product.price}
+                                    <span>Price</span>: ${(product.price).toFixed(2)}
                                 </ListGroup.Item>
                                 {(product.category === 'Coffee Beans') && 
                                     <ListGroup.Item>
@@ -121,7 +121,7 @@ const ProductScreen = () => {
                                         <Row>
                                             <Col>Price:</Col>
                                             <Col>
-                                                <strong>${product.price}</strong>
+                                                <strong>${(product.price).toFixed(2)}</strong>
                                             </Col>
                                         </Row>
                                     </ListGroup.Item>

@@ -10,6 +10,7 @@ import logo from "../assets/frame-logo.png"
 import {LinkContainer} from 'react-router-bootstrap'
 import SearchBox from './SearchBox'
 import {useSelector, useDispatch} from 'react-redux'
+import { resetCart } from '../slices/cartSlice';
 import { showNav, 
     hideNav, 
     rotateLogo, 
@@ -48,6 +49,7 @@ const Header = () => {
         try{
             await logoutApiCall().unwrap();
             dispatch(logout());
+            dispatch(resetCart());
             navigate('/login');
 
         }catch (error) {

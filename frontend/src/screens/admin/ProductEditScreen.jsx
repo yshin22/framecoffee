@@ -131,6 +131,8 @@ const ProductEditScreen = () => {
                         type='number'
                         placeholder='Enter price'
                         value={price}
+                        step='any'
+                        min="0"
                         onChange={(e) => setPrice(e.target.value)}> 
                         </Form.Control>
                     </Form.Group>
@@ -184,6 +186,7 @@ const ProductEditScreen = () => {
                         type='number'
                         placeholder='Enter countInStock'
                         value={countInStock}
+                        min="0"
                         onChange={(e) => setCountInStock(e.target.value)}> 
                         </Form.Control>
                     </Form.Group>
@@ -234,6 +237,7 @@ const ProductEditScreen = () => {
                         type='number'
                         placeholder='Enter Roasting Level'
                         value={roastingLevel}
+                        min="0"
                         onChange={(e) => setRoastingLevel(e.target.value)}> 
                         </Form.Control>
                     </Form.Group>

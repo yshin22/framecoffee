@@ -40,7 +40,7 @@ const ProfileScreen = () => {
             toast.error('Password does not match');
         } else {
             try {
-                const res = await updateProfile({_id: userInfo._id, name, email, password}).unwrap();
+                const res = await updateProfile({name, email, password}).unwrap();
                 dispatch(setCredentials(res));
                 toast.success('Profile updated successfully');
             } catch (err) {
@@ -58,7 +58,7 @@ const ProfileScreen = () => {
                     <Form.Group controlId='name' className='my-2'>
                         <Form.Label>Name</Form.Label>
                         <Form.Control
-                        type='name'
+                        type='text'
                         placeholder='Enter name'
                         value={name}
                         onChange={(e) => setName(e.target.value)}

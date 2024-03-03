@@ -65,8 +65,7 @@ const createProductHandler = async () => {
 
         {loadingCreate && <Loader/>}
         {loadingDelete && <Loader/>}
-        {isLoading ? <Loader/> : error ? <Message variant='danger'>
-        {error}</Message> : (
+        {isLoading ? <Loader/> : error ? <Message variant='danger'>{error.data.message}</Message> : (
             <Container >
                 <Table striped hover responseive className='table-sm'>
                     <thead>
@@ -85,7 +84,7 @@ const createProductHandler = async () => {
                             <tr key={product._id}>
                                 <td>{product._id}</td>
                                 <td>{product.name}</td>
-                                <td>{product.price}</td>
+                                <td>{(product.price).toFixed(2)}</td>
                                 <td>{product.category}</td>
                                 <td>{product.brand}</td>
                                 <td>

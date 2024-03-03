@@ -1,10 +1,10 @@
 import React from 'react';
 import { useEffect } from 'react';
-import { Link, useNavigate, useNavigationType} from 'react-router-dom';
+import { Link, useNavigate} from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import {Button, Row, Col, ListGroup, Image, Card, Container} from 'react-bootstrap';
 import CheckoutSteps from '../components/CheckoutSteps';
-import {toast} from 'react-toastify';
+// import {toast} from 'react-toastify';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
 import { useCreateOrderMutation } from '../slices/ordersApiSlice';
@@ -30,15 +30,7 @@ const PlaceOrderScreen = () => {
 
     const placeOrderHandler = async () => {
         try {
-            // console.log('INSIDE HANDLER');
-            // console.log(`${cart.cartItems}`)
-            // console.log(`${cart.shippingAddress}`)
-            // console.log(`${cart.paymentMethod}`)
-            // console.log(`${cart.itemsPrice}`)
-            // console.log(`${cart.shippingPrice}`)
-            // console.log(`${cart.taxPrice}`)
-            // console.log(`${cart.totalPrice}`)
-
+            console.log('INSIDE HANDLER');
             // Create order and update PRODUCT STOCK
             const res = await createOrder({
                 orderItems: cart.cartItems,
@@ -49,6 +41,8 @@ const PlaceOrderScreen = () => {
                 taxPrice: cart.taxPrice,
                 totalPrice: cart.totalPrice,
             }).unwrap();
+
+
             console.log('AFTER CREATE ORDER')
             dispatch(clearCartItems());
             navigate(`/order/${res._id}`);
@@ -69,7 +63,7 @@ const PlaceOrderScreen = () => {
                         <h2>Shipping</h2>
                         <p>
                             <strong>Address: </strong>
-                            {cart.shippingAddress.address}, {cart.shippingAddress.city} 
+                            {cart.shippingAddress.address}{cart.shippingAddress.address2 ? (' ' + cart.shippingAddress.address2) : (<></>)}, {cart.shippingAddress.city}, {cart.shippingAddress.state} {' '}
                             {cart.shippingAddress.postalCode}, {cart.shippingAddress.country}
                         </p>
                     </ListGroup.Item>
@@ -82,7 +76,7 @@ const PlaceOrderScreen = () => {
                     <ListGroup.Item>
                         <h2>Order Items</h2>
                         {cart.cartItems.length === 0 ? (
-                            <Message>Your cart is empty</Message>
+                            <Message>Your cart is empty. <Link to='/shop'>Go to Shop</Link></Message>
                         ) : (
                             <ListGroup variant='flush'>
                                 {cart.cartItems.map((item, index) => (
@@ -102,8 +96,8 @@ const PlaceOrderScreen = () => {
                                                 </Link>
                                             </Col>
                                             <Col md={4}>
-                                                {item.qty} x ${item.price} = $
-                                                {(item.qty * (item.price * 100)) / 100}
+                                                {item.qty} x ${(item.price).toFixed(2)} = $
+                                                {((item.qty * (item.price * 100)) / 100).toFixed(2)}
                                             </Col>
                                         </Row>
                                     </ListGroup.Item>
@@ -144,7 +138,7 @@ const PlaceOrderScreen = () => {
                             </Row>
                         </ListGroup.Item>
                         <ListGroup.Item>
-                            {error && <Message variant='danger'>{error}</Message>}
+                            {error && <Message variant='danger'>{error.data.message}</Message>}
                         </ListGroup.Item>
                         <ListGroup.Item>
                             <Button 

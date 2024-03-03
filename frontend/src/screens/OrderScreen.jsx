@@ -14,6 +14,7 @@ import {
     useDeleteOrderMutation,
 } 
 from '../slices/ordersApiSlice';
+import {useCreateLabelMutation} from '../slices/shippoSlics';
 import '../assets/styles/screens/orderscreen.css';
 import ReactRouterPrompt from "react-router-prompt";
 
@@ -34,6 +35,8 @@ const OrderScreen = () => {
     const [payOrder, {isLoading: loadingPay}] = usePayOrderMutation();
 
     const [deliverOrder, {isLoading: loadingDeliver}] = useDeliverOrdersMutation();
+
+    const [createLabel] = useCreateLabelMutation();
 
     const [{isPending}, paypalDispatch] = usePayPalScriptReducer();
 
@@ -61,56 +64,82 @@ const OrderScreen = () => {
         }
     }, [order, paypal, paypalDispatch, loadingPayPal, errorPayPal])
 
+    const labelHandler = async () => {
+        try {
+            console.log('INSIDE LABEL HANDLER');
+            const res = await createLabel({
+                fullName: userInfo.name,
+                address1: order.shippingAddress.address,
+                address2: order.shippingAddress.address2,
+                city: order.shippingAddress.city,
+                state: order.shippingAddress.state,
+                postalCode: order.shippingAddress.postalCode,
+                country: order.shippingAddress.country,
+                phoneNumber: '703-111-1111',
+                email: userInfo.email,
+            }).unwrap();
+            console.log(res);
+            console.log('OUTSIDE LABEL HANDLER');
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
     // Allow cusomters to have item in cart for set duration.
     // Delete order and update PRODUCT STOCK if time exceeded.
     // Set timer to "true" so that user will not be prompted
     // Redirect to Cart.
-    useEffect(() => {
-        if (!userInfo?.isAdmin && !order?.isPaid) {
-            const timer = setTimeout(async() => {
-                setTimer(true);
-                await deleteOrder(orderId);
-                toast.error('Session has expired')
-                navigate(`/cart`);
-            }, 1000000)
+    // 1 minute = 60000
+    // 15 minutes = 900000
+    // 30 minutes = 1,800,000
+    // useEffect(() => {
+    //     if (!userInfo?.isAdmin && !order?.isPaid) {
+    //         const timer = setTimeout(async() => {
+    //             setTimer(true);
+    //             await deleteOrder(orderId);
+    //             toast.error('Session has expired')
+    //             navigate(`/cart`);
+    //         }, 60000)
 
-            return () => {
-                clearTimeout(timer);
-              }
-        }
-    }, [timer])
+    //         return () => {
+    //             clearTimeout(timer);
+    //           }
+    //     }
+    // }, [timer])
     
     // Handler for when user is exiting page/ tab.
     // DELETEs current order and restores stock qty of product if user continues to leave
-    useEffect(() => {
-        function handleBeforeUnload(event) {
-            event.preventDefault();
-            return (event.returnValue = '');
-        }
+    // useEffect(() => {
+    //     // const handleBeforeUnload = async (e) => {
+    //     //     const beforeUnloadTimeout = setTimeout(async() => {
+    //     //         console.log('SET TIMEOUT FUNCTION')
+    //     //         await deleteOrder(orderId)
+    //     //     })
+    //     //     e.preventDefault();
+    //     //     await deleteOrder(orderId)
+    //     //     return (e.returnValue = '');
+    //     // }
 
-        async function callDeleteOrder() {
-            await deleteOrder(orderId)
-        }
+    //     const handleBeforeUnload = () => {
+    //         window.confirm('are')
+    //     }
 
-        if (!order?.isPaid) {
-            console.log(order?.isPaid)
-            window.addEventListener('beforeunload', handleBeforeUnload, {capture: true});
-            return () => {
-              window.removeEventListener('beforeunload', handleBeforeUnload, {capture: true});
-              callDeleteOrder();
-            //   alert('you have left the page')
-            };
-        }
-      }, [order]);
+    //     if (!order?.isPaid) {
+    //         window.addEventListener('beforeunload', handleBeforeUnload, {capture: true});
+    //         return () => {
+    //           window.removeEventListener('beforeunload', handleBeforeUnload, {capture: true});
+    //         };
+    //     }
+    //   }, [order]);
 
     // Handler for when Paypal order is approved
     // Calls "payOrder", where "order.isPaid" is set to "true"
     function onApprove(data, actions) {
         return actions.order.capture().then(async function(details) {
             try {
-                
-                await payOrder({orderId, details, order});                
+                await payOrder({orderId, details, order});
                 refetch();
+                labelHandler();           
                 toast.success('Payment Successful');
             } catch (err) {
                 toast.error(err?.data?.message || err.message);
@@ -157,10 +186,10 @@ const OrderScreen = () => {
   return isLoading ? (
   <Loader/>
   ) : error ? (
-  <Message variant='danger'/>
+    <Message variant='danger'>{error.data.message}</Message>
   ) : (
     <>
-        <ReactRouterPrompt
+        {/* <ReactRouterPrompt
                 // Prompts user when using back button on "Order" page.
                 // DELETEs current order and updates current stock
                 // 3 things must follow:
@@ -177,8 +206,9 @@ const OrderScreen = () => {
                 //    (set by settimeout to true when timer is finished. This makes
                 //    sure that user is not prompted when session expires and is automatically 
                 //    routed to "/cart")
-                when={!userInfo.isAdmin && !order.isPaid && timer === false}
+                when={!order.isPaid && timer === false}
                 beforeConfirm={async() => {
+                    console.log('this runs')
                     await deleteOrder(orderId);
                 }}
             >
@@ -193,7 +223,7 @@ const OrderScreen = () => {
                     </Modal>
                 )
                 }
-            </ReactRouterPrompt>
+            </ReactRouterPrompt> */}
     <Container className='order-container'>
     <Row className='order-row'>
         <Col md={8}>
@@ -209,7 +239,7 @@ const OrderScreen = () => {
                     </p>
                     <p>
                         <strong>Address: </strong> 
-                        {order.shippingAddress.address}, {order.shippingAddress.city}{' '}
+                        {order.shippingAddress.address} {order.shippingAddress.address2 ? (' ' + order.shippingAddress.address2) : (<></>)}, {order.shippingAddress.city}, {order.shippingAddress.state} {' '}
                         {order.shippingAddress.postalCode}, {order.shippingAddress.country}
                     </p> 
                     {order.isDelivered ? (
@@ -255,7 +285,7 @@ const OrderScreen = () => {
                                     </Link>
                                 </Col>
                                 <Col md={4}>
-                                    {item.qty} x ${item.price} = ${item.qty * item.price}
+                                    {item.qty} x ${item.price} = ${(item.qty * item.price).toFixed(2)}
                                 </Col>
                             </Row>
                         </ListGroup.Item>
@@ -274,22 +304,22 @@ const OrderScreen = () => {
                     <ListGroup.Item>
                         <Row>
                             <Col>Items</Col>
-                            <Col>${order.itemsPrice}</Col>
+                            <Col>${(order.itemsPrice.toFixed(2))}</Col>
                         </Row>
 
                         <Row>
                             <Col>Shipping</Col>
-                            <Col>${order.shippingPrice}</Col>
+                            <Col>${(order.shippingPrice).toFixed(2)}</Col>
                         </Row>
 
                         <Row>
                             <Col>Tax</Col>
-                            <Col>${order.taxPrice}</Col>
+                            <Col>${(order.taxPrice).toFixed(2)}</Col>
                         </Row>
 
                         <Row>
                             <Col>Total</Col>
-                            <Col>${order.totalPrice}</Col>
+                            <Col>${(order.totalPrice).toFixed(2)}</Col>
                         </Row>
                     </ListGroup.Item>
 
@@ -317,7 +347,12 @@ const OrderScreen = () => {
                             Marks as delivered
                         </Button>
                     </ListGroup.Item>
-                )} 
+                )}
+                {userInfo && !userInfo.isAdmin && order.isPaid && (
+                    <ListGroup.Item>
+                        <Button href='/'>Return Home</Button>
+                    </ListGroup.Item>
+                )}
                 </ListGroup>
             </Card>
         </Col>

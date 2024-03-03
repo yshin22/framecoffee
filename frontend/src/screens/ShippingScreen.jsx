@@ -1,20 +1,24 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import FormContainer from '../components/FormContainer';
 import { saveShippingAddress } from '../slices/cartSlice';
 import CheckoutSteps from '../components/CheckoutSteps';
+import { AddressAutofill } from '@mapbox/search-js-react';
+const mapBoxKey = "pk.eyJ1IjoiZnJhbWVjb2ZmZWUiLCJhIjoiY2x0YXoyNXNmMWV6aTJrbXRia2Zpbm54dCJ9.GRGuO1Se8cyIaE11rNsXdQ"
 
 const ShippingScreen = () => {
   const cart = useSelector((state) => state.cart);
   const { shippingAddress } = cart;
 
   const [address, setAddress] = useState(shippingAddress?.address || '');
+  const [address2, setAddress2] = useState();
   const [city, setCity] = useState(shippingAddress?.city || '');
   const [postalCode, setPostalCode] = useState(
     shippingAddress?.postalCode || ''
   );
+  const [state, setState] = useState(shippingAddress?.state || '');
   const [country, setCountry] = useState(shippingAddress?.country || '');
 
   const dispatch = useDispatch();
@@ -22,7 +26,7 @@ const ShippingScreen = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(saveShippingAddress({ address, city, postalCode, country }));
+    dispatch(saveShippingAddress({ address, address2, city, postalCode, state, country }));
     navigate('/payment');
   };
 
@@ -34,12 +38,26 @@ const ShippingScreen = () => {
       <Form onSubmit={submitHandler}>
         <Form.Group className='my-2' controlId='address'>
           <Form.Label>Address</Form.Label>
+          <AddressAutofill accessToken={mapBoxKey}>
+            <Form.Control
+              type='text'
+              placeholder='Enter address'
+              value={address}
+              required
+              onChange={(e) => setAddress(e.target.value)}
+              autoComplete='address-line1'
+            ></Form.Control>
+          </AddressAutofill>
+        </Form.Group>
+
+        <Form.Group className='my-2' controlId='address2'>
+          <Form.Label>Address Line 2</Form.Label>
           <Form.Control
             type='text'
-            placeholder='Enter address'
-            value={address}
-            required
-            onChange={(e) => setAddress(e.target.value)}
+            placeholder='Apt / Suite / Bldg / Unit'
+            value={address2}
+            onChange={(e) => setAddress2(e.target.value)}
+            autocomplete="address-line2"
           ></Form.Control>
         </Form.Group>
 
@@ -51,6 +69,19 @@ const ShippingScreen = () => {
             value={city}
             required
             onChange={(e) => setCity(e.target.value)}
+            autoComplete='address-level2'
+          ></Form.Control>
+        </Form.Group>
+
+        <Form.Group className='my-2' controlId='state'>
+          <Form.Label>State</Form.Label>
+          <Form.Control
+            type='text'
+            placeholder='Enter state'
+            value={state}
+            required
+            onChange={(e) => setState(e.target.value)}
+            autoComplete='address-level1'
           ></Form.Control>
         </Form.Group>
 
@@ -62,6 +93,7 @@ const ShippingScreen = () => {
             value={postalCode}
             required
             onChange={(e) => setPostalCode(e.target.value)}
+            autocomplete="postal-code"
           ></Form.Control>
         </Form.Group>
 
@@ -73,6 +105,7 @@ const ShippingScreen = () => {
             value={country}
             required
             onChange={(e) => setCountry(e.target.value)}
+            autocomplete="country-name"
           ></Form.Control>
         </Form.Group>
 
