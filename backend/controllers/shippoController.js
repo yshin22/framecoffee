@@ -87,10 +87,9 @@ const createShippoLabel = asyncHandler(async(req, res) => {
 // @route   POST /validate
 // @access  Public
 const validateAddress = asyncHandler(async (req,res) => {
-    console.log('HERE')
     // console.log('SHIPPO ADDRESSES CREATED:', await shippoClient.address.list({results: 100}));
     const {address1, address2, city, state, postalCode, country} = req.body
-    console.log(req.body)
+    // console.log(req.body)
     var address = shippoClient.address.create({
         "street1": address1,
         "street2": address2,

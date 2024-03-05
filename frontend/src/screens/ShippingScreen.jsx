@@ -30,8 +30,8 @@ const ShippingScreen = () => {
 
   const [validateAddress] = useValidateAddressMutation();
 
+  
   const checkAddress = async (e) => {
-    // console.log(address, address2, city, postalCode, state, country);
     try {
       const res = await validateAddress({
         address1: address, 
@@ -62,17 +62,17 @@ const ShippingScreen = () => {
 
     const res = await checkAddress()
 
-    const [isValid, addy] = res;
+    // const [isValid, addy] = res;
 
-    if (isValid === true) {
+    if (res[0] === true) {
       console.log('ITS VALID')
       dispatch(saveShippingAddress({
-        address: addy.street1,
-        address2: addy.street2,
-        city: addy.city,
-        postalCode: addy.zip,
-        state: addy.state,
-        country: addy.country}));
+        address: res[1].street1,
+        address2: res[1].street2,
+        city: res[1].city,
+        postalCode: res[1].zip,
+        state: res[1].state,
+        country: res[1].country}));
       navigate('/payment');
     }
     else {

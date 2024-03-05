@@ -39,6 +39,7 @@ const PlaceOrderScreen = () => {
     const placeOrderHandler = async () => {
         try {
             console.log('INSIDE HANDLER');
+            console.log('CART: ', cart)
             // Create order and update PRODUCT STOCK
             const res = await createOrder({
                 orderItems: cart.cartItems,

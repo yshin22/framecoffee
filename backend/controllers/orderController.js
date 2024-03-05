@@ -133,6 +133,7 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
 
   const order = await Order.findById(req.params.id);
 
+    order.totalPrice = (order.totalPrice).toFixed(2)
     console.log('ORDER TOTAL', order.totalPrice)
 
   if (order) {
