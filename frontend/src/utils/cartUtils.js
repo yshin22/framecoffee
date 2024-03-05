@@ -19,14 +19,27 @@ export const updateCart = (state) => {
     const shippingPrice = itemsPrice > 100 ? 0 : 10;
     state.shippingPrice = addDecimals(shippingPrice);
 
-    //calculate tax price (%1)
-    const taxPrice = 0.01 * itemsPrice;
-    state.taxPrice = addDecimals(taxPrice);
+    //calculate tax price (%1) for VA
+    const taxPriceVA = 0.01 * itemsPrice;
+    // %0 for all other states
+    const taxPrice = 0;
     
-    const totalPrice = itemsPrice + shippingPrice + taxPrice;
-    // Calculate the total price
-    state.totalPrice = addDecimals(totalPrice);
-  
+    if (state.shippingAddress.state !== 'VA') {
+        console.log('NOT VA')
+        state.taxPrice = addDecimals(taxPrice);
+        const totalPrice = itemsPrice + shippingPrice + taxPrice;
+        // Calculate the total price
+        state.totalPrice = addDecimals(totalPrice);
+    }
+    else {
+        console.log('VA')
+        state.taxPrice = addDecimals(taxPriceVA);
+        state.taxPrice = addDecimals(taxPriceVA);
+        const totalPrice = itemsPrice + shippingPrice + taxPriceVA;
+        // Calculate the total price
+        state.totalPrice = addDecimals(totalPrice);
+    }
+    
     // Save the cart to localStorage
     localStorage.setItem('cart', JSON.stringify(state));
 

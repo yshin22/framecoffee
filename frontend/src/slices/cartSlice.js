@@ -42,6 +42,9 @@ const cartSlice = createSlice({
       state.cartItems = [];
       localStorage.setItem('cart', JSON.stringify(state));
     },
+    updateTax: (state, action) => {
+      return updateCart(state);
+    },
     // NOTE: here we need to reset state for when a user logs out so the next
     // user doesn't inherit the previous users cart and shipping
     resetCart: (state) => (state = initialState),
@@ -55,6 +58,7 @@ export const {
   savePaymentMethod,
   clearCartItems,
   resetCart,
+  updateTax,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

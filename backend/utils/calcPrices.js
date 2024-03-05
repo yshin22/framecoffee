@@ -7,7 +7,7 @@ function addDecimals(num) {
   // Our addDecimals function expects a number and returns a string, so it is not
   // correct to call it passing a string as the argument.
   
-  export function calcPrices(orderItems) {
+  export function calcPrices(orderItems, shippingAddress) {
     // Calculate the items price in whole number (pennies) to avoid issues with
     // floating point number calculations
     const itemsPrice = orderItems.reduce(
@@ -18,17 +18,32 @@ function addDecimals(num) {
     // Calculate the shipping price
     const shippingPrice = itemsPrice > 100 ? 0 : 10;
   
-    // Calculate the tax price
-    const taxPrice = 0.01 * itemsPrice;
-  
+    // Tax for VA
+    const taxPriceVA = 0.01 * itemsPrice;
+    // Tax for all other
+    const taxPrice = 0;
+
     // Calculate the total price
-    const totalPrice = itemsPrice + shippingPrice + taxPrice;
+    if (shippingAddress.state === 'VA') {
+      console.log('CALC PRICES VA')
+      const totalPrice = itemsPrice + shippingPrice + taxPriceVA;
+
+      return {
+        itemsPrice: addDecimals(itemsPrice),
+        shippingPrice: addDecimals(shippingPrice),
+        taxPrice: addDecimals(taxPriceVA),
+        totalPrice: addDecimals(totalPrice),
+      };
+    } else {
+      console.log('CALC PRICES non-VA')
+      const totalPrice = itemsPrice + shippingPrice + taxPrice;
+      
+      return {
+        itemsPrice: addDecimals(itemsPrice),
+        shippingPrice: addDecimals(shippingPrice),
+        taxPrice: addDecimals(taxPrice),
+        totalPrice: addDecimals(totalPrice),
+      };
+    }
   
-    // return prices as strings fixed to 2 decimal places
-    return {
-      itemsPrice: addDecimals(itemsPrice),
-      shippingPrice: addDecimals(shippingPrice),
-      taxPrice: addDecimals(taxPrice),
-      totalPrice: addDecimals(totalPrice),
-    };
   }

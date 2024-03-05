@@ -3,7 +3,7 @@ import { Form, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import FormContainer from '../components/FormContainer';
-import { saveShippingAddress } from '../slices/cartSlice';
+import { saveShippingAddress, updateTax } from '../slices/cartSlice';
 import CheckoutSteps from '../components/CheckoutSteps';
 import {toast} from 'react-toastify';
 import { AddressAutofill } from '@mapbox/search-js-react';
@@ -80,6 +80,9 @@ const ShippingScreen = () => {
           postalCode: res[1].zip,
           state: res[1].state,
           country: res[1].country}));
+        // Update tax after shipping address changed again
+        dispatch(updateTax());
+
         navigate('/payment');
       } 
     }
@@ -100,7 +103,8 @@ const ShippingScreen = () => {
           <AddressAutofill accessToken={mapBoxKey}
           options={{
             language: 'en',
-            country: 'US'
+            country: 'US',
+            limit: 10,
           }}
           >
             <Form.Control
