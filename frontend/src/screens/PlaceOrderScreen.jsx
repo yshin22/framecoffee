@@ -4,7 +4,7 @@ import { Link, useNavigate} from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import {Button, Row, Col, ListGroup, Image, Card, Container} from 'react-bootstrap';
 import CheckoutSteps from '../components/CheckoutSteps';
-// import {toast} from 'react-toastify';
+import {toast} from 'react-toastify';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
 import { useCreateOrderMutation } from '../slices/ordersApiSlice';
@@ -21,7 +21,15 @@ const PlaceOrderScreen = () => {
 
     // Redirect to "shipping" or "payment" if either are missing
     useEffect(() => {
-        if (!cart.shippingAddress.address) {
+        if (!cart.shippingAddress.address 
+            // cart.shippingAddress.state === 'AK' ||
+            // cart.shippingAddress.state === 'Alaska' || 
+            // cart.shippingAddress.state === 'alaska' ||
+            // cart.shippingAddress.state === 'HI' ||
+            // cart.shippingAddress.state === 'Hawaii' ||
+            // cart.shippingAddress.state === 'hawaii'
+            ) {
+            toast.error('Currently not shipping to: Hawaii and Alaska');
             navigate('/shipping');
         } else if (!cart.paymentMethod) {
             navigate('/payment')
@@ -41,15 +49,12 @@ const PlaceOrderScreen = () => {
                 taxPrice: cart.taxPrice,
                 totalPrice: cart.totalPrice,
             }).unwrap();
-
-
             console.log('AFTER CREATE ORDER')
             dispatch(clearCartItems());
             navigate(`/order/${res._id}`);
         } catch (error) {
-            console.log(error)
-            // navigate('/cart');
-            alert(error.data.message)
+            toast.error(error);
+
         }
     };
 

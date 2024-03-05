@@ -83,7 +83,7 @@ const Header = () => {
             setShow('initial')
         )
         setCount(count + 1);
-        console.log('Location changed!', loc);
+        // console.log('Location changed!', loc);
     }, [location]);
 
 

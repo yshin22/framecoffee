@@ -70,7 +70,6 @@ const OrderScreen = () => {
             const res = await createLabel({
                 fullName: userInfo.name,
                 address1: order.shippingAddress.address,
-                address2: order.shippingAddress.address2,
                 city: order.shippingAddress.city,
                 state: order.shippingAddress.state,
                 postalCode: order.shippingAddress.postalCode,
@@ -137,7 +136,8 @@ const OrderScreen = () => {
     function onApprove(data, actions) {
         return actions.order.capture().then(async function(details) {
             try {
-                await payOrder({orderId, details, order});
+                console.log(orderId)
+                await payOrder({orderId, details});
                 refetch();
                 labelHandler();           
                 toast.success('Payment Successful');

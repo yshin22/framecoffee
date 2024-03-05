@@ -10,10 +10,18 @@ export const shippoApiSlice = apiSlice.injectEndpoints({
           body: data,
         }),
       }),
+      validateAddress: builder.mutation({
+        query: (data) => ({
+          url: `${SHIPPO_URL}/validate`,
+          method: 'POST',
+          body: data,
+        })
+      })
     }),
 });
 
 export const { 
-  useCreateLabelMutation
+  useCreateLabelMutation,
+  useValidateAddressMutation,
 }  = shippoApiSlice;
 

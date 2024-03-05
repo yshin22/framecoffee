@@ -5,7 +5,9 @@ import { useNavigate } from 'react-router-dom';
 import FormContainer from '../components/FormContainer';
 import { saveShippingAddress } from '../slices/cartSlice';
 import CheckoutSteps from '../components/CheckoutSteps';
+import {toast} from 'react-toastify';
 import { AddressAutofill } from '@mapbox/search-js-react';
+import { useValidateAddressMutation } from '../slices/shippoSlics';
 const mapBoxKey = "pk.eyJ1IjoiZnJhbWVjb2ZmZWUiLCJhIjoiY2x0YXoyNXNmMWV6aTJrbXRia2Zpbm54dCJ9.GRGuO1Se8cyIaE11rNsXdQ"
 
 const ShippingScreen = () => {
@@ -21,13 +23,62 @@ const ShippingScreen = () => {
   const [state, setState] = useState(shippingAddress?.state || '');
   const [country, setCountry] = useState(shippingAddress?.country || '');
 
+  const noShipStates = ['AK', 'Ak', 'Alaska', 'alaska', 'HI', 'Hi', 'Hawaii', 'hawaii'];
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const submitHandler = (e) => {
+  const [validateAddress] = useValidateAddressMutation();
+
+  const checkAddress = async (e) => {
+    // console.log(address, address2, city, postalCode, state, country);
+    try {
+      const res = await validateAddress({
+        address1: address, 
+        address2: address2, 
+        city: city, 
+        state: state, 
+        postalCode: postalCode, 
+        country: country}).unwrap();
+
+      console.log('VALIDATED ADDRESS', res)
+      console.log('is valid?:', res.validation_results.is_valid)
+      if (res.validation_results.is_valid === true) {        
+        console.log('set valid: true')
+        return [true, res]
+      }
+      else {
+        console.log('set valid: false')
+        return false
+      }
+    }
+    catch (err) {
+      console.log(err)
+    }
+  }
+
+  const submitHandler = async (e) => {
     e.preventDefault();
-    dispatch(saveShippingAddress({ address, address2, city, postalCode, state, country }));
-    navigate('/payment');
+
+    const res = await checkAddress()
+
+    const [isValid, addy] = res;
+
+    if (isValid === true) {
+      console.log('ITS VALID')
+      dispatch(saveShippingAddress({
+        address: addy.street1,
+        address2: addy.street2,
+        city: addy.city,
+        postalCode: addy.zip,
+        state: addy.state,
+        country: addy.country}));
+      navigate('/payment');
+    }
+    else {
+      console.log('ITS INVALID')
+      return toast.error('Please enter a valid address!')
+    }
   };
 
   return (
@@ -38,7 +89,12 @@ const ShippingScreen = () => {
       <Form onSubmit={submitHandler}>
         <Form.Group className='my-2' controlId='address'>
           <Form.Label>Address</Form.Label>
-          <AddressAutofill accessToken={mapBoxKey}>
+          <AddressAutofill accessToken={mapBoxKey}
+          options={{
+            language: 'en',
+            country: 'US'
+          }}
+          >
             <Form.Control
               type='text'
               placeholder='Enter address'
