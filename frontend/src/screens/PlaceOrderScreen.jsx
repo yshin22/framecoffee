@@ -21,15 +21,7 @@ const PlaceOrderScreen = () => {
 
     // Redirect to "shipping" or "payment" if either are missing
     useEffect(() => {
-        if (!cart.shippingAddress.address 
-            // cart.shippingAddress.state === 'AK' ||
-            // cart.shippingAddress.state === 'Alaska' || 
-            // cart.shippingAddress.state === 'alaska' ||
-            // cart.shippingAddress.state === 'HI' ||
-            // cart.shippingAddress.state === 'Hawaii' ||
-            // cart.shippingAddress.state === 'hawaii'
-            ) {
-            toast.error('Currently not shipping to: Hawaii and Alaska');
+        if (!cart.shippingAddress.address) {
             navigate('/shipping');
         } else if (!cart.paymentMethod) {
             navigate('/payment')
@@ -38,8 +30,8 @@ const PlaceOrderScreen = () => {
 
     const placeOrderHandler = async () => {
         try {
-            console.log('INSIDE HANDLER');
-            console.log('CART: ', cart)
+            // console.log('INSIDE HANDLER');
+            // console.log('CART: ', cart)
             // Create order and update PRODUCT STOCK
             const res = await createOrder({
                 orderItems: cart.cartItems,
@@ -50,7 +42,7 @@ const PlaceOrderScreen = () => {
                 taxPrice: cart.taxPrice,
                 totalPrice: cart.totalPrice,
             }).unwrap();
-            console.log('AFTER CREATE ORDER')
+            // console.log('AFTER CREATE ORDER')
             dispatch(clearCartItems());
             navigate(`/order/${res._id}`);
         } catch (error) {

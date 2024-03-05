@@ -23,14 +23,13 @@ const ShippingScreen = () => {
   const [state, setState] = useState(shippingAddress?.state || '');
   const [country, setCountry] = useState(shippingAddress?.country || '');
 
-  const noShipStates = ['AK', 'Ak', 'Alaska', 'alaska', 'HI', 'Hi', 'Hawaii', 'hawaii'];
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [validateAddress] = useValidateAddressMutation();
 
-  
+  // Validate address 
+  // Corrects address if mispelling exists
   const checkAddress = async (e) => {
     try {
       const res = await validateAddress({
@@ -41,14 +40,14 @@ const ShippingScreen = () => {
         postalCode: postalCode, 
         country: country}).unwrap();
 
-      console.log('VALIDATED ADDRESS', res)
-      console.log('is valid?:', res.validation_results.is_valid)
+      // console.log('VALIDATED ADDRESS', res)
+      // console.log('is valid?:', res.validation_results.is_valid)
       if (res.validation_results.is_valid === true) {        
-        console.log('set valid: true')
+        // console.log('set valid: true')
         return [true, res]
       }
       else {
-        console.log('set valid: false')
+        // console.log('set valid: false')
         return false
       }
     }
@@ -62,21 +61,30 @@ const ShippingScreen = () => {
 
     const res = await checkAddress()
 
-    // const [isValid, addy] = res;
-
+    // Check if address came back valid 
     if (res[0] === true) {
-      console.log('ITS VALID')
-      dispatch(saveShippingAddress({
-        address: res[1].street1,
-        address2: res[1].street2,
-        city: res[1].city,
-        postalCode: res[1].zip,
-        state: res[1].state,
-        country: res[1].country}));
-      navigate('/payment');
+
+      // Check for Alaska, Hawaii, and non-US countries
+      if (res[1].state === 'AK' || res[1].state === 'HI' || res[1].country !== 'US') {
+        // console.log('ITS INVALID: AK, HI, or non-US country')
+        return toast.error('Currently not shipping to: Alaska and Hawaii');
+      }
+      else {
+        // Set shipping address to address returned by shippo
+        // This takes care of cases where states are not abbreviated
+        // console.log('ITS VALID')
+        dispatch(saveShippingAddress({
+          address: res[1].street1,
+          address2: res[1].street2,
+          city: res[1].city,
+          postalCode: res[1].zip,
+          state: res[1].state,
+          country: res[1].country}));
+        navigate('/payment');
+      } 
     }
     else {
-      console.log('ITS INVALID')
+      // console.log('ITS INVALID')
       return toast.error('Please enter a valid address!')
     }
   };
