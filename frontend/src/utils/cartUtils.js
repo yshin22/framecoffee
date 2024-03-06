@@ -16,8 +16,14 @@ export const updateCart = (state) => {
              
     //calculate shipping price (if order is over $100, then free shipping, else, $10)
     // state.shippingPrice = addDecimals(state.itemsPrice > 100 ? 0 : 10);
-    const shippingPrice = itemsPrice > 100 ? 0 : 10;
-    state.shippingPrice = addDecimals(shippingPrice);
+    // const shippingPrice = itemsPrice > 100 ? 0 : 10;
+
+    const shippingPrice = state.shippingPrice;
+
+    state.shippingPrice = Number(addDecimals(shippingPrice));
+
+    console.log('STATE.SHIPPING PRICE: ',  state.shippingPrice);
+
 
     //calculate tax price (%1) for VA
     const taxPriceVA = 0.01 * itemsPrice;

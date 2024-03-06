@@ -87,7 +87,7 @@ const productSchema = new mongoose.Schema({
     },
     size: {
         type: Number,
-        required: false,
+        required: true,
     }
 
 }, {timestamps: true});

@@ -16,6 +16,8 @@ const ShippingScreen = () => {
 
   const { shippingAddress } = cart;
 
+  const [loading, setLoading] = useState(false);
+
   const [address, setAddress] = useState(shippingAddress?.address || '');
   const [address2, setAddress2] = useState();
   const [city, setCity] = useState(shippingAddress?.city || '');
@@ -29,7 +31,7 @@ const ShippingScreen = () => {
   const navigate = useNavigate();
 
   const [validateAddress] = useValidateAddressMutation();
-  const [calculateShipping] = useCalculateShippingMutation();
+  const [calculateShipping, isLoading, error] = useCalculateShippingMutation();
 
   // Validate address 
   // Corrects address if mispelling exists
@@ -44,7 +46,7 @@ const ShippingScreen = () => {
         country: country}).unwrap();
 
       console.log('VALIDATED ADDRESS', res)
-      console.log('is valid?:', res.validation_results.is_valid)
+      console.log('Is address valid?', res.validation_results.is_valid)
 
       if (res.validation_results.is_valid === true) {        
         // console.log('set valid: true')
@@ -78,7 +80,6 @@ const ShippingScreen = () => {
       else {
         // Set shipping address to address returned by shippo
         // This takes care of cases where states are not abbreviated
-        // console.log('ITS VALID')
         dispatch(saveShippingAddress({
           address: res[1].street1,
           address2: res[1].street2,
@@ -93,19 +94,19 @@ const ShippingScreen = () => {
         const newShippingAddress = res[1];
 
         // console.log(newShippingAddress)
-        // console.log('---CART SHIPPING ADDRESS ---: ', cart.shippingAddress);
+        console.log('CART SHIPPING ADDRESS', cart.shippingAddress);
         
         // Calculate shipping rate and Shippo shipping profile
         const {shipment, shippingRate} = await calculateShipping({userInfo, cart, newShippingAddress}).unwrap();
          
         console.log('SHIPMENT: ', shipment);
-        console.log('RATE: ', shippingRate);
-
+        console.log('RATE: ', typeof shippingRate);
+        
         // save shipment profile to cart local storage
         dispatch(saveShippingQuote(shipment));
 
         // Update tax after shipping address changed again
-        dispatch(updateTax());
+        dispatch(updateTax(Number(shippingRate)));
         
         navigate('/payment');
       } 
@@ -201,9 +202,14 @@ const ShippingScreen = () => {
           ></Form.Control>
         </Form.Group>
 
-        <Button type='submit' variant='primary'>
-          Continue
+        <Button type='submit' variant='primary' 
+        // disabled={loading}
+        // onClick={!loading ? handleClick : null}
+        >
+            {/* {loading ? 'Loading...' : 'Continue'} */}
+            Continue
         </Button>
+
       </Form>
     </FormContainer>
   );

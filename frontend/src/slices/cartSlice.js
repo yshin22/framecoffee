@@ -47,6 +47,8 @@ const cartSlice = createSlice({
       localStorage.setItem('cart', JSON.stringify(state));
     },
     updateTax: (state, action) => {
+      console.log('ACTION PAYLOAD: ', action.payload)
+      state.shippingPrice = action.payload;
       return updateCart(state);
     },
     // NOTE: here we need to reset state for when a user logs out so the next

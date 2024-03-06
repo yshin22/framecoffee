@@ -9,7 +9,9 @@ import { calcPrices } from '../utils/calcPrices.js';
 // @access private
 const addOrderItems = asyncHandler(async (req,res) => {
     // Getting these parameters from http body 
-    const { orderItems, shippingAddress, paymentMethod } = req.body;
+    const { orderItems, shippingAddress, paymentMethod, shippingPrice: finalShipRate} = req.body;
+    // console.log("ORDER BODY: ", req.body)
+    // console.log('SHIP RATE', finalShipRate)
     // console.log(req.body.shippingAddress)
     // console.log('CONTROLLER')
     // Check if "orderItems" is empty
@@ -37,7 +39,7 @@ const addOrderItems = asyncHandler(async (req,res) => {
         });
   
         // calculate prices
-        const { itemsPrice, taxPrice, shippingPrice, totalPrice } = calcPrices(dbOrderItems, shippingAddress);
+        const { itemsPrice, taxPrice, shippingPrice, totalPrice } = calcPrices(dbOrderItems, shippingAddress, finalShipRate);
 
         // for (const i in orderItems) {
         //     // console.log('here')
@@ -56,7 +58,7 @@ const addOrderItems = asyncHandler(async (req,res) => {
         if (shippingAddress.address2) {
             shippingAddress.address = shippingAddress.address + ' ' + shippingAddress.address2
         }
-        console.log(shippingAddress.address)
+        // console.log(shippingAddress.address)
 
         // Create order.
         const order = new Order({
