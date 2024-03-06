@@ -21,6 +21,7 @@ import ReactRouterPrompt from "react-router-prompt";
 const OrderScreen = () => {
     // Get id from URL 
     const {id: orderId} = useParams();
+    const cart = useSelector((state) => state.cart);
 
     const navigate = useNavigate();
 
@@ -67,16 +68,17 @@ const OrderScreen = () => {
     const labelHandler = async () => {
         try {
             console.log('INSIDE LABEL HANDLER');
-            const res = await createLabel({
-                fullName: userInfo.name,
-                address1: order.shippingAddress.address,
-                city: order.shippingAddress.city,
-                state: order.shippingAddress.state,
-                postalCode: order.shippingAddress.postalCode,
-                country: order.shippingAddress.country,
-                phoneNumber: '703-111-1111',
-                email: userInfo.email,
-            }).unwrap();
+            // const res = await createLabel({
+            //     fullName: userInfo.name,
+            //     address1: order.shippingAddress.address,
+            //     city: order.shippingAddress.city,
+            //     state: order.shippingAddress.state,
+            //     postalCode: order.shippingAddress.postalCode,
+            //     country: order.shippingAddress.country,
+            //     phoneNumber: '703-111-1111',
+            //     email: userInfo.email,
+            // }).unwrap();
+            const res = await createLabel(cart.shippingQuote).unwrap;
             console.log(res);
             console.log('OUTSIDE LABEL HANDLER');
         } catch (err) {
@@ -139,7 +141,9 @@ const OrderScreen = () => {
                 console.log(orderId)
                 await payOrder({orderId, details});
                 refetch();
-                labelHandler();           
+                labelHandler(cart.shippingQuote);
+                console.log('SHIPPO OBJ:', cart.shippingQuote)
+
                 toast.success('Payment Successful');
             } catch (err) {
                 toast.error(err?.data?.message || err.message);

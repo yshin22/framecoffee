@@ -16,6 +16,13 @@ export const shippoApiSlice = apiSlice.injectEndpoints({
           method: 'POST',
           body: data,
         })
+      }),
+      calculateShipping: builder.mutation({
+        query: (data) => ({
+          url: `${SHIPPO_URL}/calcship`,
+          method: 'POST',
+          body: data,
+        })
       })
     }),
 });
@@ -23,5 +30,6 @@ export const shippoApiSlice = apiSlice.injectEndpoints({
 export const { 
   useCreateLabelMutation,
   useValidateAddressMutation,
+  useCalculateShippingMutation,
 }  = shippoApiSlice;
 

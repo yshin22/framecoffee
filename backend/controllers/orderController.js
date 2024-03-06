@@ -10,7 +10,7 @@ import { calcPrices } from '../utils/calcPrices.js';
 const addOrderItems = asyncHandler(async (req,res) => {
     // Getting these parameters from http body 
     const { orderItems, shippingAddress, paymentMethod } = req.body;
-    console.log(req.body.shippingAddress)
+    // console.log(req.body.shippingAddress)
     // console.log('CONTROLLER')
     // Check if "orderItems" is empty
     if (orderItems && orderItems.length === 0) {

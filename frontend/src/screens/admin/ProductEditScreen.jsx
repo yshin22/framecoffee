@@ -26,6 +26,7 @@ const ProductEditScreen = () => {
     const [origin, setOrigin] = useState('');
     const [cuppingNote, setCuppingNote] = useState('');
     const [roastingLevel, setRoastingLevel] = useState(0);
+    const [size, setSize] = useState(0);
 
     const {data: product, isLoading, error, refetch} = useGetProductDetailsQuery(productId);
 
@@ -48,6 +49,7 @@ const ProductEditScreen = () => {
             setOrigin(product.origin);
             setCuppingNote(product.cuppingNote);
             setRoastingLevel(product.roastingLevel);
+            setSize(product.size);
         }
     }, [product]);
 
@@ -67,6 +69,7 @@ const ProductEditScreen = () => {
             origin,
             cuppingNote,
             roastingLevel,
+            size,
           }).unwrap(); // NOTE: here we need to unwrap the Promise to catch any rejection in our catch block
           toast.success('Product updated');
           refetch();
@@ -200,6 +203,19 @@ const ProductEditScreen = () => {
                         onChange={(e) => setCategory(e.target.value)}> 
                         </Form.Control>
                     </Form.Group>
+
+                    {category === 'Coffee Beans' ? (
+                        <Form.Group controlId='size' className='my-2'>
+                            <Form.Label>Size</Form.Label>
+                            <Form.Control
+                            type='number'
+                            min='0'
+                            placeholder='Enter size (grams)'
+                            value={size}
+                            onChange={(e) => setSize(e.target.value)}> 
+                            </Form.Control>
+                        </Form.Group>
+                    ) : (<></>)}
 
                     <Form.Group controlId='description' className='my-2'>
                         <Form.Label>Description</Form.Label>

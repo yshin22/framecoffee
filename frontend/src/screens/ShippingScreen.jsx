@@ -3,15 +3,17 @@ import { Form, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import FormContainer from '../components/FormContainer';
-import { saveShippingAddress, updateTax } from '../slices/cartSlice';
+import { saveShippingAddress, saveShippingQuote, updateTax } from '../slices/cartSlice';
 import CheckoutSteps from '../components/CheckoutSteps';
 import {toast} from 'react-toastify';
 import { AddressAutofill } from '@mapbox/search-js-react';
-import { useValidateAddressMutation } from '../slices/shippoSlics';
+import { useValidateAddressMutation, useCalculateShippingMutation } from '../slices/shippoSlics';
 const mapBoxKey = "pk.eyJ1IjoiZnJhbWVjb2ZmZWUiLCJhIjoiY2x0YXoyNXNmMWV6aTJrbXRia2Zpbm54dCJ9.GRGuO1Se8cyIaE11rNsXdQ"
 
 const ShippingScreen = () => {
   const cart = useSelector((state) => state.cart);
+  const { userInfo } = useSelector((state) => state.auth);
+
   const { shippingAddress } = cart;
 
   const [address, setAddress] = useState(shippingAddress?.address || '');
@@ -27,6 +29,7 @@ const ShippingScreen = () => {
   const navigate = useNavigate();
 
   const [validateAddress] = useValidateAddressMutation();
+  const [calculateShipping] = useCalculateShippingMutation();
 
   // Validate address 
   // Corrects address if mispelling exists
@@ -40,8 +43,9 @@ const ShippingScreen = () => {
         postalCode: postalCode, 
         country: country}).unwrap();
 
-      // console.log('VALIDATED ADDRESS', res)
-      // console.log('is valid?:', res.validation_results.is_valid)
+      console.log('VALIDATED ADDRESS', res)
+      console.log('is valid?:', res.validation_results.is_valid)
+
       if (res.validation_results.is_valid === true) {        
         // console.log('set valid: true')
         return [true, res]
@@ -61,12 +65,14 @@ const ShippingScreen = () => {
 
     const res = await checkAddress()
 
+    // console.log('---RES---: ', res)
+
     // Check if address came back valid 
     if (res[0] === true) {
 
       // Check for Alaska, Hawaii, and non-US countries
       if (res[1].state === 'AK' || res[1].state === 'HI' || res[1].country !== 'US') {
-        // console.log('ITS INVALID: AK, HI, or non-US country')
+        console.log('ITS INVALID: AK, HI, or non-US country')
         return toast.error('Currently not shipping to: Alaska and Hawaii');
       }
       else {
@@ -80,9 +86,27 @@ const ShippingScreen = () => {
           postalCode: res[1].zip,
           state: res[1].state,
           country: res[1].country}));
+
+        // Need res[1] since cart's address won't update till next re-render
+        // This is for when the customer backtracks and changes their address
+        // By using res[1], we have the most updated address
+        const newShippingAddress = res[1];
+
+        // console.log(newShippingAddress)
+        // console.log('---CART SHIPPING ADDRESS ---: ', cart.shippingAddress);
+        
+        // Calculate shipping rate and Shippo shipping profile
+        const {shipment, shippingRate} = await calculateShipping({userInfo, cart, newShippingAddress}).unwrap();
+         
+        console.log('SHIPMENT: ', shipment);
+        console.log('RATE: ', shippingRate);
+
+        // save shipment profile to cart local storage
+        dispatch(saveShippingQuote(shipment));
+
         // Update tax after shipping address changed again
         dispatch(updateTax());
-
+        
         navigate('/payment');
       } 
     }

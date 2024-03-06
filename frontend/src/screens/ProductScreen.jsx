@@ -3,7 +3,7 @@ import { useState } from 'react'
 import '../assets/styles/screens/productscreen.css'
 import { useParams, useNavigate} from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import {Form, Row, Col, Image, ListGroup, Card, Button, Carousel} from 'react-bootstrap'
+import {Form, Row, Col, Image, ListGroup, Card, Button, Carousel, DropdownButton, Dropdown } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Rating from '../components/Rating'
 import { useGetProductDetailsQuery, useCreateReviewMutation } from '../slices/productsApiSlice'
@@ -153,6 +153,26 @@ const ProductScreen = () => {
                                             </Row>
                                         </ListGroup.Item>
                                     )}
+                                    
+                                    {product?.size && (
+                                        <ListGroup.Item>
+                                            {/* <DropdownButton id="dropdown-basic-button" title="Choose Size">
+                                                <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                                                <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+                                                <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                                            </DropdownButton> */}
+                                            <Row>
+                                                <Col>
+                                                    Size:
+                                                </Col>
+                                                <Col>
+                                                    <strong>{product.size}g</strong>
+                                                </Col>
+                                            </Row>
+                                        </ListGroup.Item>
+                                    )
+                                    }
+
                                     <ListGroup.Item>
                                         <Button
                                         className='btn-block'
