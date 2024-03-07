@@ -35,14 +35,18 @@ export const updateCart = (state) => {
         const totalPrice = itemsPrice + shippingPrice + taxPrice;
         // Calculate the total price
         state.totalPrice = addDecimals(totalPrice);
+
+        console.log('TAX: ', state.taxPrice)
+        console.log('TOTAL: ', state.totalPrice)
     }
     else {
         console.log('VA')
         state.taxPrice = addDecimals(taxPriceVA);
-        state.taxPrice = addDecimals(taxPriceVA);
         const totalPrice = itemsPrice + shippingPrice + taxPriceVA;
         // Calculate the total price
         state.totalPrice = addDecimals(totalPrice);
+        console.log('TAX: ', state.taxPrice)
+        console.log('TOTAL: ', state.totalPrice)
     }
     
     // Save the cart to localStorage

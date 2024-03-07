@@ -28,6 +28,10 @@ function addDecimals(num) {
     if (shippingAddress.state === 'VA') {
       console.log('CALC PRICES VA')
       const totalPrice = itemsPrice + finalShipRate + taxPriceVA;
+      console.log('ITEMS PRICE: ', itemsPrice)
+      console.log('SHIPPING PRICE: ', finalShipRate)
+      console.log('TAX PRICE: ', taxPrice)
+      console.log('TOTAL PRICE (calcprice.js)VA: ', totalPrice)
 
       return {
         itemsPrice: addDecimals(itemsPrice),
@@ -38,7 +42,11 @@ function addDecimals(num) {
     } else {
       console.log('CALC PRICES non-VA')
       const totalPrice = itemsPrice + finalShipRate + taxPrice;
-      
+      console.log('ITEMS PRICE: ', itemsPrice)
+      console.log('SHIPPING PRICE: ', finalShipRate)
+      console.log('TAX PRICE: ', taxPrice)
+      console.log('TOTAL PRICE (calcprice.js)NON VA: ', totalPrice)
+
       return {
         itemsPrice: addDecimals(itemsPrice),
         shippingPrice: addDecimals(finalShipRate),
