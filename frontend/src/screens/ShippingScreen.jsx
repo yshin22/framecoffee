@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Spinner} from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import FormContainer from '../components/FormContainer';
@@ -207,7 +207,19 @@ const ShippingScreen = () => {
         <Button type='submit' variant='primary' 
         disabled={loading}
         >
-            {loading ? 'Loading...' : 'Continue'}
+            {loading ? (
+              <>
+                <Spinner
+                as="span"
+                animation="border"
+                size="sm"
+                role="status"
+                aria-hidden="true"
+                />
+                Loading...
+              </>
+
+            ): 'Continue'}
             {/* Continue */}
         </Button>
 

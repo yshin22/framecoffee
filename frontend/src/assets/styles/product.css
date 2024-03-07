@@ -1,0 +1,24 @@
+.product-title-wrapper {
+    color: #303030;
+    transition: color 0.1s ease-in-out;
+}
+
+/* .beans-desc:hover {
+    cursor: pointer;
+} */
+
+.beans-desc-link {
+    text-decoration: none;
+    color: #303030;
+    transition: color 0.1s ease-in-out;
+}
+
+.beans-desc-link:hover {
+    color: #fff;
+    transition: color 0.1s ease-in-out;
+}
+
+.product-title-wrapper:hover {
+    color: #fff;
+    transition: color 0.1s ease-in-out;
+}
