@@ -3,9 +3,9 @@
     transition: color 0.1s ease-in-out;
 }
 
-/* .beans-desc:hover {
+.beans-desc:hover {
     cursor: pointer;
-} */
+}
 
 .beans-desc-link {
     text-decoration: none;
@@ -21,4 +21,8 @@
 .product-title-wrapper:hover {
     color: #fff;
     transition: color 0.1s ease-in-out;
+}
+
+body.modal-open {
+    overflow: visible !important;
 }

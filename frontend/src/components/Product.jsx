@@ -7,7 +7,10 @@ import '../assets/styles/product.css'
 
 const Product = ({product}) => {
 
-const [modalShow, setModalShow] = useState(false);
+const [modal1Show, setModal1Show] = useState(false);
+const [modal2Show, setModal2Show] = useState(false);
+const [modal3Show, setModal3Show] = useState(false);
+
 
   return (
     <Card className="my-3 p-3 rounded">
@@ -27,23 +30,29 @@ const [modalShow, setModalShow] = useState(false);
 
             </Card.Text> */}
             {(product.category === 'Coffee Beans') && 
-                <div className='beans-desc' onClick={() => setModalShow(true)}>
+                <div className='beans-desc'>
                     <p>
-                        <Link className='beans-desc-link'>
+                        <Link className='beans-desc-link' onClick={() => setModal1Show(true)}>
                             <span style={{fontWeight: '800', textDecorationLine: 'underline'}}>Origin</span>: <i> {product.origin}</i>
                         </Link>
                     </p>
                     <p>
-                        <span style={{fontWeight: '800', textDecorationLine: 'underline'}}>Cupping Note</span>: <i> {product.cuppingNote}</i>
+                        <Link className='beans-desc-link' onClick={() => setModal1Show(true)}>
+                            <span style={{fontWeight: '800', textDecorationLine: 'underline'}}>Cupping Note</span>: <i> {product.cuppingNote}</i>
+                        </Link>
                     </p>
                     <p>
+                    <Link className='beans-desc-link' onClick={() => setModal1Show(true)}>
                         <span style={{fontWeight: '800', textDecorationLine: 'underline'}}>Roasting Level</span>: <i>{product.roastingLevel}</i>
+                    </Link>
                     </p>
                 </div>
             }
 
-            <VerticallyCenteredModal  show={modalShow}
-            onHide={() => setModalShow(false)}/>
+            <VerticallyCenteredModal show={modal1Show} onHide={() => setModal1Show(false)} prod={product}/>
+            {/* <VerticallyCenteredModal show={modal2Show} onHide={() => setModal2Show(false)} prod={product}/>
+            <VerticallyCenteredModal show={modal3Show} onHide={() => setModal3Show(false)} prod={product}/> */}
+
 
             <Card.Text as="h3">
                 ${(product.price).toFixed(2)}
