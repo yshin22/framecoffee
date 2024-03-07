@@ -49,7 +49,7 @@ const createProductHandler = async () => {
         }
     }
 }
-
+    console.log(data)
   return (
     <Container className='productList-container'>
         <Row>

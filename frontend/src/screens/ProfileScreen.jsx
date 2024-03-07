@@ -11,8 +11,14 @@ import { FaTimes } from 'react-icons/fa';
 import { useProfileMutation } from '../slices/usersApiSlice';
 import { setCredentials } from '../slices/authSlice';
 import { useGetMyOrdersQuery } from '../slices/ordersApiSlice';
+import { useParams, useLocation} from 'react-router-dom';
+import Paginate from '../components/Paginate';
 
 const ProfileScreen = () => {
+
+    const {pageNumber} = useParams();
+    const location = useLocation().pathname.toString().slice(1,8);
+    console.log(location)
 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -25,7 +31,7 @@ const ProfileScreen = () => {
 
     const [updateProfile, {isLoading: loadingUpdateProfile}] = useProfileMutation();
 
-    const {data: orders, isLoading, error} = useGetMyOrdersQuery();
+    const {data, isLoading, error} = useGetMyOrdersQuery({pageNumber});
 
     useEffect(() => {
         if (userInfo) {
@@ -115,6 +121,7 @@ const ProfileScreen = () => {
                     {error?.data?.message || error.error}
                 </Message>
                 ) : (
+                   <>
                     <Table striped hover responsive className='table-sm'>
                         <thead>
                             <tr>
@@ -127,7 +134,7 @@ const ProfileScreen = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {orders.map((order) => (
+                            {data.orders.map((order) => (
                                 <tr key={order._id}>
                                     <td>{order._id}</td>
                                     <td>{order.createdAt.substring(0, 10)}</td>
@@ -157,6 +164,8 @@ const ProfileScreen = () => {
                             ))}
                         </tbody>
                     </Table>
+                    <Paginate pages={data.pages} page={data.page} isAdmin={true} loc={location}/>
+                   </>
                 )}
             </Col>
 

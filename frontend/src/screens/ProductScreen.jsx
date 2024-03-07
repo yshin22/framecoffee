@@ -5,14 +5,13 @@ import { useParams, useNavigate} from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import {Form, Row, Col, Image, ListGroup, Card, Button, Carousel, DropdownButton, Dropdown } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import Rating from '../components/Rating'
+// import Rating from '../components/Rating'
 import { useGetProductDetailsQuery, useCreateReviewMutation } from '../slices/productsApiSlice'
 import Meta from '../components/Meta';
 import Loader from '../components/Loader'
 import Message from '../components/Message'
 import { addToCart } from '../slices/cartSlice' 
 import {toast} from 'react-toastify'
-import backside from '../assets/images/backside.jpg';
 import Footer from '../components/Footer'
 
 const ProductScreen = () => {
@@ -23,8 +22,8 @@ const ProductScreen = () => {
     const navigate = useNavigate();
 
     const [qty, setQty] = useState(1);
-    const [rating, setRating] = useState(0);
-    const [comment, setComment] = useState('');
+    // const [rating, setRating] = useState(0);
+    // const [comment, setComment] = useState('');
 
     const addToCartHandler = () => {
         dispatch(addToCart({...product, qty}));
@@ -34,26 +33,26 @@ const ProductScreen = () => {
 
     const {data: product, isLoading, error, refetch} = useGetProductDetailsQuery(productId);
 
-    const { userInfo } = useSelector((state) => state.auth);
+    // const { userInfo } = useSelector((state) => state.auth);
 
-    const [createReview, {isLoading: loadingProductReview}] = useCreateReviewMutation();
+    // const [createReview] = useCreateReviewMutation();
 
-    const submitHandler = async (e) => {
-        e.preventDefault();
-        try {
-            await createReview({
-                productId,
-                rating,
-                comment
-            }).unwrap();
-            refetch();
-            toast.success('Review Submitted');
-            setRating(0);
-            setComment('');
-        } catch(err) {
-            toast.error(err?.data?.message || err.error);
-        }
-    };
+    // const submitHandler = async (e) => {
+    //     e.preventDefault();
+    //     try {
+    //         await createReview({
+    //             productId,
+    //             rating,
+    //             comment
+    //         }).unwrap();
+    //         refetch();
+    //         toast.success('Review Submitted');
+    //         setRating(0);
+    //         setComment('');
+    //     } catch(err) {
+    //         toast.error(err?.data?.message || err.error);
+    //     }
+    // };
 
     return (
         <>

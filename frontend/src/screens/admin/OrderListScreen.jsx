@@ -4,11 +4,19 @@ import { FaTimes } from 'react-icons/fa';
 import Message from '../../components/Message';
 import Loader from '../../components/Loader';
 import { useGetOrdersQuery } from '../../slices/ordersApiSlice';
+import { useParams, useLocation} from 'react-router-dom';
+import Paginate from '../../components/Paginate';
 import '../../assets/styles/screens/orderlistscreen.css'
 
 const OrderListScreen = () => {
-  const { data: orders, isLoading, error } = useGetOrdersQuery();
 
+  const {pageNumber} = useParams();
+
+  const location = useLocation().pathname.toString().slice(7,16);
+  console.log(location)
+
+  const { data, isLoading, error } = useGetOrdersQuery({pageNumber});
+  console.log(data)
   return (
     <Container className='orderlist-container'>
       <h1>Orders</h1>
@@ -19,6 +27,7 @@ const OrderListScreen = () => {
           {error?.data?.message || error.error}
         </Message>
       ) : (
+        <>
         <Table striped bordered hover responsive className='table-sm'>
           <thead>
             <tr>
@@ -32,7 +41,7 @@ const OrderListScreen = () => {
             </tr>
           </thead>
           <tbody>
-            {orders.map((order) => (
+            {data.orders.map((order) => (
               <tr key={order._id}>
                 {console.log(order.product)}
                 <td>{order._id}</td>
@@ -64,6 +73,8 @@ const OrderListScreen = () => {
             ))}
           </tbody>
         </Table>
+        <Paginate pages={data.pages} page={data.page} isAdmin={true} loc={location}/>
+        </>
       )}
     </Container>
   );

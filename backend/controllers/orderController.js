@@ -96,10 +96,19 @@ const addOrderItems = asyncHandler(async (req,res) => {
 // @route GET /api/orders/myorders
 // @access private
 const getMyOrders = asyncHandler(async (req,res) => {
+
+    const pageSize = 10;
+    const page = Number(req.query.pageNumber) || 1;
+
+    const count = await Order.countDocuments({user: req.user._id})
+
     // Find order based on user id matching user id from http body
-    const orders = await Order.find({user: req.user._id});  
+    const orders = await Order.find({user: req.user._id})  
     // Pass in found orders
-    res.status(200).json(orders);
+    .limit(pageSize)
+    .skip(pageSize * (page - 1));
+
+    res.status(200).json({orders, page, pages: Math.ceil(count / pageSize)});
 });
 // @desc Get order by id 
 // @route POST /api/orders/:id
@@ -182,11 +191,17 @@ const updateOrderToDelivered = asyncHandler(async (req,res) => {
 // @route GET /api/orders
 // @access private/ admin
 const getOrders = asyncHandler(async (req,res) => {
-    const orders = await Order.find({}).populate('user', 'id name');
-    res.status(200).json(orders);
+    const pageSize = 10;
+    const page = Number(req.query.pageNumber) || 1;
+
+    const count = await Order.countDocuments()
+
+    const orders = await Order.find({}).populate('user', 'id name')
+    .limit(pageSize)
+    .skip(pageSize * (page - 1));
+
+    res.status(200).json({orders, page, pages: Math.ceil(count / pageSize)});
 });
-
-
 
 const deleteOrderById = asyncHandler(async (req, res) => {
     console.log('DELETE ORDER')

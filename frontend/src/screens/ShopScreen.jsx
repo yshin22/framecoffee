@@ -41,8 +41,7 @@ const ShopScreen = () => {
             </Row>
             <Paginate
             pages={data.pages}
-            page={data.page}
-            keyword = {keyword ? keyword : ''}/>
+            page={data.page}/>
           </>) }
       </Container>
       <Footer/>

@@ -63,7 +63,7 @@ const router = createBrowserRouter(
       <Route path='/artshow' element={<ArtShowScreen/>}/>
       <Route path='/music' element={<MusicScreen/>}/>
 
-      <Route path='/search/:keyword' element={<ShopScreen/>}/>
+      <Route path='/page/:pageNumber' element={<ShopScreen/>}/>
       <Route path='/page/:pageNumber' element={<HomeScreen/>}/>
       <Route path='/search/:keyword/page/:pageNumber' element={<ShopScreen/>}/>
       <Route path='/product/:id' element={<ProductScreen/>}/>
@@ -84,10 +84,12 @@ const router = createBrowserRouter(
         <Route path='/placeorder' element={<PlaceOrderScreen/>}/>
         <Route path='/order/:id' element={<OrderScreen/>}/>
         <Route path='/profile' element={<ProfileScreen/>}/>
+        <Route path='/profile/:pageNumber' element={<ProfileScreen/>}/>
       </Route>
 
       <Route path='' element={<AdminRoute/>}>
         <Route path='/admin/orderlist' element={<OrderListScreen/>}/>
+        <Route path='/admin/orderlist/:pageNumber' element={<OrderListScreen/>}/>
         <Route path='/admin/productlist' element={<ProductListScreen/>}/>
         <Route path='/admin/productlist/:pageNumber' element={<ProductListScreen/>}/>
         <Route path='/admin/product/:id/edit' element={<ProductEditScreen/>}/>

@@ -23,7 +23,6 @@ import { showNav,
  } from '../utils/headerUtils'
 
 //  import {headerContext} from '../screens/OrderScreen';
- import { useContext } from 'react';
 
 
 const Header = () => {
