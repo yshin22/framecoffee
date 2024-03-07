@@ -6,6 +6,7 @@ import {FaTrash} from 'react-icons/fa';
 import Message from '../components/Message';
 import {addToCart, removeFromCart} from '../slices/cartSlice';
 import '../assets/styles/screens/cartscreen.css'
+import Footer from '../components/Footer';
 
 const CartScreen = () => {
 
@@ -33,7 +34,7 @@ const CartScreen = () => {
     <Container className='cart-container'>
         <Row>
             <Col md={8}>
-                <h1 style={{marginBottom: '20px'}}>Shopping Cart</h1>
+                <h1 style={{marginBottom: '20px'}}>SHOPPING CART</h1>
                 {cartItems.length === 0 ? (
                     <Message>
                         Your cart is empty <Link to='/shop'>Go back</Link>
@@ -42,7 +43,7 @@ const CartScreen = () => {
                     <ListGroup variant='flush'>
                         {cartItems.map((item) => (
                             <ListGroup.Item key={item._id}>
-                                <Row>
+                                <Row className='cartItems-wrapper'>
                                     <Col md={2}>
                                         <Image src={item.image} alt={item.name} fluid rounded></Image>
                                     </Col>
@@ -80,7 +81,7 @@ const CartScreen = () => {
                     <ListGroup variant='flush'>
                         <ListGroup.Item>
                             <h2>
-                                Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)}) items
+                                SUBTOTAL [{cartItems.reduce((acc, item) => acc + item.qty, 0)}] 
                             </h2>
                             ${cartItems.reduce((acc, item) => acc + item.qty * item.price, 0).toFixed(2)}
                         </ListGroup.Item>
@@ -90,7 +91,15 @@ const CartScreen = () => {
                                 Proceed to Checkout
                             </Button>
                         </ListGroup.Item>
+                        <ListGroup.Item>
+                            <Link className='continueShop-link' to='/shop'>Continue Shopping</Link>
+                        </ListGroup.Item>
                     </ListGroup>
+                    {/* <ListGroup>
+                        <ListGroup.Item>
+                            <Link className to='/shop'>Continue Shopping</Link>
+                        </ListGroup.Item>
+                    </ListGroup> */}
                 </Card>
             </Col>
         </Row>

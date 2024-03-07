@@ -14,7 +14,7 @@ import '../assets/styles/screens/placeorderscreen.css';
 const PlaceOrderScreen = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    // Get car state
+    // Get cart state
     const cart = useSelector((state) => state.cart);
 
     const [createOrder, {isLoading, error}] = useCreateOrderMutation(); 
@@ -30,8 +30,6 @@ const PlaceOrderScreen = () => {
 
     const placeOrderHandler = async () => {
         try {
-            // console.log('INSIDE HANDLER');
-            // console.log('CART: ', cart)
             // Create order and update PRODUCT STOCK
             const res = await createOrder({
                 orderItems: cart.cartItems,
@@ -42,12 +40,10 @@ const PlaceOrderScreen = () => {
                 taxPrice: cart.taxPrice,
                 totalPrice: cart.totalPrice,
             }).unwrap();
-            // console.log('AFTER CREATE ORDER')
             dispatch(clearCartItems());
             navigate(`/order/${res._id}`);
         } catch (error) {
             toast.error(error);
-
         }
     };
 

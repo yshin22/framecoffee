@@ -64,7 +64,9 @@ const ShippingScreen = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-
+    
+    setLoading(true);
+    
     const res = await checkAddress()
 
     // console.log('---RES---: ', res)
@@ -203,11 +205,10 @@ const ShippingScreen = () => {
         </Form.Group>
 
         <Button type='submit' variant='primary' 
-        // disabled={loading}
-        // onClick={!loading ? handleClick : null}
+        disabled={loading}
         >
-            {/* {loading ? 'Loading...' : 'Continue'} */}
-            Continue
+            {loading ? 'Loading...' : 'Continue'}
+            {/* Continue */}
         </Button>
 
       </Form>

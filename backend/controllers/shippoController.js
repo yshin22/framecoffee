@@ -8,6 +8,9 @@ console.log(shippoToken);
 
 const shippoClient = shippo(shippoToken);
 
+// @desc    Create Shipping label
+// @route   POST /
+// @access  Public
 const createShippoLabel = asyncHandler(async(req, res) => {
     const shipment = req.body
 
@@ -166,28 +169,6 @@ const calcShipping = asyncHandler(async(req, res) => {
             // console.log(shipment)
             res.json({ shipment, shippingRate});
         })
-
-
-        //find order by id. get product qty. X weight.
-
-        // Call this function in 'shipment' page
-        // GET ADDRESS FROM, TO, PARCEL, SHIPPING LABEL HERE
-
-        // PARCEL WILL CHECK IF THE QTY OF BEANS:
-        //  IS <= 4: USE PARCEL SIZE 7x7x7
-        //  IS > 4: USE PARCEL SIZE 10x10x6
-        //  calculate weight by getting  
-        /*
-            const totalWeight = 0; 
-            order.orderitems.foreach(e => {
-                totalWeight += (e.size * e.qty)
-            })
-        */
-    // Create Parcel based on these new variables
-    // Create Shipment based on these new variables
-    // Export 'shipment' json and used it to 'transaction' on 'orderscreen' page.
-
-
     }
 })
 

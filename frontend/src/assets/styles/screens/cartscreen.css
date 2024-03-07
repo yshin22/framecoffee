@@ -3,6 +3,40 @@
     margin-top: 3vh;
 }
 
+.cartItems-wrapper div {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+.cartItems-wrapper div img {
+    max-width: 100%;
+}
+
+.continueShop-link {
+    color: #303030;
+    font-weight: 600;
+    margin: 2px;
+    transition: color 0.1s ease-in-out;
+
+}
+
+.continueShop-link:hover {
+    color: #fff;
+    transition: color 0.1s ease-in-out;
+}
+
+.cartItems-wrapper div a {
+    /* text-decoration: none; */
+    color: #303030;
+    font-weight: 600;
+    transition: color 0.1s ease-in-out;
+}
+.cartItems-wrapper div a:hover {
+    color: #fff;
+    transition: color 0.1s ease-in-out;
+}
+
 @media screen and (max-width: 992px) {
     .cart-container {
         margin-top: 13vh;

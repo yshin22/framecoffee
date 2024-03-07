@@ -1,6 +1,6 @@
-import { useEffect, useState} from 'react';
-import {Link, useParams, useNavigate} from 'react-router-dom';
-import {Row, Col, ListGroup, Image, Button, Card, Container, Modal} from 'react-bootstrap';
+import { useEffect} from 'react';
+import {Link, useParams} from 'react-router-dom';
+import {Row, Col, ListGroup, Image, Button, Card, Container} from 'react-bootstrap';
 import {toast} from 'react-toastify';
 import {useSelector } from 'react-redux';
 import {PayPalButtons, usePayPalScriptReducer} from '@paypal/react-paypal-js'
@@ -11,27 +11,27 @@ import {
     usePayOrderMutation, 
     useGetPayPalClientIdQuery,
     useDeliverOrdersMutation,
-    useDeleteOrderMutation,
+    // useDeleteOrderMutation,
 } 
 from '../slices/ordersApiSlice';
 import {useCreateLabelMutation} from '../slices/shippoSlics';
 import '../assets/styles/screens/orderscreen.css';
-import ReactRouterPrompt from "react-router-prompt";
+// import ReactRouterPrompt from "react-router-prompt";
 
 const OrderScreen = () => {
     // Get id from URL 
     const {id: orderId} = useParams();
     const cart = useSelector((state) => state.cart);
 
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
-    const [timer, setTimer] = useState(false);
+    // const [timer, setTimer] = useState(false);
 
     // Get data from "orderId" (renamed "order")
     // "refetch" to get updated/ new data
     const {data: order, refetch, isLoading, error} = useGetOrderDetailsQuery(orderId);
 
-    const [deleteOrder, {isLoading: loadingDelete}] = useDeleteOrderMutation();
+    // const [deleteOrder, {isLoading: loadingDelete}] = useDeleteOrderMutation();
 
     const [payOrder, {isLoading: loadingPay}] = usePayOrderMutation();
 
@@ -365,24 +365,4 @@ const OrderScreen = () => {
     </>
   );
 }
-
 export default OrderScreen
-
-
-// const DisableHeader =()=> {
-//     let location = useLocation();
-//     const [count, setCount] = useState(0);
-
-//     useEffect(()=> {    
-//         setCount(count + 1);
-//         console.log('Location changed!', location.pathname);
-//     }, [location]);
-
-//     return (
-//         <div>
-//             disable header
-//         </div>
-//     )
-// }
-
-// export {DisableHeader}

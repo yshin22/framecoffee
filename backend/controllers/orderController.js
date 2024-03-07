@@ -12,8 +12,6 @@ const addOrderItems = asyncHandler(async (req,res) => {
     const { orderItems, shippingAddress, paymentMethod, shippingPrice: finalShipRate} = req.body;
     // console.log("ORDER BODY: ", req.body)
     // console.log('SHIP RATE', finalShipRate)
-    // console.log(req.body.shippingAddress)
-    // console.log('CONTROLLER')
     // Check if "orderItems" is empty
     if (orderItems && orderItems.length === 0) {
         res.status(400);
@@ -40,19 +38,20 @@ const addOrderItems = asyncHandler(async (req,res) => {
   
         // calculate prices
         const { itemsPrice, taxPrice, shippingPrice, totalPrice } = calcPrices(dbOrderItems, shippingAddress, finalShipRate);
-
-        // for (const i in orderItems) {
-        //     // console.log('here')
-        //     const item = orderItems[i];
-        //     // console.log(item)
-        //     const product = await Product?.findById(item?._id);
-        //     if ((product?.countInStock - item?.qty) < 0) {
-        //         // console.log(`DIFFERENCE: ${product.countInStock - item.qty}`)
-        //         // console.log('one or more item are no longer in stock')
-        //         res.status(400)
-        //         throw new Error('This item is not in stock');
-        //     }
-        // }
+        
+        // check if items are in stock
+        for (const i in orderItems) {
+            // console.log('here')
+            const item = orderItems[i];
+            // console.log(item)
+            const product = await Product?.findById(item?._id);
+            if ((product?.countInStock - item?.qty) < 0) {
+                // console.log(`DIFFERENCE: ${product.countInStock - item.qty}`)
+                // console.log('one or more item are no longer in stock')
+                res.status(400)
+                throw new Error('One or more items are not in stock');
+            }
+        }
 
         // Combine address and address2 if address 2 exits
         if (shippingAddress.address2) {

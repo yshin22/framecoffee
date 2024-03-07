@@ -24,7 +24,6 @@ export const updateCart = (state) => {
 
     console.log('STATE.SHIPPING PRICE: ',  state.shippingPrice);
 
-
     //calculate tax price (%1) for VA
     const taxPriceVA = 0.01 * itemsPrice;
     // %0 for all other states
