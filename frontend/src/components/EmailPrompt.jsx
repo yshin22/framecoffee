@@ -1,7 +1,7 @@
 import React from 'react';
 import '../assets/styles/emailprompt.css';
 import { useState } from 'react';
-import {toast} from 'react-toastify';
+// import {toast} from 'react-toastify';
 import {Form, Button} from 'react-bootstrap';
 
 const EmailPrompt = () => {
@@ -22,7 +22,7 @@ const EmailPrompt = () => {
 
       const submitEmail = async (e) => {
         e.preventDefault();
-        console.log({ mailerState });
+        // console.log({ mailerState });
 
         // Change URL in "fetch('URL')" to below when LIVE and not DEV
         // https://framecoffeeroasters.onrender.com/send
@@ -36,7 +36,7 @@ const EmailPrompt = () => {
           .then((res) => res.json())
           .then(async (res) => {
             const resData = await res;
-            console.log(resData);
+            // console.log(resData);
             if (resData.status === "success") {
               alert("Message sent successfully!\n\nWe will get back to you as soon as possible");
             } else if (resData.status === "fail") {

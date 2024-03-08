@@ -28,8 +28,8 @@ const WholesaleScreen = () => {
 
   const submitEmail = async (e) => {
     e.preventDefault();
-    console.log({ mailerState });
-    console.log(JSON.stringify({mailerState}));
+    // console.log({ mailerState });
+    // console.log(JSON.stringify({mailerState}));
 
     // Change URL in "fetch('URL')" to below when LIVE and not DEV
     // https://framecoffeeroasters.onrender.com/wholesale/send
@@ -43,10 +43,10 @@ const WholesaleScreen = () => {
       .then((res) => res.json())
       .then(async (res) => {
         const resData = await res;
-        console.log(resData);
+        // console.log(resData);
         if (resData.status === "success") {
           alert("Message sent successfully!\n\nWe will get back to you as soon as possible");
-          console.log(resData.message);
+          // console.log(resData.message);
         } else if (resData.status === "fail") {
           alert("Failed to send message: Something went wrong on our end...\n\nPlease shoot us a message to: mainframe@framecoffee.net");
         }
@@ -121,6 +121,7 @@ const WholesaleScreen = () => {
                         name='email'
                         value={mailerState.email}
                         required
+                        autoComplete
                       >
                       </Form.Control>
                     </Form.Group>              
@@ -134,6 +135,7 @@ const WholesaleScreen = () => {
                         name='phone'
                         value={mailerState.phone}
                         required
+                        autoComplete
                       >
                       </Form.Control>
                     </Form.Group>               

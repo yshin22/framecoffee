@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import '../assets/styles/header.css'
-import {Row, Col, Stack, NavbarToggle, Button} from 'react-bootstrap'
+// import {Row, Col, Stack, NavbarToggle, Button} from 'react-bootstrap'
 import {useNavigate, useLocation} from 'react-router-dom'
-import {Badge, Navbar, Nav, Container, NavDropdown} from 'react-bootstrap'
-import {FaLaptopHouse, FaShoppingCart, FaUser} from 'react-icons/fa'
+import {
+    // Badge, 
+    Navbar, Nav, Container, NavDropdown} from 'react-bootstrap'
+import {
+    // FaLaptopHouse, 
+    // FaShoppingCart, 
+    FaUser} from 'react-icons/fa'
 import { useLogoutMutation } from '../slices/usersApiSlice'
 import { logout } from '../slices/authSlice'
 import logo from "../assets/frame-logo.png"
 import {LinkContainer} from 'react-router-bootstrap'
-import SearchBox from './SearchBox'
+// import SearchBox from './SearchBox'
 import {useSelector, useDispatch} from 'react-redux'
 import { resetCart } from '../slices/cartSlice';
 import { showNav, 
@@ -29,7 +34,7 @@ const Header = () => {
 
     // const context = useContext(headerContext);
 
-    const {cartItems} = useSelector((state) => state.cart);
+    // const {cartItems} = useSelector((state) => state.cart);
     const {userInfo} = useSelector((state) => state.auth);
 
     const dispatch = useDispatch();
@@ -124,13 +129,23 @@ const Header = () => {
                             </LinkContainer>
 
                             <NavDropdown title='COFFEE'>
-                                <NavDropdown.Item>
+                                
+                                {/* <NavDropdown.Item>
                                     <LinkContainer to='/shop'>
                                         <Nav.Link onClick={callFunctions} className='dropdown-item-title'>
                                             SHOP
                                         </Nav.Link>
                                     </LinkContainer>
+                                </NavDropdown.Item> */}
+
+                                <NavDropdown.Item>
+                                    <LinkContainer to='/shopcomingsoon'>
+                                        <Nav.Link onClick={callFunctions} className='dropdown-item-title'>
+                                            SHOP
+                                        </Nav.Link>
+                                    </LinkContainer>
                                 </NavDropdown.Item>
+
                                 <NavDropdown.Item>
                                     <LinkContainer to='/menu'>
                                         <Nav.Link onClick={callFunctions} className='dropdown-item-title'>
@@ -178,7 +193,7 @@ const Header = () => {
                             {/* <SearchBox isVisible={visible} onVisible={callFunctions} className='search-box'/> */}
 
                             <div className='ncl-1'>
-                                <LinkContainer to="/cart">
+                                {/* <LinkContainer to="/cart">
                                     <Nav.Link onClick={callFunctions}><FaShoppingCart/>Cart
                                     {
                                         cartItems.length > 0 && (
@@ -187,7 +202,7 @@ const Header = () => {
                                             </Badge>)
                                     }
                                     </Nav.Link>
-                                </LinkContainer>
+                                </LinkContainer> */}
 
                                 {userInfo ? (
                                     <NavDropdown title={userInfo.name} id='username' drop='up'>

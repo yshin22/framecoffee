@@ -46,6 +46,8 @@ import ArtShowScreen from './screens/ArtShowScreen';
 import ArtShowListScreen from './screens/admin/ArtShowListScreen';
 import ArtShowEditScreen from './screens/admin/ArtShowEditScreen';
 
+import TempShopScreen from './screens/TempShopScreen';
+
 import PrivacyPolicy from './screens/PrivacyPolicy';
 import RefundPolicy from './screens/RefundPolicy';
 import TermsOfService from './screens/TermsOfService';
@@ -56,21 +58,25 @@ const router = createBrowserRouter(
     <Route path='/' element={<App/>}>
       <Route index={true} path='/' element={<HomeScreen/>}/>
       <Route path='/about' element={<AboutScreen/>}/>
-      <Route path='/shop' element={<ShopScreen/>}/>
+
+      {/* <Route path='/shop' element={<ShopScreen/>}/> */}
+
       <Route path='/menu' element={<MenuScreen/>}/>
       <Route path='/wholesale' element={<WholesaleScreen/>}/>
       <Route path='/gallery' element={<GalleryScreen/>}/>
       <Route path='/artshow' element={<ArtShowScreen/>}/>
       <Route path='/music' element={<MusicScreen/>}/>
 
-      <Route path='/page/:pageNumber' element={<ShopScreen/>}/>
-      <Route path='/page/:pageNumber' element={<HomeScreen/>}/>
-      <Route path='/search/:keyword/page/:pageNumber' element={<ShopScreen/>}/>
-      <Route path='/product/:id' element={<ProductScreen/>}/>
-      <Route path='/cart' element={<CartScreen/>}/>
+      <Route path='/shopcomingsoon' element={<TempShopScreen/>}/>
+
+      {/* <Route path='/page/:pageNumber' element={<ShopScreen/>}/>
+      <Route path='/page/:pageNumber' element={<HomeScreen/>}/> */}
+      {/* <Route path='/search/:keyword/page/:pageNumber' element={<ShopScreen/>}/> */}
+      {/* <Route path='/product/:id' element={<ProductScreen/>}/> */}
+      {/* <Route path='/cart' element={<CartScreen/>}/> */}
       <Route path='/login' element={<LoginScreen/>}/>
       <Route path='/register' element={<RegisterScreen/>}/>
-      <Route path='/shipping' element={<ShippingScreen/>}/>
+      {/* <Route path='/shipping' element={<ShippingScreen/>}/> */}
 
       <Route path='/privacypolicy' element={<PrivacyPolicy/>}/>
       <Route path='/refundpolicy' element={<RefundPolicy/>}/>
@@ -79,10 +85,10 @@ const router = createBrowserRouter(
 
 
       <Route path='' element={<PrivateRoute/>}>
-        <Route path='/shipping' element={<ShippingScreen/>}/>
+        {/* <Route path='/shipping' element={<ShippingScreen/>}/>
         <Route path='/payment' element={<PaymentScreen/>}/>
         <Route path='/placeorder' element={<PlaceOrderScreen/>}/>
-        <Route path='/order/:id' element={<OrderScreen/>}/>
+        <Route path='/order/:id' element={<OrderScreen/>}/> */}
         <Route path='/profile' element={<ProfileScreen/>}/>
         <Route path='/profile/:pageNumber' element={<ProfileScreen/>}/>
       </Route>
