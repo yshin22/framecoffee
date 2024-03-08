@@ -152,7 +152,7 @@ const ShippingScreen = () => {
             placeholder='Apt / Suite / Bldg / Unit'
             value={address2}
             onChange={(e) => setAddress2(e.target.value)}
-            autocomplete="address-line2"
+            autoComplete="address-line2"
           ></Form.Control>
         </Form.Group>
 
@@ -188,7 +188,7 @@ const ShippingScreen = () => {
             value={postalCode}
             required
             onChange={(e) => setPostalCode(e.target.value)}
-            autocomplete="postal-code"
+            autoComplete="postal-code"
           ></Form.Control>
         </Form.Group>
 
@@ -200,7 +200,7 @@ const ShippingScreen = () => {
             value={country}
             required
             onChange={(e) => setCountry(e.target.value)}
-            autocomplete="country-name"
+            autoComplete="country-name"
           ></Form.Control>
         </Form.Group>
 

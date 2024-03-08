@@ -18,7 +18,7 @@ async function getPayPalAccessToken() {
   console.log('AUTH', auth)
 
   const url = `${PAYPAL_API_URL}/v1/oauth2/token`;
-
+  console.log(url);
   const headers = {
     Accept: 'application/json',
     'Accept-Language': 'en_US',
@@ -31,6 +31,8 @@ async function getPayPalAccessToken() {
     headers,
     body,
   });
+
+  console.log(response)
 
   if (!response.ok) throw new Error('Failed to get access token');
 

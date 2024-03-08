@@ -17,7 +17,7 @@ function addDecimals(num) {
   
     // Calculate the shipping price
     // const shippingPrice = itemsPrice > 100 ? 0 : 10;
-    const finalShipRate = shippingPrice;
+    const finalShipRate = 0;
   
     // Tax for VA
     const taxPriceVA = 0.01 * itemsPrice;
