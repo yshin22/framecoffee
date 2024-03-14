@@ -57,7 +57,7 @@ const ProfileScreen = () => {
 
   return (
     <Container className='profile-container'> 
-        <Row>
+        <Row style={{justifyContent: 'center'}}>
             <Col md={3}>
                 <h2>User Profile</h2>
                 <Form onSubmit={submitHandler}>
@@ -99,7 +99,7 @@ const ProfileScreen = () => {
                         <Form.Control
                         type='password'
                         placeholder='Confirm Password'
-                        value={password}
+                        value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
                         >
                         </Form.Control>
@@ -112,7 +112,7 @@ const ProfileScreen = () => {
 
                 </Form>
             </Col>
-            <Col md={9}>
+            {/* <Col md={9}>
                 <h2>My Orders</h2>
                 {isLoading ? (
                 <Loader/>
@@ -167,7 +167,7 @@ const ProfileScreen = () => {
                     <Paginate pages={data.pages} page={data.page} isAdmin={true} loc={location}/>
                    </>
                 )}
-            </Col>
+            </Col> */}
 
         </Row>
     </Container>

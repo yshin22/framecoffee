@@ -12,19 +12,24 @@ const authUser = asyncHandler(async (req,res) => {
     //check if user exists and has valid password
     const user = await User.findOne({email});
 
-    if (user && (await user.matchPassword(password))) {
+    if (user.isAdmin === true) {
+        if (user && (await user.matchPassword(password))) {
 
-        generateToken(res, user._id);
-
-        res.status(200).json({
-            _id: user._id,
-            name: user.name,
-            email: user.email,
-            isAdmin: user.isAdmin
-        });
+            generateToken(res, user._id);
+    
+            res.status(200).json({
+                _id: user._id,
+                name: user.name,
+                email: user.email,
+                isAdmin: user.isAdmin
+            });
+        } else {
+            res.status(401);
+            throw new Error('Invalid Email or Password');
+        }
     } else {
         res.status(401);
-        throw new Error('Invalid Email or Password');
+        throw new Error('Authorized users only')
     }
 
 });
