@@ -138,12 +138,13 @@ const Header = () => {
                                     </LinkContainer>
                                 </NavDropdown.Item> */}
 
-                                <NavDropdown.Item>
-                                    <LinkContainer to='/shopcomingsoon'>
-                                        <Nav.Link onClick={callFunctions} className='dropdown-item-title'>
-                                            SHOP
-                                        </Nav.Link>
-                                    </LinkContainer>
+                                <NavDropdown.Item href="https://www.framecoffeeroasters.com/"
+                                className='dropdown-item-title-shop'
+                                >
+                                    {/* <Nav.Link href="https://www.framecoffeeroasters.com/"
+                                    className='dropdown-item-title'> */}
+                                        SHOP
+                                    {/* </Nav.Link> */}
                                 </NavDropdown.Item>
 
                                 <NavDropdown.Item>
