@@ -29,6 +29,9 @@ Technologies:
 
 How to install/ run project:
 
+    1. Clone Repository
+    2. "NPM i" in Root Folder
+    3. "NPM i" in "/frontend"
     
 
 
