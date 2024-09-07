@@ -32,7 +32,7 @@ const HomeScreen = () => {
       </div>
       <TextPath/>
       <div className='sec2'>
-        <InstaFeeds token={process.env.REACT_APP_INS_TOKEN} limit={9}/>
+        {/* <InstaFeeds token={process.env.REACT_APP_INS_TOKEN} limit={9}/> */}
       </div>
       <TextPath/>
       <div className='sec3'>
