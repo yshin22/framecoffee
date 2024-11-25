@@ -1,6 +1,8 @@
 import '../assets/styles/screens/artshowscreen.css';
 import {Container, Row, Col, Carousel} from 'react-bootstrap';
 import Footer from '../components/Footer';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 import {
   useGetArtShowFeatQuery,
 } from '../slices/artshowApiSlice';
@@ -140,9 +142,16 @@ const ArtShowScreen = () => {
                 <Row className='artist-wrapper mt-4'>
                   <Col className='carousel-container m-md-2' lg={6}>
                     <Carousel className='artShow-carousel' interval={null}>
-                      {artshow.main_images?.map((i) => (
+                      {artshow.main_images?.map((image, index) => (
                         <Carousel.Item>
-                          <img src={`/uploads/` + i} alt="art show img"/>
+                          <LazyLoadImage
+                            key={index}
+                            src={`/uploads/` + image}
+                            alt={`Image ${index + 1}`}
+                            effect="blur"
+                            class="artshow-carousel-img"
+                          />
+                          {/* <img src={`/uploads/` + i} alt="art show img"/> */}
                         </Carousel.Item>
                       ))}
                     </Carousel>
@@ -250,11 +259,19 @@ const ArtShowScreen = () => {
                   </div>
                 </Row>
                 <Row className='m-2 artist-gallery-container'>
-                    {artshow.other_images?.map((i, index) => (
+                    {artshow.other_images?.map((image, index) => (
                       // divide the length of images into 3
                       <Col className='col-md-4 col-12 mb-4 mb-lg-4'>
-                        <img class="w-100 h-100 shadow-1-strongx" style={{objectFit: 'cover'}}
-                        src={`/uploads/` + i} alt="Collage of images"/>
+                        <LazyLoadImage
+                            key={index}
+                            src={`/uploads/` + image}
+                            alt={`Image ${index + 1}`}
+                            effect="blur"
+                            class="w-100 h-100 shadow-1-strongx"
+                            style={{objectFit: 'cover'}}
+                          />  
+                        {/* <img class="w-100 h-100 shadow-1-strongx" style={{objectFit: 'cover'}}
+                        src={`/uploads/` + i} alt="Collage of images"/> */}
                       </Col>
                     ))}
                 </Row>

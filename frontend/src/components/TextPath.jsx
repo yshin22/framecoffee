@@ -10,7 +10,7 @@ const TextPath = () => {
         <a href='https://apps.apple.com/us/app/frame-coffee-roasters/id6448272834' rel='noreferrer' target='_blank'>
             <svg className="svgwave"  viewBox="0 0 800 40">
                 <path id="wavepath" d="M0 25h1000" style={{fill: "transparent", stroke: "transparent", strokeWidth: "1px"}}></path>
-                <text className='svg-text' text-anchor="middle">
+                <text className='svg-text' textAnchor="middle">
                     <textPath className='text' href='#wavepath' startOffset='0%' textLength="3500">
                         <animate attributeName="startOffset" from="0%" to="100%" begin="0s" dur="25s" repeatCount="indefinite"></animate>
                         <tspan>DOWNLOAD-OUR-APP</tspan>  

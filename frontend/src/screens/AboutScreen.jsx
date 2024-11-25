@@ -4,6 +4,8 @@ import coffee from '../assets/images/frame_beans.jpg';
 import latte from '../assets/images/latte-art.jpeg';
 import woven from '../assets/images/hat_music.jpg';
 import Footer from '../components/Footer';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const AboutScreen = () => {
 
@@ -22,7 +24,13 @@ const AboutScreen = () => {
 
         <Row className='image-row py-4'>
           <Col className='img-container' sm={true}>
-            <img src={coffee} alt='coffee pour'/>
+            <LazyLoadImage
+              key={1}
+              src={coffee}
+              alt={`Image 1`}
+              effect="blur"
+              className="w-100 shadow-1-strong rounded"
+            />
           </Col>
           <Col className='txt-container' sm={true}>
             <h1>
@@ -41,12 +49,24 @@ const AboutScreen = () => {
             </h1>
           </Col>
           <Col className='img-container' xs={{span: 12, order: '1'}} sm={{span: 6, order: '2'}}>
-            <img src={woven} alt=''/>
+            <LazyLoadImage
+                  key={2}
+                  src={woven}
+                  alt={`Image 2`}
+                  effect="blur"
+                  className="w-100 shadow-1-strong rounded"
+                />
           </Col>
         </Row>
         <Row className='image-row py-4'>
           <Col className='img-container' sm={true}>
-            <img src={latte} alt=''/>
+            <LazyLoadImage
+                  key={3}
+                  src={latte}
+                  alt={`Image 3`}
+                  effect="blur"
+                  className="w-100 shadow-1-strong rounded"
+                />
           </Col>
           <Col className='txt-container' sm={true}>
             <h1>

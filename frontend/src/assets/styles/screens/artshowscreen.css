@@ -42,7 +42,15 @@
     height: 100%;
 }
 
-.artShow-carousel img {
+.artShow-carousel .lazy-load-image-background {
+    height: 100%;
+}
+
+.artist-gallery-container .lazy-load-image-background {
+    height: 100%;
+}
+
+.artshow-carousel-img {
     width: 100%;
     height: 100%;
     object-fit: cover;

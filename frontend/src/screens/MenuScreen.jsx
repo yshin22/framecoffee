@@ -4,6 +4,8 @@ import { Container, Row, Carousel} from 'react-bootstrap';
 import Footer from '../components/Footer';
 import TextPath from '../components/TextPath'
 import ModalCentered from '../components/ModalCentered';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 import {
   useGetMenuImagesQuery
 } from '../slices/uploadApiSlice';
@@ -40,19 +42,17 @@ const MenuScreen = () => {
                     </div>
                 ) : 
                 (
-                  // <div className='menu-slider-wrapper'>
-                  //   {menus.image?.map((i) => (
-                  //     <div className='menu-column'>
-                  //       <img src={`/uploads/` + i} alt="menu"/>
-                  //       {/* <img src={`http://localhost:4000/uploads/` + i} alt="menu"/> */}
-                  //     </div>
-                  //   ))}
-                  // </div>
                   <div className='menu-carousel-container'>
                     <Carousel className='menu-carousel' variant='dark' slide={false} interval={null}>
-                      {menus.image?.map((i) => (
+                      {menus.image?.map((image, index) => (
                         <Carousel.Item className='menu-carousel-item'>
-                          <img src={`/uploads/` + i} alt="menu"/>
+                        <LazyLoadImage
+                        key={index}
+                        src={`/uploads/` + image}
+                        alt={`Image ${index + 1}`}
+                        effect="blur"
+                        className="w-100 shadow-1-strong rounded mb-4"
+                        />
                           {/* <img src={`http://localhost:4000/uploads/` + i} alt="menu"/> */}
                         </Carousel.Item>
                       ))}
