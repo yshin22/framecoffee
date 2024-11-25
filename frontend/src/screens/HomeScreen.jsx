@@ -30,10 +30,10 @@ const HomeScreen = () => {
       <div className='sec1'>
         <TitleAnimation/>
       </div>
-      <TextPath/>
+      {/* <TextPath/>
       <div className='sec2'>
         <InstaFeeds token={process.env.REACT_APP_INS_TOKEN} limit={9}/>
-      </div>
+      </div> */}
       <TextPath/>
       <div className='sec3'>
         <HomeContact/>
